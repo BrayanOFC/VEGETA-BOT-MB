@@ -1,16 +1,15 @@
-<h1 align="center">𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 💨</h1>
+<h1 align="center">GATABOT-MD-VICTOR-BOT-Bot-MD-𝙱𝙾𝚃-𝙼𝙱 💨</h1>
  <p align="center">🌟 déjanos tu super estrella</p>
 </p>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF0000&lines=Bienvenido+al+Repositorio;𝚅𝙴𝙶𝙴𝚃𝙰+-+𝙱𝙾𝚃+-+𝙼𝙱;Gracias+por+preferirnos;Creado+por+Brayan;💨🔥+BOOM!!!;💨🔥)](https://git.io/typing-svg)
-![Vegeta](https://qu.ax/zKuno.jpg)
+[https://readme-typing-svg.demolab.com/demo/?lines=GATABOT-MD-VICTOR-BOT-Bot-MD;https%3A%2F%2Fgithub.com%2FVICTOREMANUEL2022%2FGATABOT-MD-Y-V-CTOR-BOT-;%2B598+94+243+071;%E2%9A%94%EF%B8%8F+%C2%A9+Powered+By%5BGATABOT-MD+Y+V%C3%8DCTOR+BOT%F0%9F%87%BA%F0%9F%87%BE%5D+%F0%9F%91%91%E2%9A%94%EF%B8%8F;https%3A%2F%2Fchat.whatsapp.com%2FHeo2MeCb7P02ocXFhtFQDP
 
 > 💌 Versión 2.13.3
 
 <div align="center">
  
-[![Dueño](https://img.shields.io/badge/Dueño-00802f?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/526641804242)
-[![Soporte](https://img.shields.io/badge/soporte-00802f?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/526641804242)
+[![Dueño](https://img.shields.io/badge/Dueño-00802f?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/59894243071)
+[![Soporte](https://img.shields.io/badge/soporte-00802f?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/59894243071)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@Vegeta-bot)
 </div>
 
@@ -30,12 +29,12 @@
 ### **`💭 Contáctanos`**
 
 <a
-href="https://wa.me/526641804242?text="><img src="https://qu.ax/ugHh.jpg" height="125px"></a>
+href="https://wa.me/59894243071?text="><img src="https://qu.ax/ugHh.jpg" height="125px"></a>
 
 <details>
 <summary><b> 💣 Contáctos</b></summary>
 
-* https://wa.me/526641804242
+* https://wa.me/59894243071
 
 ---
 
@@ -86,7 +85,7 @@ Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdid
 
 1. Abre Termux y navega al directorio del bot:
     ```bash
-    cd VEGETA-BOT-MB
+    cd GATABOT-MD-VICTOR-BOT-Bot-MD-MB
     ```
 
 2. Inicia el bot nuevamente:
@@ -102,12 +101,13 @@ Si después de instalar el bot en Termux y iniciar la session del bot (el numero
 
 1. Abre Termux y navega al directorio del bot:
     ```bash
-    cd VEGETA-BOT-MB
+    cd GATABOT-MD-VICTOR-BOT-Bot-MD-MB
     ```
 
 2. Elimina la carpeta MiniSession:
     ```bash
-    rm -rf VegetaSession
+    rm -rf
+GATABOT-MD-VICTOR-BOT-Bot-MDSession
     ```
 
 3. Inicia el bot nuevamente:
@@ -142,7 +142,7 @@ href="https://dash.luminarys.shop.home"><img src="https://qu.ax/VAgKd.jpg" heigh
 <details>
  <summary><b> ❤️ servidor Luminary's</b></summary>
 
-* Estado Luminarys [`Status`](https://estado.dash.Luminary's.shop)
+* Estado Luminarys [`Status GATABOT-MD-VICTOR-BOT-Bot-MD`](https://estado.dash.Luminary's.shop)
 * Dash Luminary's[`Dash`](https://dash.luminarys.shop/home)
 * Panel Luminary's [`Panel`](https://panel.luminarys.shop/)
 * Canal de WhatsApp [`Canal luminary's`](https://whatsapp.com/channel/0029Vb7CL7dGk1FtzTLjNt3S)
@@ -188,4 +188,4 @@ href="https://github.com/brayan127p"><img src="https://qu.ax/aDqOk.jpg" width="1
 <a
 href="https://github.com/brayan127p"><img src="https://github.com/brayan127p.png" width="140" height="140" alt="Brayan"/></a>
 
-[© Powered By Team STARCORE ⚡︎](https://whatsapp.com/channel/0029Vb7CL7dGk1FtzTLjNt3S)
+[© Powered By GATABOT-MD-VICTOR-BOT-Bot-MD Team STARCORE ⚡︎](https://whatsapp.com/channel/0029Vb7CL7dGk1FtzTLjNt3S)
