@@ -2,8 +2,7 @@
  <p align="center">🌟 déjanos tu super estrella</p>
 </p>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF0000&lines=Bienvenido+al+Repositorio;𝚅𝙴𝙶𝙴𝚃𝙰+-+𝙱𝙾𝚃+-+𝙼𝙱;Gracias+por+preferirnos;Creado+por+Brayan;💨🔥+BOOM!!!;💨🔥)](https://git.io/typing-svg)
-![Vegeta](https://qu.ax/zKuno.jpg)
+[https://readme-typing-svg.demolab.com/demo/?lines=GATABOT-MD-VICTOR-BOT-Bot-MD;https%3A%2F%2Fgithub.com%2FVICTOREMANUEL2022%2FGATABOT-MD-Y-V-CTOR-BOT-;%2B598+94+243+071;%E2%9A%94%EF%B8%8F+%C2%A9+Powered+By%5BGATABOT-MD+Y+V%C3%8DCTOR+BOT%F0%9F%87%BA%F0%9F%87%BE%5D+%F0%9F%91%91%E2%9A%94%EF%B8%8F;https%3A%2F%2Fchat.whatsapp.com%2FHeo2MeCb7P02ocXFhtFQDP
 
 > 💌 Versión 2.13.3
 
