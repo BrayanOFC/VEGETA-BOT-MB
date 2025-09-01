@@ -9243,5 +9243,21 @@
       "user": null,
       "status": "Libre",
       "votes": 0
+   },  
+   {
+      "id": "2025090166",
+      "name": "BrayanOFC",
+      "gender": "Hombre",
+      "value": "750075",
+      "source": "MI Creador BrayanOfC",
+      "img": [
+         "https://raw.githubusercontent.com/BrayanOFC/Adiciones/main/Contenido/2025090166.jpg",
+         "https://raw.githubusercontent.com/BrayanOFC/Adiciones/main/Contenido/2025090166.jpg",
+         "https://raw.githubusercontent.com/BrayanOFC/Adiciones/main/Contenido/2025090166.jpg"
+      ],
+      "vid": [],
+      "user": null,
+      "status": "Libre",
+      "votes": 0
    }
 ]
