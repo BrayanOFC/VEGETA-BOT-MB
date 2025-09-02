@@ -97,7 +97,25 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 🔥 *By BrayanOFC* 🔥
 `.trim()
 
-const initHandler = async (m, { conn, usedPrefix }) => {
+
+    await m.react('🐉') 
+
+    await conn.sendMessage(m.chat, {
+      video: { url: 'https://files.catbox.moe/lzs4dl.mp4' },
+      caption: menuText,
+      gifPlayback: true,
+      mimetype: 'video/mp4',
+      fileName: 'dragon-menu.mp4',
+      contextInfo: {
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363394965381607@newsletter',
+          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱*:·',
+          serverMessageId: 100
+        }
+      }
+    }, { quoted: m })
+
     const buttons = [
         {
             buttonId: `${usedPrefix}owner`,
@@ -121,28 +139,6 @@ const initHandler = async (m, { conn, usedPrefix }) => {
         { quoted: m }
     );
 };
-
-initHandler.command = /^init$/i;
-
-export default initHandler;
-
-    await m.react('🐉') 
-
-    await conn.sendMessage(m.chat, {
-      video: { url: 'https://files.catbox.moe/lzs4dl.mp4' },
-      caption: menuText,
-      gifPlayback: true,
-      mimetype: 'video/mp4',
-      fileName: 'dragon-menu.mp4',
-      contextInfo: {
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363394965381607@newsletter',
-          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱*:·',
-          serverMessageId: 100
-        }
-      }
-    }, { quoted: m })
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
