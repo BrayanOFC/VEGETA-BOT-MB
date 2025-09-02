@@ -52,7 +52,7 @@ async function handler(m, { conn }) {
   }
 }
 
-handler.help = ['owner', 'creator', 'creador', 'dueño'];
+handler.help = ['creador'];
 handler.tags = ['main'];
 handler.command = ['owner', 'creator', 'creador', 'dueño'];
 
