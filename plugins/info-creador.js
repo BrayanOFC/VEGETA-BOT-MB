@@ -18,7 +18,7 @@ async function handler(m, { conn }) {
 🌟 *Nombre:* ${name}
 🏢 *Empresa:* ${empresa}
 📱 *Número:* ${numero}
-🔗 *WhatsApp:* ${link}
+🔗 *Dash Sky:* ${dash}
 💻 *GitHub:* ${github}
 
 ━━━━━━━━━━━━━━━━━━━━━━━
@@ -33,14 +33,14 @@ async function handler(m, { conn }) {
           title: '👑 BrayanOFC 👑',
           body: 'Servicios Tecnológicos de Alto Nivel 🚀',
           thumbnailUrl: imagen,
-          //sourceUrl: link,
+          sourceUrl: dash, 
           mediaType: 1,
           renderLargerThumbnail: true
         },
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363394965381607@newsletter', // ID de tu canal
-          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱*:·', // Nombre de tu canal
+          newsletterJid: '120363394965381607@newsletter', 
+          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update', 
           serverMessageId: 777
         }
       }
