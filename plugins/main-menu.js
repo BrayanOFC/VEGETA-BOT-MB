@@ -100,7 +100,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
     await m.react('🐉') 
 
     const buttons = [
-      { buttonId: `${_p}owner`, buttonText: { displayText: "👑 Owner" }, type: 1 },
+      { buttonId: `${_p}owner`, buttonText: { displayText: "👑 Creador" }, type: 1 },
       { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 }
     ]
 
