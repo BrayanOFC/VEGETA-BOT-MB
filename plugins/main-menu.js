@@ -1,4 +1,4 @@
-//creado y editado por BrayanOFC
+// creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
 
@@ -106,6 +106,11 @@ ${commandsForTag.map(menu => menu.help.map(help =>
       gifPlayback: true,
       mimetype: 'video/mp4',
       fileName: 'dragon-menu.mp4',
+      templateButtons: [
+        { index: 1, quickReplyButton: { displayText: '👑 Owner', id: `${_p}owner` } },
+        { index: 2, quickReplyButton: { displayText: '🏓 Ping', id: `${_p}ping` } },
+      ],
+      headerType: 4,
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
