@@ -43,7 +43,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let userId = m.mentionedJid?.[0] || m.sender
     let user = global.db.data.users[userId]
     let name = await conn.getName(userId)
-    let mode = global.opts?.self ? "Modo Privado 🔒" : "Modo Público 🔮"
+    let mode = global.opts?.self ? "Modo Privado " : "Modo Público "
     let totalCommands = Object.keys(global.plugins).length
     let totalreg = Object.keys(global.db.data.users).length
     let uptime = clockString(process.uptime() * 1000)
@@ -68,7 +68,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       premium: plugin.premium,
     }))
 
-    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' //: 'SUB-BOT KAIO '
+    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
 
     let menuText = `
 ╭━━━『🐉 ${botname.toUpperCase()} | DRAGON MENU』━━━╮
