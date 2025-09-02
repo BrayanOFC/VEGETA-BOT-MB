@@ -26,20 +26,19 @@ async function handler(m, { conn }) {
 ━━━━━━━━━━━━━━━━━━━━━━━
     `.trim();
 
-    const templateButtons = [
-      { index: 1, urlButton: { displayText: '📲 Contactar al Owner', url: link } },
-      { index: 2, urlButton: { displayText: '💻 GitHub Oficial', url: github } }
-    ];
-
-    const buttonMessage = {
-      image: { url: imagen },
-      caption,
-      footer: '👑 BrayanOFC 👑',
-      templateButtons,
-      headerType: 4
-    };
-
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    await conn.sendMessage(m.chat, {
+      text: caption,
+      contextInfo: {
+        externalAdReply: {
+          title: '👑 BrayanOFC 👑',
+          body: 'Servicios Tecnológicos de Alto Nivel 🚀',
+          thumbnailUrl: imagen,
+          sourceUrl: link,
+          mediaType: 1,
+          renderLargerThumbnail: true
+        }
+      }
+    }, { quoted: m });
 
   } catch (e) {
     console.error(e);
