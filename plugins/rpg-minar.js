@@ -21,8 +21,8 @@ let handler = async (m, { conn }) => {
   let mensajeExtra = ''
 
   if (encontroTesoro) {
-    monedasGanadas += 1000000
-    mensajeExtra = '\n👑 *¡Encontraste el TESORO DEL REY MAGO!* 💰\n*+1,000,000* monedas extra'
+    dragonesGanados += 1000000
+    mensajeExtra = '\n👑 *¡Encontraste el TESORO DEL REY MAGO!* 💰\n*+1,000,000* dragones extra'
   }
 
   user.monedas += monedasGanadas
@@ -34,7 +34,7 @@ let handler = async (m, { conn }) => {
 ⛏️ *MINA ACTIVADA*
 
 ⚠️ Excavación completada:
-💰 Monedas: *+${monedasGanadas.toLocaleString()} 🪙*
+💰 Dragones: *+${monedasGanadas.toLocaleString()} 🪙*
 ✨ Experiencia: *+${expGanada}*
 
 ❤️ Energía: -50 HP
@@ -55,7 +55,7 @@ ${mensajeExtra}
     }, 3000)
 
     setTimeout(() => {
-      conn.reply(m.chat, '👑 *¡HAS DESENTERRADO EL TESORO DEL REY MAGO!* 💰\n\n¡Ganas *1,000,000* monedas extra! 🪙', m)
+      conn.reply(m.chat, '👑 *¡HAS DESENTERRADO EL TESORO DEL REY MAGO!* 💰\n\n¡Ganas *1,000,000* Dragones extra! 🪙', m)
     }, 5000)
   }
 }
