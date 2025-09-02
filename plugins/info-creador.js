@@ -12,7 +12,7 @@ async function handler(m, { conn }) {
 
     const caption = `
 ┏━━━━━━━━━━━━━━━━━━━┓
-┃      👑 *OWNER INFO* 👑      
+┃     👑 *CREADOR INFO* 👑      
 ┗━━━━━━━━━━━━━━━━━━━┛
 
 🌟 *Nombre:* ${name}
