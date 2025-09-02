@@ -5,7 +5,7 @@ async function handler(m, { conn }) {
   const name = 'BrayanOFC 👻';
   const empresa = 'BrayanOFC - Servicios Tecnológicos';
   const link = 'wa.me/526641784469';
-  const imagen = 'https://raw.githubusercontent.com/BrayanOFC/Adiciones/main/Contenido%2F2025090166.jpg';
+  const imagen = '%2F2025090166.jpg';
 
   const caption = `
 ╭━〔 👑 *OWNER INFO* 👑 〕━⬣
