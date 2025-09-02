@@ -6,7 +6,7 @@ async function handler(m, { conn }) {
     const name = 'BrayanOFC 👻';
     const empresa = '✨ BrayanOFC - Servicios Tecnológicos ✨';
     const numero = '+52 664 178 4469';
-    const links = 'https://dashomega.skyultraplus.com';
+    const link = 'https://dashomega.skyultraplus.com';
     const github = 'https://github.com/BrayanOFC';
     const imagen = 'https://raw.githubusercontent.com/BrayanOFC/Adiciones/main/Contenido%2F2025090166.jpg';
 
@@ -33,7 +33,7 @@ async function handler(m, { conn }) {
           title: '👑 BrayanOFC 👑',
           body: 'Servicios Tecnológicos de Alto Nivel 🚀',
           thumbnailUrl: imagen,
-          sourceUrl: links,
+          //sourceUrl: link,
           mediaType: 1,
           renderLargerThumbnail: true
         },
