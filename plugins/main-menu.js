@@ -1,4 +1,4 @@
-// creado y editado por BrayanOFC
+//creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
 
@@ -97,8 +97,12 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 🔥 *By BrayanOFC* 🔥
 `.trim()
 
-
     await m.react('🐉') 
+
+    const buttons = [
+      { buttonId: `${_p}owner`, buttonText: { displayText: "👑 Owner" }, type: 1 },
+      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 }
+    ]
 
     await conn.sendMessage(m.chat, {
       video: { url: 'https://files.catbox.moe/lzs4dl.mp4' },
@@ -106,11 +110,8 @@ ${commandsForTag.map(menu => menu.help.map(help =>
       gifPlayback: true,
       mimetype: 'video/mp4',
       fileName: 'dragon-menu.mp4',
-      templateButtons: [
-        { index: 1, quickReplyButton: { displayText: '👑 Owner', id: `${_p}owner` } },
-        { index: 2, quickReplyButton: { displayText: '🏓 Ping', id: `${_p}ping` } },
-      ],
-      headerType: 4,
+      buttons,
+      viewOnce: true,
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
