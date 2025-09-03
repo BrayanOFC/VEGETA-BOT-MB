@@ -43,5 +43,6 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 
 // Regex para invocar el comando
 handler.command = /^prefix$/i
+handler.tags = ['owner']
 habdler.rowner = true;
 export default handler
