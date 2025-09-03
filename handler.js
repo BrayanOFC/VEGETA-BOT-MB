@@ -317,7 +317,7 @@ let user = global.db.data.users[m.sender]
 if (!['grupo-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return
 if (name != 'grupo-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'grupo-delete.js' && chat?.isBanned && !isROwner) return
 if (m.text && user.banned && !isROwner) {
-m.reply(`《🐉》Estas baneado, no puedes usar comandos en este bot!\n\n${user.bannedReason ? `🔮 *Motivo:* ${user.bannedReason}` : '☁️ *Motivo:* Sin Especificar'}\n\n> 🐉 Si este Bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puedes exponer tu caso con un moderador.`)
+m.reply(`《🐉》Estas baneado/a, no puedes usar comandos en este bot!\n\n${user.bannedReason ? `☁️ *Motivo:* ${user.bannedReason}` : '🔮 *Motivo:* Sin Especificar'}\n\n> 👑 Si este Bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puedes exponer tu caso con un moderador.`)
 return
 }
 
@@ -339,29 +339,29 @@ if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) {
 fail('owner', m, this)
 continue
 }
-if (plugin.rowner && !isROwner) {
+if (plugin.rowner && !isROwner) { 
 fail('rowner', m, this)
 continue
 }
-if (plugin.owner && !isOwner) {
+if (plugin.owner && !isOwner) { 
 fail('owner', m, this)
 continue
 }
-if (plugin.mods && !isMods) {
+if (plugin.mods && !isMods) { 
 fail('mods', m, this)
 continue
 }
-if (plugin.premium && !isPrems) {
+if (plugin.premium && !isPrems) { 
 fail('premium', m, this)
 continue
 }
-if (plugin.group && !m.isGroup) {
+if (plugin.group && !m.isGroup) { 
 fail('group', m, this)
 continue
-} else if (plugin.botAdmin && !isBotAdmin) {
+} else if (plugin.botAdmin && !isBotAdmin) { 
 fail('botAdmin', m, this)
 continue
-} else if (plugin.admin && !isAdmin) {
+} else if (plugin.admin && !isAdmin) { 
 fail('admin', m, this)
 continue
 }
@@ -369,7 +369,7 @@ if (plugin.private && m.isGroup) {
 fail('private', m, this)
 continue
 }
-/*if (plugin.register == true && _user.registered == false) {
+/*if (plugin.register == true && _user.registered == false) { 
 fail('unreg', m, this)
 continue
 }*/
@@ -377,11 +377,11 @@ m.isCommand = true
 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 10
 m.exp += xp
 if (!isPrems && plugin.monedas && global.db.data.users[m.sender].monedas < plugin.monedas * 1) {
-conn.reply(m.chat, ❮🐉❯ Se agotaron tus ${monedas}, m)
+conn.reply(m.chat, `❮🔮❯ Se agotaron tus ${monedas}`, m)
 continue
 }
 if (plugin.level > _user.level) {
-conn.reply(m.chat, ❮🐉❯ Se requiere el nivel: *${plugin.level}*\n\n• Tu nivel actual es: *${_user.level}*\n\n• Usa este comando para subir de nivel:\n*${usedPrefix}levelup*, m)
+conn.reply(m.chat, `❮🐉❯ Se requiere el nivel: *${plugin.level}*\n\n• Tu nivel actual es: *${_user.level}*\n\n• Usa este comando para subir de nivel:\n*${usedPrefix}levelup*`, m)
 continue
 }
 let extra = {
@@ -428,7 +428,7 @@ await plugin.after.call(this, m, extra)
 console.error(e)
 }}
 if (m.monedas)
-conn.reply(m.chat, ❮☁️❯ Utilizaste ${+m.monedas} ${monedas}, m)
+conn.reply(m.chat, `❮🐉❯ Utilizaste ${+m.monedas} ${monedas}`, m)
 }
 break
 }}
@@ -480,10 +480,10 @@ stat.lastSuccess = now
 }}}
 
 try {
-if (!opts['noprint']) await (await import(./lib/print.js)).default(m, this)
+if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
 } catch (e) {
 console.log(m, m.quoted, e)}
-let settingsREAD = global.db.data.settings[this.user.jid] || {}
+let settingsREAD = global.db.data.settings[this.user.jid] || {}  
 if (opts['autoread']) await this.readMessages([m.key])
 }}
 
