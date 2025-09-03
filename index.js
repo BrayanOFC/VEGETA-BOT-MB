@@ -164,7 +164,7 @@ if (!!phoneNumber) {
 addNumber = phoneNumber.replace(/[^0-9]/g, '')
 } else {
 do {
-phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright([ ✿ ]  Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.magentaBright('---> ')})))
+phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright('[ ✿ ]  Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.magentaBright('---> ')})))
 phoneNumber = phoneNumber.replace(/\D/g,'')
 if (!phoneNumber.startsWith('+')) {
 phoneNumber = +${phoneNumber}
@@ -231,7 +231,7 @@ try {
 const realJid = await resolveLidToRealJid(lid, groupJid);
 processedText = processedText.replace(new RegExp(lid, 'g'), realJid)
 } catch (e) {
-console.error(☁️Error procesando LID🐉 ${lid}:, e)
+console.error('☁️Error procesando LID🐉 ${lid}:, e')
 }}
 return processedText
 }
@@ -286,37 +286,37 @@ global.timestamp.connect = new Date
 if (global.db.data == null) loadDatabase()
 if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
 if (opcion == '1' || methodCodeQR) {
-console.log(chalk.green.bold( 👑Escanea este código QR☁️))}
+console.log(chalk.green.bold( '👑Escanea este código QR☁️'))}
 }
 if (connection === "open") {
 const userJid = jidNormalizedUser(conn.user.id)
 const userName = conn.user.name || conn.user.verifiedName || "Desconocido"
 //await joinChannels(conn)
-console.log(chalk.green.bold( 🐉Conectado a: ${userName}☁️))
+console.log(chalk.green.bold(' 🐉Conectado a: ${userName}☁️'))
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
-console.log(chalk.bold.cyanBright(\n ☁️Sin conexión, borra la session principal del Bot, y conectate nuevamente SAIYAJIN🐉.))
+console.log(chalk.bold.cyanBright('\n ☁️Sin conexión, borra la session principal del Bot, y conectate nuevamente SAIYAJIN🐉.'))
 } else if (reason === DisconnectReason.connectionClosed) {
-console.log(chalk.bold.magentaBright(\n👑 Reconectando la conexión del Bot SAIYAJIN🐉...))
+console.log(chalk.bold.magentaBright('\n👑 Reconectando la conexión del Bot SAIYAJIN🐉...'))
 await global.reloadHandler(true).catch(console.error)
 } else if (reason === DisconnectReason.connectionLost) {
-console.log(chalk.bold.blueBright(\n 👑Conexión perdida con el servidor y VEGETA🐉, reconectando el Bot SAIYAJIN👑...))
+console.log(chalk.bold.blueBright('\n 👑Conexión perdida con el servidor y VEGETA🐉, reconectando el Bot SAIYAJIN👑...'))
 await global.reloadHandler(true).catch(console.error)
 } else if (reason === DisconnectReason.connectionReplaced) {
-console.log(chalk.bold.yellowBright(\n ☁️La conexión del Bot ha sido reemplazada SAIYAJIN🐉.))
+console.log(chalk.bold.yellowBright('\n ☁️La conexión del Bot ha sido reemplazada SAIYAJIN🐉.'))
 } else if (reason === DisconnectReason.loggedOut) {
-console.log(chalk.bold.redBright(\n🐉Sin conexión, borra la session principal del Bot, y conectate nuevamente SAIYAJIN☁️.))
+console.log(chalk.bold.redBright('\n🐉Sin conexión, borra la session principal del Bot, y conectate nuevamente SAIYAJIN☁️.'))
 await global.reloadHandler(true).catch(console.error)
 } else if (reason === DisconnectReason.restartRequired) {
-console.log(chalk.bold.cyanBright(\n☁️Conectando el Bot con el servidor y VEGETA👑 SAIYAJIN☁️...))
+console.log(chalk.bold.cyanBright('\n☁️Conectando el Bot con el servidor y VEGETA👑 SAIYAJIN☁️...'))
 await global.reloadHandler(true).catch(console.error)
 } else if (reason === DisconnectReason.timedOut) {
-console.log(chalk.bold.yellowBright(\n👑Conexión agotada, reconectando el Bot SAIYAJIN🐉...))
+console.log(chalk.bold.yellowBright('\n👑Conexión agotada, reconectando el Bot SAIYAJIN🐉...'))
 await global.reloadHandler(true).catch(console.error)
 } else {
-console.log(chalk.bold.redBright(\n 🐉Conexión cerrada, conectese nuevamente SAIYAJIN☁️.))
+console.log(chalk.bold.redBright('\n 🐉Conexión cerrada, conectese nuevamente SAIYAJIN☁️.'))
 }}}
 process.on('uncaughtException', console.error)
 let isInit = true
@@ -371,9 +371,9 @@ global.rutaJadiBot = join(__dirname, ./${jadi})
 if (global.Jadibts) {
 if (!existsSync(global.rutaJadiBot)) {
 mkdirSync(global.rutaJadiBot, { recursive: true })
-console.log(chalk.bold.cyan(ꕥ ☁️La carpeta: ${jadi} se creó correctamente SAIYAJIN🐉.))
+console.log(chalk.bold.cyan('ꕥ ☁️La carpeta: ${jadi} se creó correctamente SAIYAJIN🐉.'))
 } else {
-console.log(chalk.bold.cyan( 🐉La carpeta: ${jadi} ya está creada SAIYAJIN👑.))
+console.log(chalk.bold.cyan(' 🐉La carpeta: ${jadi} ya está creada SAIYAJIN👑.'))
 }
 const readRutaJadiBot = readdirSync(rutaJadiBot)
 if (readRutaJadiBot.length > 0) {
@@ -486,11 +486,11 @@ unlinkSync(./${jadi}/${directorio}/${fileInDir})
 }})
 }})
 if (SBprekey.length === 0) {
-console.log(chalk.bold.green(\nꕥ ☁️No hay archivos en ${jadi} para eliminar SAIYAJIN🐉.))
+console.log(chalk.bold.green('\nꕥ ☁️No hay archivos en ${jadi} para eliminar SAIYAJIN🐉.'))
 } else {
-console.log(chalk.bold.cyanBright(\n⌦ 🐉👑Archivos de la carpeta ${jadi} han sido eliminados correctamente SAIYAJIN☁️.))
+console.log(chalk.bold.cyanBright('\n⌦ 🐉👑Archivos de la carpeta ${jadi} han sido eliminados correctamente SAIYAJIN☁️.'))
 }} catch (err) {
-console.log(chalk.bold.red(\n⚠︎ ☁️Error para eliminar archivos de la carpeta SAIYAJIN🐉 ${jadi}.\n + err))
+console.log(chalk.bold.red('\n⚠︎ ☁️Error para eliminar archivos de la carpeta SAIYAJIN🐉 ${jadi}.\n' + err))
 }}
 
 function purgeOldFiles() {
@@ -505,7 +505,7 @@ unlinkSync(filePath, err => {
 if (err) {
 console.log(chalk.bold.red(\n⚠︎ El archivo ${file} no se logró borrar.\n + err))
 } else {
-console.log(chalk.bold.green(\n⌦ 👑El archivo ${file} se ha borrado correctamente SAIYAJIN🐉.))
+console.log(chalk.bold.green('\n⌦ 👑El archivo ${file} se ha borrado correctamente SAIYAJIN🐉.'))
 } }) }
 }) }) }) }
 function redefineConsoleMethod(methodName, filterStrings) {
@@ -520,18 +520,18 @@ originalConsoleMethod.apply(console, arguments)
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await clearTmp()
-console.log(chalk.bold.cyanBright(\n⌦ ☁️Archivos de la carpeta TMP no necesarios han sido eliminados del servidor SAIYAJIN🐉.))}, 1000 * 60 * 4)
+console.log(chalk.bold.cyanBright('\n⌦ ☁️Archivos de la carpeta TMP no necesarios han sido eliminados del servidor SAIYAJIN🐉.'))}, 1000 * 60 * 4)
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeSession()
-console.log(chalk.bold.cyanBright(\n⌦ Archivos de la carpeta ${global.sessions} no necesario han sido eliminados del servidor.))}, 1000 * 60 * 10)
+console.log(chalk.bold.cyanBright('\n⌦ Archivos de la carpeta ${global.sessions} no necesario han sido eliminados del servidor.'))}, 1000 * 60 * 10)
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeSessionSB()}, 1000 * 60 * 10)
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeOldFiles()
-console.log(chalk.bold.cyanBright(\n⌦ ☁️Archivos no necesario han sido eliminados del servidor SAIYAJIN🐉.))}, 1000 * 60 * 10)
+console.log(chalk.bold.cyanBright('\n⌦ ☁️Archivos no necesario han sido eliminados del servidor SAIYAJIN🐉.'))}, 1000 * 60 * 10)
 _quickTest().catch(console.error)
 async function isValidPhoneNumber(number) {
 try {
