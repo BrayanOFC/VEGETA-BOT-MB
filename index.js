@@ -62,11 +62,7 @@ return createRequire(dir)
 global.timestamp = {start: new Date}
 const __dirname = global.__dirname(import.meta.url)
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-// Prefijo dinámico universal (acepta cualquier cosa)
-global.prefix = function (m) {
-  let chat = global.db.data.chats[m.chat] || {}
-  return chat.prefix ? [chat.prefix] : ['.', '!', '#', '/'] // defaults si no hay nada
-}
+global.prefix = new RegExp('^[#!./]')
 
 global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('database.json'))
 global.DATABASE = global.db; 
