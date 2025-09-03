@@ -248,10 +248,20 @@ if (plugin.tags && plugin.tags.includes('admin')) {
 continue
 }
 const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
-// 🔥 Prefijo dinámico que acepta cualquier cosa (emoji, símbolo, frase, etc.)
-let prefixes = typeof global.prefix === 'function' ? global.prefix(m) : [global.prefix]
-let usedPrefix, match
+// 🔥 Prefijo dinámico (acepta emojis, símbolos, frases) + prefijo por chat
+let chatPrefix = global.db.data.chats[m.chat]?.prefix || null
+let prefixes = []
 
+if (typeof global.prefix === 'function') {
+  prefixes = global.prefix(m)
+} else {
+  prefixes = [global.prefix]
+}
+
+// Si hay prefijo guardado en este chat, lo agregamos a la lista
+if (chatPrefix) prefixes.unshift(chatPrefix)
+
+let usedPrefix, match
 for (let prefix of prefixes) {
   if (m.text && m.text.startsWith(prefix)) {
     usedPrefix = prefix
