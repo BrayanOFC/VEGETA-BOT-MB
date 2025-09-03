@@ -5,7 +5,7 @@ let handler = async (m, { text, conn }) => {
 
   try {
     let url = `https://www.google.com/search?q=${encodeURIComponent(text)}`;
-    let msg = `🔎 *Búsqueda en Google:*\n\n📌 *${text}*\n\n😂 Aquí tienes el enlace:\n${url}`;
+    let msg = `🔎 *Búsqueda en Google:*\n\n📌 *${text}*\n\n😊 Aquí tienes el enlace:\n${url}`;
 
     await conn.reply(m.chat, msg, m);
   } catch (e) {
