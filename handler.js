@@ -153,23 +153,27 @@ try {
       antiLag: false,  
       per: [],  
     }  
-
-  var settings = global.db.data.settings[this.user.jid]  
-  if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}  
-  if (settings) {  
-    if (!('self' in settings)) settings.self = false  
-    if (!('restrict' in settings)) settings.restrict = true  
-    if (!('jadibotmd' in settings)) settings.jadibotmd = true  
-    if (!('antiPrivate' in settings)) settings.antiPrivate = false  
-    if (!('autoread' in settings)) settings.autoread = false  
-  } else global.db.data.settings[this.user.jid] = {  
-    self: false,  
-    restrict: true,  
-    jadibotmd: true,  
-    antiPrivate: false,  
-    autoread: false,  
-    status: 0  
-  }  
+            let settings = global.db.data.settings[this.user.jid];
+            if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {};
+            if (settings) {
+                if (!('self' in settings)) settings.self = false;
+                if (!('restrict' in settings)) settings.restrict = true;
+                if (!('jadibotmd' in settings)) settings.jadibotmd = true;
+                if (!('antiPrivate' in settings)) settings.antiPrivate = false;
+                if (!('autoread' in settings)) settings.autoread = false;
+                if (!('soloParaJid' in settings)) settings.soloParaJid = false;
+                if (!('prefix' in settings)) settings.prefix = global.prefix; // Valor inicial
+            } else global.db.data.settings[this.user.jid] = {
+                self: false,
+                restrict: true,
+                jadibotmd: true,
+                antiPrivate: false,
+                autoread: false,
+                soloParaJid: false,
+                status: 0,
+                prefix: global.prefix, 
+            };
+            this.prefix = settings.prefix; 
 } catch (e) {  
   console.error(e)  
 }  
@@ -250,20 +254,20 @@ if (plugin.tags && plugin.tags.includes('admin')) {
 continue
 }
 const str2Regex = str => str.replace(/[|\{}()[]^$+*?.]/g, '\$&')
-let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
-let match = (_prefix instanceof RegExp ?
-[[_prefix.exec(m.text), _prefix]] :
-Array.isArray(_prefix) ?
-_prefix.map(p => {
-let re = p instanceof RegExp ?
-p :
-new RegExp(str2Regex(p))
-return [re.exec(m.text), re]
-}) :
-typeof _prefix === 'string' ?
-[[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
-[[[], new RegExp]]
-).find(p => p[1])
+            let _prefix = plugin.customPrefix ? plugin.customPrefix : this.prefix ? (Array.isArray(this.prefix) ? this.prefix : [this.prefix]) : global.prefix;
+            let match = (Array.isArray(_prefix) ?
+                _prefix.map(p => {
+                    let re = p instanceof RegExp ?
+                        p :
+                        new RegExp(str2Regex(p));
+                    return [re.exec(m.text), re];
+                }) :
+                _prefix instanceof RegExp ?
+                [[_prefix.exec(m.text), _prefix]] :
+                typeof _prefix === 'string' ?
+                [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
+                [[[], new RegExp]]
+            ).find(p => p[1]);
 if (typeof plugin.before === 'function') {
 if (await plugin.before.call(this, m, {
 match,
