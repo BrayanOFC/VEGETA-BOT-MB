@@ -1,27 +1,16 @@
 // créditos github.com/BrayanOFC no quitar creditos
-import fetch from 'node-fetch';
 
 let handler = async (m, { text, conn }) => {
-  if (!text) return m.reply('🐉 Ingresa lo que quieras buscar en Google\n\nEjemplo: .google W
-q son los bots');
+  if (!text) return m.reply('🐉 Ingresa lo que quieras buscar en Google\n\nEjemplo: .google WhatsApp Bot');
 
   try {
-    let api = await fetch(`https://api.safone.me/google?query=${encodeURIComponent(text)}`);
-    let res = await api.json();
+    let url = `https://www.google.com/search?q=${encodeURIComponent(text)}`;
+    let msg = `🔎 *Búsqueda en Google:*\n\n📌 *${text}*\n\n😂 Aquí tienes el enlace:\n${url}`;
 
-    if (!res || !res.result || res.result.length === 0) {
-      return m.reply('❌ No encontré resultados en Google');
-    }
-
-    let results = `🔎 *Resultados de Google para:* ${text}\n\n`;
-    for (let i = 0; i < Math.min(5, res.result.length); i++) {
-      results += `📌 *${res.result[i].title}*\n🔗 ${res.result[i].link}\n\n`;
-    }
-
-    await conn.reply(m.chat, results, m);
+    await conn.reply(m.chat, msg, m);
   } catch (e) {
     console.error(e);
-    m.reply('⚠️ Error al conectar con la API de Google');
+    m.reply('⚠️ Error al generar el link de búsqueda');
   }
 };
 
