@@ -43,5 +43,5 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 
 // Regex para invocar el comando
 handler.command = /^prefix$/i
-habdler.rowner
+habdler.rowner = true;
 export default handler
