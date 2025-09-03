@@ -8,7 +8,7 @@ async function loadCharacters() {
         const data = await fs.readFile(charactersFilePath, 'utf-8');
         return JSON.parse(data);
     } catch (error) {
-        throw new Error(`${emoji} No se pudo cargar el archivo characters.json.`, m);
+        throw new Error(` No se pudo cargar el archivo characters.json.`, m);
     }
 }
 
@@ -38,7 +38,7 @@ let handler = async (m, { conn, args }) => {
         const userCharacters = characters.filter(character => character.user === userId);
 
         if (userCharacters.length === 0) {
-            await conn.reply(m.chat, `${emoji} No tiene personajes reclamados en tu harem.`, m);
+            await conn.reply(m.chat, `No tiene personajes reclamados en tu harem.`, m);
             return;
         }
 
