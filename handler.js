@@ -11,227 +11,222 @@ import ws from 'ws';
 const { proto } = (await import('@whiskeysockets/baileys')).default
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(function () {
-clearTimeout(this)
-resolve()
+  clearTimeout(this)
+  resolve()
 }, ms))
 
 export async function handler(chatUpdate) {
-this.msgqueque = this.msgqueque || []
-this.uptime = this.uptime || Date.now()
-if (!chatUpdate) return
-this.pushMessage(chatUpdate.messages).catch(console.error)
-let m = chatUpdate.messages[chatUpdate.messages.length - 1]
-if (!m) return;
-if (global.db.data == null) await global.loadDatabase()
+  this.msgqueque = this.msgqueque || []
+  this.uptime = this.uptime || Date.now()
+  if (!chatUpdate) return
+  this.pushMessage(chatUpdate.messages).catch(console.error)
+  let m = chatUpdate.messages[chatUpdate.messages.length - 1]
+  if (!m) return;
+  if (global.db.data == null) await global.loadDatabase()
 
-try {
-m = smsg(this, m) || m
-if (!m) return
-global.mconn = m
-m.exp = 0
-m.monedas = false
+  try {
+    m = smsg(this, m) || m
+    if (!m) return
+    global.mconn = m
+    m.exp = 0
+    m.monedas = false
 
-try {  
-  let user = global.db.data.users[m.sender]  
-  if (typeof user !== 'object')  
-    global.db.data.users[m.sender] = {}  
-  if (user) {  
-    if (!isNumber(user.exp)) user.exp = 0  
-    if (!isNumber(user.monedas)) user.monedas = 10  
-    if (!isNumber(user.joincount)) user.joincount = 1  
-    if (!isNumber(user.diamond)) user.diamond = 3  
-    if (!isNumber(user.lastadventure)) user.lastadventure = 0  
-    if (!isNumber(user.lastclaim)) user.lastclaim = 0  
-    if (!isNumber(user.health)) user.health = 100  
-    if (!isNumber(user.crime)) user.crime = 0  
-    if (!isNumber(user.lastcofre)) user.lastcofre = 0  
-    if (!isNumber(user.lastdiamantes)) user.lastdiamantes = 0  
-    if (!isNumber(user.lastpago)) user.lastpago = 0  
-    if (!isNumber(user.lastcode)) user.lastcode = 0  
-    if (!isNumber(user.lastcodereg)) user.lastcodereg = 0  
-    if (!isNumber(user.lastduel)) user.lastduel = 0  
-    if (!isNumber(user.lastmining)) user.lastmining = 0  
-    if (!('muto' in user)) user.muto = false  
-    if (!('premium' in user)) user.premium = false  
-    if (!user.premium) user.premiumTime = 0  
-    if (!('registered' in user)) user.registered = false  
-    if (!('genre' in user)) user.genre = ''  
-    if (!('birth' in user)) user.birth = ''  
-    if (!('marry' in user)) user.marry = ''  
-    if (!('description' in user)) user.description = ''  
-    if (!('packstickers' in user)) user.packstickers = null  
-    if (!user.registered) {  
-      if (!('name' in user)) user.name = m.name  
-      if (!isNumber(user.age)) user.age = -1  
-      if (!isNumber(user.regTime)) user.regTime = -1  
-    }  
-    if (!isNumber(user.afk)) user.afk = -1  
-    if (!('afkReason' in user)) user.afkReason = ''  
-    if (!('role' in user)) user.role = 'Nuv'  
-    if (!('banned' in user)) user.banned = false  
-    if (!('useDocument' in user)) user.useDocument = false  
-    if (!isNumber(user.level)) user.level = 0  
-    if (!isNumber(user.bank)) user.bank = 0  
-    if (!isNumber(user.warn)) user.warn = 0  
-  } else  
-    global.db.data.users[m.sender] = {  
-      exp: 0,  
-      coin: 10,  
-      joincount: 1,  
-      diamond: 3,  
-      lastadventure: 0,  
-      health: 100,  
-      lastclaim: 0,  
-      lastcofre: 0,  
-      lastdiamantes: 0,  
-      lastcode: 0,  
-      lastduel: 0,  
-      lastpago: 0,  
-      lastmining: 0,  
-      lastcodereg: 0,  
-      muto: false,  
-      registered: false,  
-      genre: '',  
-      birth: '',  
-      marry: '',  
-      description: '',  
-      packstickers: null,  
-      name: m.name,  
-      age: -1,  
-      regTime: -1,  
-      afk: -1,  
-      afkReason: '',  
-      banned: false,  
-      useDocument: false,  
-      bank: 0,  
-      level: 0,  
-      role: 'Nuv',  
-      premium: false,  
-      premiumTime: 0,  
-    }  
+    try {
+      let user = global.db.data.users[m.sender]
+      if (typeof user !== 'object')
+        global.db.data.users[m.sender] = {}
+      if (user) {
+        if (!isNumber(user.exp)) user.exp = 0
+        if (!isNumber(user.monedas)) user.monedas = 10
+        if (!isNumber(user.joincount)) user.joincount = 1
+        if (!isNumber(user.diamond)) user.diamond = 3
+        if (!isNumber(user.lastadventure)) user.lastadventure = 0
+        if (!isNumber(user.lastclaim)) user.lastclaim = 0
+        if (!isNumber(user.health)) user.health = 100
+        if (!isNumber(user.crime)) user.crime = 0
+        if (!isNumber(user.lastcofre)) user.lastcofre = 0
+        if (!isNumber(user.lastdiamantes)) user.lastdiamantes = 0
+        if (!isNumber(user.lastpago)) user.lastpago = 0
+        if (!isNumber(user.lastcode)) user.lastcode = 0
+        if (!isNumber(user.lastcodereg)) user.lastcodereg = 0
+        if (!isNumber(user.lastduel)) user.lastduel = 0
+        if (!isNumber(user.lastmining)) user.lastmining = 0
+        if (!('muto' in user)) user.muto = false
+        if (!('premium' in user)) user.premium = false
+        if (!user.premium) user.premiumTime = 0
+        if (!('registered' in user)) user.registered = false
+        if (!('genre' in user)) user.genre = ''
+        if (!('birth' in user)) user.birth = ''
+        if (!('marry' in user)) user.marry = ''
+        if (!('description' in user)) user.description = ''
+        if (!('packstickers' in user)) user.packstickers = null
+        if (!user.registered) {
+          if (!('name' in user)) user.name = m.name
+          if (!isNumber(user.age)) user.age = -1
+          if (!isNumber(user.regTime)) user.regTime = -1
+        }
+        if (!isNumber(user.afk)) user.afk = -1
+        if (!('afkReason' in user)) user.afkReason = ''
+        if (!('role' in user)) user.role = 'Nuv'
+        if (!('banned' in user)) user.banned = false
+        if (!('useDocument' in user)) user.useDocument = false
+        if (!isNumber(user.level)) user.level = 0
+        if (!isNumber(user.bank)) user.bank = 0
+        if (!isNumber(user.warn)) user.warn = 0
+      } else
+        global.db.data.users[m.sender] = {
+          exp: 0,
+          coin: 10,
+          joincount: 1,
+          diamond: 3,
+          lastadventure: 0,
+          health: 100,
+          lastclaim: 0,
+          lastcofre: 0,
+          lastdiamantes: 0,
+          lastcode: 0,
+          lastduel: 0,
+          lastpago: 0,
+          lastmining: 0,
+          lastcodereg: 0,
+          muto: false,
+          registered: false,
+          genre: '',
+          birth: '',
+          marry: '',
+          description: '',
+          packstickers: null,
+          name: m.name,
+          age: -1,
+          regTime: -1,
+          afk: -1,
+          afkReason: '',
+          banned: false,
+          useDocument: false,
+          bank: 0,
+          level: 0,
+          role: 'Nuv',
+          premium: false,
+          premiumTime: 0,
+        }
 
-  let chat = global.db.data.chats[m.chat]  
-  if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}  
-  if (chat) {  
-    if (!('isBanned' in chat)) chat.isBanned = false  
-    if (!('sAutoresponder' in chat)) chat.sAutoresponder = ''  
-    if (!('welcome' in chat)) chat.welcome = true  
-    if (!('autolevelup' in chat)) chat.autolevelup = false  
-    if (!('autoAceptar' in chat)) chat.autoAceptar = true  
-    if (!('autosticker' in chat)) chat.autosticker = false  
-    if (!('autoRechazar' in chat)) chat.autoRechazar = true  
-    if (!('autoresponder' in chat)) chat.autoresponder = false  
-    if (!('detect' in chat)) chat.detect = true  
-    if (!('antiBot' in chat)) chat.antiBot = true  
-    if (!('antiBot2' in chat)) chat.antiBot2 = true  
-    if (!('modoadmin' in chat)) chat.modoadmin = false  
-    if (!('antiLink' in chat)) chat.antiLink = true  
-    if (!('reaction' in chat)) chat.reaction = false  
-    if (!('nsfw' in chat)) chat.nsfw = false  
-    if (!('antifake' in chat)) chat.antifake = false  
-    if (!('delete' in chat)) chat.delete = false  
-    if (!isNumber(chat.expired)) chat.expired = 0  
-  } else  
-    global.db.data.chats[m.chat] = {  
-      isBanned: false,  
-      sAutoresponder: '',  
-      welcome: true,  
-      autolevelup: false,  
-      autoresponder: false,  
-      delete: false,  
-      autoAceptar: true,  
-      autoRechazar: true,  
-      detect: true,  
-      antiBot: true,  
-      antiBot2: true,  
-      modoadmin: false,  
-      antiLink: true,  
-      antifake: false,  
-      reaction: false,  
-      nsfw: false,  
-      expired: 0,  
-      antiLag: false,  
-      per: [],  
-    }  
-            let settings = global.db.data.settings[this.user.jid];
-            if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {};
-            if (settings) {
-                if (!('self' in settings)) settings.self = false;
-                if (!('restrict' in settings)) settings.restrict = true;
-                if (!('jadibotmd' in settings)) settings.jadibotmd = true;
-                if (!('antiPrivate' in settings)) settings.antiPrivate = false;
-                if (!('autoread' in settings)) settings.autoread = false;
-                if (!('soloParaJid' in settings)) settings.soloParaJid = false;
-                if (!('prefix' in settings)) settings.prefix = global.prefix; // Valor inicial
-            } else global.db.data.settings[this.user.jid] = {
-                self: false,
-                restrict: true,
-                jadibotmd: true,
-                antiPrivate: false,
-                autoread: false,
-                soloParaJid: false,
-                status: 0,
-                prefix: global.prefix, 
-            };
-            this.prefix = settings.prefix; 
-} catch (e) {  
-  console.error(e)  
-}  
+      let chat = global.db.data.chats[m.chat]
+      if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
+      if (chat) {
+        if (!('isBanned' in chat)) chat.isBanned = false
+        if (!('sAutoresponder' in chat)) chat.sAutoresponder = ''
+        if (!('welcome' in chat)) chat.welcome = true
+        if (!('autolevelup' in chat)) chat.autolevelup = false
+        if (!('autoAceptar' in chat)) chat.autoAceptar = true
+        if (!('autosticker' in chat)) chat.autosticker = false
+        if (!('autoRechazar' in chat)) chat.autoRechazar = true
+        if (!('autoresponder' in chat)) chat.autoresponder = false
+        if (!('detect' in chat)) chat.detect = true
+        if (!('antiBot' in chat)) chat.antiBot = true
+        if (!('antiBot2' in chat)) chat.antiBot2 = true
+        if (!('modoadmin' in chat)) chat.modoadmin = false
+        if (!('antiLink' in chat)) chat.antiLink = true
+        if (!('reaction' in chat)) chat.reaction = false
+        if (!('nsfw' in chat)) chat.nsfw = false
+        if (!('antifake' in chat)) chat.antifake = false
+        if (!('delete' in chat)) chat.delete = false
+        if (!isNumber(chat.expired)) chat.expired = 0
+      } else
+        global.db.data.chats[m.chat] = {
+          isBanned: false,
+          sAutoresponder: '',
+          welcome: true,
+          autolevelup: false,
+          autoresponder: false,
+          delete: false,
+          autoAceptar: true,
+          autoRechazar: true,
+          detect: true,
+          antiBot: true,
+          antiBot2: true,
+          modoadmin: false,
+          antiLink: true,
+          antifake: false,
+          reaction: false,
+          nsfw: false,
+          expired: 0,
+          antiLag: false,
+          per: [],
+        }
 
-if (typeof m.text !== "string") m.text = ""  
-const chat = global.db.data.chats[m.chat]  
-globalThis.setting = global.db.data.settings[this.user.jid]  
-const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'  
-const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)  
-const isOwner = isROwner || m.fromMe  
-const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0  
+      var settings = global.db.data.settings[this.user.jid]
+      if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
+      if (settings) {
+        if (!('self' in settings)) settings.self = false
+        if (!('restrict' in settings)) settings.restrict = true
+        if (!('jadibotmd' in settings)) settings.jadibotmd = true
+        if (!('antiPrivate' in settings)) settings.antiPrivate = false
+        if (!('autoread' in settings)) settings.autoread = false
+      } else global.db.data.settings[this.user.jid] = {
+        self: false,
+        restrict: true,
+        jadibotmd: true,
+        antiPrivate: false,
+        autoread: false,
+        status: 0
+      }
+    } catch (e) {
+      console.error(e)
+    }
 
-if (opts["queque"] && m.text && !(isMods)) {  
-  const queque = this.msgqueque, time = 1000 * 5  
-  const previousID = queque[queque.length - 1]  
-  queque.push(m.id || m.key.id)  
-  setInterval(async function () {  
-    if (queque.indexOf(previousID) === -1) clearInterval(this)  
-    await delay(time)  
-  }, time)  
-}  
-if (m.isBaileys) return  
-m.exp += Math.ceil(Math.random() * 10)  
-let usedPrefix  
-let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]  
+    if (typeof m.text !== "string") m.text = ""
+    const chat = global.db.data.chats[m.chat]
+    globalThis.setting = global.db.data.settings[this.user.jid]
+    const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+    const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
+    const isOwner = isROwner || m.fromMe
+    const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
 
-async function getLidFromJid(id, conn) {  
-  if (id.endsWith('@lid')) return id  
-  const res = await conn.onWhatsApp(id).catch(() => [])  
-  return res[0]?.lid || id  
-}  
+    if (opts["queque"] && m.text && !(isMods)) {
+      const queque = this.msgqueque, time = 1000 * 5
+      const previousID = queque[queque.length - 1]
+      queque.push(m.id || m.key.id)
+      setInterval(async function () {
+        if (queque.indexOf(previousID) === -1) clearInterval(this)
+        await delay(time)
+      }, time)
+    }
+    if (m.isBaileys) return
+    m.exp += Math.ceil(Math.random() * 10)
+    let usedPrefix
+    let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-const senderLid = await getLidFromJid(m.sender, conn)
+    async function getLidFromJid(id, conn) {
+      if (id.endsWith('@lid')) return id
+      const res = await conn.onWhatsApp(id).catch(() => [])
+      return res[0]?.lid || id
+    }
 
+    const senderLid = await getLidFromJid(m.sender, conn)
 const botLid = await getLidFromJid(conn.user.jid, conn)
 const senderJid = m.sender
 const botJid = conn.user.jid
 
 const groupMetadata = m.isGroup
-? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(() => null))
-: {}
+  ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(() => null))
+  : {}
 
 const participants = m.isGroup && groupMetadata ? (groupMetadata.participants || []) : []
 
+// Normalizamos ID porque en algunas versiones es .id y en otras .jid
 const user = participants.find(
-p => (p?.id === senderLid || p?.id === senderJid || p?.jid === senderLid || p?.jid === senderJid)
+  p => (p?.id === senderLid || p?.id === senderJid || p?.jid === senderLid || p?.jid === senderJid)
 ) || {}
 
 const bot = participants.find(
-p => (p?.id === botLid || p?.id === botJid || p?.jid === botLid || p?.jid === botJid)
+  p => (p?.id === botLid || p?.id === botJid || p?.jid === botLid || p?.jid === botJid)
 ) || {}
 
 const isRAdmin = (user && user.admin) === 'superadmin'
 const isAdmin = isRAdmin || ((user && user.admin) === 'admin')
 const isBotAdmin = !!(bot && bot.admin)
 
-const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
-
+    const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
 let plugin = global.plugins[name]
 if (!plugin)
@@ -322,7 +317,7 @@ let user = global.db.data.users[m.sender]
 if (!['grupo-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return
 if (name != 'grupo-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'grupo-delete.js' && chat?.isBanned && !isROwner) return
 if (m.text && user.banned && !isROwner) {
-m.reply(《🐉》Estas baneado/a, no puedes usar comandos en este bot!\n\n${user.bannedReason ? ✰ Motivo: ${user.bannedReason} : '✰ *Motivo:* Sin Especificar'}\n\n> ✧ Si este Bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puedes exponer tu caso con un moderador.)
+m.reply(`《✦》Estas baneado/a, no puedes usar comandos en este bot!\n\n${user.bannedReason ? `✰ *Motivo:* ${user.bannedReason}` : '✰ *Motivo:* Sin Especificar'}\n\n> ✧ Si este Bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puedes exponer tu caso con un moderador.`)
 return
 }
 
@@ -331,16 +326,16 @@ let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
 let setting = global.db.data.settings[this.user.jid]
 if (name != 'grupo-unbanchat.js' && chat?.isBanned)
-return
+return 
 if (name != 'owner-unbanuser.js' && user?.banned)
 return
 }}
 
-let hl = _prefix
+let hl = _prefix 
 let adminMode = global.db.data.chats[m.chat].modoadmin
-let mini = ${plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl ||  m.text.slice(0, 1) == hl || plugins.command}
-if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && mini) return
-if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) {
+let mini = `${plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl ||  m.text.slice(0, 1) == hl || plugins.command}`
+if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && mini) return   
+if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { 
 fail('owner', m, this)
 continue
 }
