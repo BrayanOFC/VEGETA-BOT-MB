@@ -4,58 +4,55 @@ import ws from 'ws';
 
 const handler = async (m, { conn, usedPrefix }) => {
   let _muptime;
+
   const totalreg = Object.keys(global.db?.data?.users || {}).length;
 
-  // Cargar base de datos
-  let data;
+  let data = {};
   try {
     data = JSON.parse(await readFile('./src/database/db.json', 'utf-8'));
   } catch (e) {
-    data = {};
+    console.log('⚠️ No se pudo leer db.json, usando valores por defecto');
   }
 
-  const imagenes = data.vegeta?.imagenes;
-  const pp = imagenes?.length
+  const imagenes = data.vegeta?.imagenes || [];
+  const pp = imagenes.length
     ? imagenes[Math.floor(Math.random() * imagenes.length)]
     : 'https://i.imgur.com/XTzfa1T.jpg';
 
-  // Calcular uptime
   if (process.send) {
     process.send('uptime');
     _muptime = await new Promise(resolve => {
       process.once('message', resolve);
-      setTimeout(resolve, 1000);
+      setTimeout(() => resolve(0), 1000);
     }) * 1000;
   } else {
     _muptime = process.uptime() * 1000;
   }
-
   const muptime = clockString(_muptime);
 
   const users = [...new Set([...((global.conns || []).filter((c) =>
-    c.user && c.ws.socket && c.ws.socket.readyState !== ws.CLOSED
+    c.user && c.ws?.socket && c.ws.socket.readyState !== ws.CLOSED
   ))])];
 
   const chats = Object.entries(conn.chats || {}).filter(([id, data]) => id && data.isChats);
   const groupsIn = chats.filter(([id]) => id.endsWith('@g.us'));
+
+  const botname = global.botname || "VEGETA-BOT";
+  const vs = global.vs || "1.0.0";
   const totalUsers = users.length;
   const speed = process.memoryUsage().heapUsed / 1024 / 1024;
 
-  // ⚠️ Aseguramos botname y vs
-  const botname = global.botname || "VEGETA-BOT";
-  const vs = global.vs || "1.0.0";
-
-  let Vegeta = `𝑰𝑵𝑭𝑶𝑹𝑴𝑨𝑪𝑰𝑶𝑵 - ${botname}\n`;
-  Vegeta += `👑 *◜ᴄʀᴇᴀᴅᴏʀ◞* ⇢ BrayanOFC👑\n`;
-  Vegeta += `🎯 *◜ᴘʀᴇғɪᴊᴏ◞* ⇢ [ ${usedPrefix} ]\n`;
-  Vegeta += `🏷 *◜ᴠᴇʀsɪᴏɴ◞* ⇢ ${vs}\n`;
-  Vegeta += `🔐 *◜ᴄʜᴀᴛs ᴘʀɪᴠᴀᴅᴏ◞* ⇢ ${chats.length - groupsIn.length}\n`;
-  Vegeta += `📌 *◜ᴛᴏᴛᴀʟ ᴅᴇ ᴄʜᴀᴛs◞* ⇢ ${chats.length}\n`;
-  Vegeta += `👥️ *◜ᴜsᴜᴀʀɪᴏs◞* ⇢ ${totalreg}\n`;
-  Vegeta += `📍 *◜ɢʀᴜᴘᴏs◞* ⇢ ${groupsIn.length}\n`;
-  Vegeta += `🧭 *◜ᴀᴄᴛɪᴠɪᴅᴀᴅ◞* ⇢ ${muptime}\n`;
-  Vegeta += `🚀 *◜ᴠᴇʟᴏᴄɪᴅᴀᴅ◞* ⇢ ${speed.toFixed(2)} MB\n`;
-  Vegeta += `🌟 *◜sᴜʙ-ʙᴏᴛs ᴀᴄᴛɪᴠᴏs◞* ⇢ ${totalUsers || '0'}`;
+  let Vegeta = `𝑰𝑵𝑭𝑶𝑹𝑴𝑨𝑪𝑰𝑶𝑵 - ${botname}\n\n`;
+  Vegeta += `👑 *Creador:* BrayanOFC👑\n`;
+  Vegeta += `🎯 *Prefijo:* [ ${usedPrefix} ]\n`;
+  Vegeta += `🏷 *Versión:* ${vs}\n`;
+  Vegeta += `🔐 *Chats Privados:* ${chats.length - groupsIn.length}\n`;
+  Vegeta += `📌 *Total de Chats:* ${chats.length}\n`;
+  Vegeta += `👥 *Usuarios:* ${totalreg}\n`;
+  Vegeta += `📍 *Grupos:* ${groupsIn.length}\n`;
+  Vegeta += `🧭 *Actividad:* ${muptime}\n`;
+  Vegeta += `🚀 *Velocidad:* ${speed.toFixed(2)} MB\n`;
+  Vegeta += `🌟 *Sub-bots activos:* ${totalUsers || '0'}`;
 
   await conn.sendMessage(m.chat, {
     image: { url: pp },
@@ -65,7 +62,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 
 handler.help = ['estado'];
 handler.tags = ['info'];
-handler.command = ['estado', 'status', 'estate', 'state', 'stado', 'stats'];
+handler.command = /^estado|status|estate|state|stado|stats$/i; // regex
 handler.register = true;
 
 export default handler;
