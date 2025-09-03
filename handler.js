@@ -253,21 +253,21 @@ if (!opts['restrict'])
 if (plugin.tags && plugin.tags.includes('admin')) {
 continue
 }
-const str2Regex = str => str.replace(/[|\{}()[]^$+*?.]/g, '\$&')
-            let _prefix = plugin.customPrefix ? plugin.customPrefix : this.prefix ? (Array.isArray(this.prefix) ? this.prefix : [this.prefix]) : global.prefix;
-            let match = (Array.isArray(_prefix) ?
-                _prefix.map(p => {
-                    let re = p instanceof RegExp ?
-                        p :
-                        new RegExp(str2Regex(p));
-                    return [re.exec(m.text), re];
-                }) :
-                _prefix instanceof RegExp ?
-                [[_prefix.exec(m.text), _prefix]] :
-                typeof _prefix === 'string' ?
-                [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
-                [[[], new RegExp]]
-            ).find(p => p[1]);
+const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
+let match = (_prefix instanceof RegExp ? 
+[[_prefix.exec(m.text), _prefix]] :
+Array.isArray(_prefix) ?
+_prefix.map(p => {
+let re = p instanceof RegExp ?
+p :
+new RegExp(str2Regex(p))
+return [re.exec(m.text), re]
+}) :
+typeof _prefix === 'string' ?
+[[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
+[[[], new RegExp]]
+).find(p => p[1])
 if (typeof plugin.before === 'function') {
 if (await plugin.before.call(this, m, {
 match,
@@ -292,19 +292,19 @@ if (typeof plugin !== 'function')
 continue
 if ((usedPrefix = (match[0] || '')[0])) {
 let noPrefix = m.text.replace(usedPrefix, '')
-let [command, ...args] = noPrefix.trim().split .filter(v => v)
+let [command, ...args] = noPrefix.trim().split` `.filter(v => v)
 args = args || []
-let _args = noPrefix.trim().split .slice(1)
-let text = _args.join 
+let _args = noPrefix.trim().split` `.slice(1)
+let text = _args.join` `
 command = (command || '').toLowerCase()
 let fail = plugin.fail || global.dfail
-let isAccept = plugin.command instanceof RegExp ?
+let isAccept = plugin.command instanceof RegExp ? 
 plugin.command.test(command) :
 Array.isArray(plugin.command) ?
-plugin.command.some(cmd => cmd instanceof RegExp ?
+plugin.command.some(cmd => cmd instanceof RegExp ? 
 cmd.test(command) :
 cmd === command) :
-typeof plugin.command === 'string' ?
+typeof plugin.command === 'string' ? 
 plugin.command === command :
 false
 
