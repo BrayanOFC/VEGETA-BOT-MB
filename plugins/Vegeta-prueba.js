@@ -22,11 +22,11 @@ const isAdmin = (m, participants) => {
 let handler = async (m, { conn, args, text, usedPrefix, command, participants }) => {
     if (!m.isGroup) {
         if (!await isOwner(m, conn)) {
-           return conn.reply(m.chat, `${emoji} Este comando solo puede ser usado por el Creador.`, m, rcanal);
+           return conn.reply(m.chat, ` Este comando solo puede ser usado por el Creador.`, m);
         }
     } else {
         if (!await isOwner(m, conn) && !isAdmin(m, participants)) {
-           return conn.reply(m.chat, `${emoji} Este comando solo puede ser usado por un Creador o un Administrador del grupo.`, m, rcanal);
+           return conn.reply(m.chat, ` Este comando solo puede ser usado por un Creador o un Administrador del grupo.`, m);
         }
     }
 
@@ -34,7 +34,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command, participants })
         const settings = global.db.data.settings[conn.user.jid] || {};
         delete settings.prefix;
         global.db.data.settings[conn.user.jid] = settings;
-        conn.reply(m.chat, `${emoji} Prefijo personalizado eliminado. El bot ahora usará el prefijo global por defecto.`, m, rcanal);
+        conn.reply(m.chat, ` Prefijo personalizado eliminado. El bot ahora usará el prefijo global por defecto.`, m);
         return;
     }
 
@@ -43,17 +43,17 @@ let handler = async (m, { conn, args, text, usedPrefix, command, participants })
 
 
     if (!newPrefix || args.length > 1 || newPrefix.length > 1 || !onlySymbolsAndEmojis.test(newPrefix)) {
-        return conn.reply(m.chat, `${emoji} Por favor, ingresa solo un prefijo que contenga *únicamente un símbolo o un emoji*. No se permiten letras ni múltiples caracteres.
+        return conn.reply(m.chat, ` Por favor, ingresa solo un prefijo que contenga *únicamente un símbolo o un emoji*. No se permiten letras ni múltiples caracteres.
 Ejemplo:
 *${usedPrefix + command} 👑*\n\nPara restablecer el prefijo, usa:
-*${usedPrefix + command} reset*`, m, rcanal);
+*${usedPrefix + command} reset*`, m);
     }
 
     const settings = global.db.data.settings[conn.user.jid] || {};
     settings.prefix = [newPrefix];
     global.db.data.settings[conn.user.jid] = settings;
 
-   return conn.reply(m.chat, `${emoji} Prefijo del bot cambiado a: \`${newPrefix}\``, m, rcanal);
+   return conn.reply(m.chat, `Prefijo del bot cambiado a: \`${newPrefix}\``, m);
 
     global.reloadHandler(true).catch(console.error);
 };
