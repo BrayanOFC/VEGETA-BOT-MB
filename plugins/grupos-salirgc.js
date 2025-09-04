@@ -10,7 +10,7 @@ chat.welcome = true
 await m.reply(`${fg}`) 
 return console.log(e)
 }}
-handler.command = /^(salir|leavegc|salirdelgrupo|leave)$/i
+handler.command = ['salir']
 handler.group = true
 handler.rowner = true
 export default handler
