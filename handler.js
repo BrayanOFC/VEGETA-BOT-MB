@@ -1,4 +1,4 @@
-import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
+/*import {generateWAMessageFromContent} from '@whiskeysockets/baileys';
 import {smsg} from './lib/simple.js';
 import {format} from 'util';
 import {fileURLToPath} from 'url';
@@ -478,7 +478,7 @@ if (m.error == null) {
 stat.success += 1
 stat.lastSuccess = now
 }}}
-
+*/
 try {
 if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
 } catch (e) {
