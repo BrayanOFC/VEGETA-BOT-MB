@@ -1,6 +1,7 @@
 //creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
 
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
@@ -97,23 +98,30 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 🔥 *By BrayanOFC* 🔥
 `.trim()
 
-    await m.react('🐉') 
+    await m.react('🐉')
 
-    await conn.sendMessage(m.chat, {
-      image: { url: 'https://files.catbox.moe/g97gzh.jpg' }, 
-      caption: menuText,
-      fileName: 'dragon-menu.jpg',
-      mimetype: 'image/jpeg',
-      viewOnce: true,
-      contextInfo: {
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363394965381607@newsletter',
-          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-          serverMessageId: 100
+    let msg = generateWAMessageFromContent(m.chat, {
+      viewOnceMessage: {
+        message: {
+          imageMessage: {
+            url: 'https://files.catbox.moe/g97gzh.jpg',
+            caption: menuText,
+            mimetype: 'image/jpeg',
+            fileName: 'dragon-menu.jpg',
+            contextInfo: {
+              isForwarded: true,
+              forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363394965381607@newsletter',
+                newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+                serverMessageId: 100
+              }
+            }
+          }
         }
       }
-    }, { quoted: m })
+    }, { userJid: m.sender, quoted: m })
+
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
