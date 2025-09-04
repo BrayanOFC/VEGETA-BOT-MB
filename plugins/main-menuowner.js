@@ -26,6 +26,8 @@ let menu = `
 🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
+await m.react('☁️')
+
 await conn.sendMessage(m.chat, { text: menu, 
 contextInfo: {
   forwardingScore: 1,
