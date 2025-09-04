@@ -1,12 +1,14 @@
 //creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
+import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
+import fetch from 'node-fetch'
 
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
   'serbot': 'SUB BOTS',
   'main': 'ZENO INFO',
-  'owner': 'DIOS CREADOR',
+  /*'owner': 'DIOS CREADOR',
   'nable': 'MODO SAIYAJIN',
   'cmd': 'ESFERAS',
   'advanced': 'TÉCNICAS',
@@ -35,7 +37,7 @@ let tags = {
   'productivity': 'MAQUINARIA Z',
   'social': 'REDES Z',
   'security': 'BARRERA',
-  'custom': 'AURA PERSONAL'
+  'custom': 'AURA PERSONAL'*/
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -81,7 +83,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ 🌀 Sub Bots Activos: ${users.length}
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 
-💥 *⚔️ SECCIONES DEL TORNEO DEL PODER ⚔️* 💥
+💥 *⚔️ SECCIONES DE MENUS ⚔️* 💥
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
@@ -99,12 +101,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 
     await m.react('🐉') 
 
-    const buttons = [
-      { buttonId: `${_p}owner`, buttonText: { displayText: "👑 Creador" }, type: 1 },
-      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 }
-    ]
-
-       let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
     let media = await prepareWAMessageMedia(
       { image: imgBuffer }, 
       { upload: conn.waUploadToServer }
@@ -149,4 +146,9 @@ function clockString(ms) {
   let m = Math.floor(ms / 60000) % 60
   let s = Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+}
+
+function getRandomEmoji() {
+  const emojis = ['🐉', '🎆', '⚡', '🔥', '🌌', '💥']
+  return emojis[Math.floor(Math.random() * emojis.length)]
 }
