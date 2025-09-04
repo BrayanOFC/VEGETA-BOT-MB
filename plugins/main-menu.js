@@ -7,7 +7,11 @@ import fetch from 'node-fetch'
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
   'serbot': 'SUB BOTS',
-  'main': 'ZENO INFO'
+  'main': 'ZENO INFO',
+  'owner': 'DIOS CREADOR',
+  'nable': 'MODO SAIYAJIN',
+  'cmd': 'ESFERAS'
+  // puedes agregar más secciones si quieres
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -20,12 +24,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let totalreg = Object.keys(global.db.data.users).length
     let uptime = clockString(process.uptime() * 1000)
 
-    const users = [...new Set(
-      (global.conns || []).filter(conn =>
-        conn.user && conn.ws?.socket?.readyState !== ws.CLOSED
-      )
-    )]
-
     if (!user) {
       global.db.data.users[userId] = { exp: 0, level: 1 }
       user = global.db.data.users[userId]
@@ -33,11 +31,12 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
     let { exp, level } = user
     let { min, xp, max } = xpRange(level, global.multiplier || 1)
+
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => ({
       help: Array.isArray(plugin.help) ? plugin.help : (plugin.help ? [plugin.help] : []),
       tags: Array.isArray(plugin.tags) ? plugin.tags : (plugin.tags ? [plugin.tags] : []),
       limit: plugin.limit,
-      premium: plugin.premium,
+      premium: plugin.premium
     }))
 
     let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
@@ -50,46 +49,53 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ 📊 Registro Z     : ${totalreg}
 ┃ ⏱️ Tiempo Activo  : ${uptime}
 ┃ 🛠️ Comandos Totales: ${totalCommands}
-┃ 🌀 Sub Bots Activos: ${users.length}
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 
-💥 *⚔️ SECCIONES DE MENUS ⚔️* 💥
+💥 *⚔️ SECCIONES DEL MENÚ ⚔️* 💥
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
-  if (commandsForTag.length === 0) return ''
+  if (!commandsForTag.length) return ''
   return `
 ╭───〔 ${tags[tag]} ${getRandomEmoji()} 〕───╮
-${commandsForTag.map(menu => menu.help.map(help =>
-  `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
-).join('\n')).join('\n')}
+${commandsForTag.map(menu => menu.help.map(h => `┃ ☁️${_p}${h}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`).join('\n')).join('\n')}
 ╰━━━━━━━━━━━━━━━━━━━━╯`
-}).filter(text => text !== '').join('\n')}
+}).filter(Boolean).join('\n')}
 
-🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
+🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ➳𝐁𝐫𝐚𝐲𝐚𝐧OFC* 🔥
 `.trim()
 
-    await m.react('🐉')
+    const buttons = [
+      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
+      { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
+    ]
 
-const buttons = [
-  { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
-  { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
-]
+    await m.react('🐉') 
 
-let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
-let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
+    // Prepara la imagen
+    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
-await conn.sendMessage(m.chat, {
-  templateMessage: {
-    hydratedTemplate: {
-      imageMessage: media.imageMessage,
-      hydratedContentText: menuText,
-      hydratedFooterText: '🔥 By BrayanOFC 🔥',
-      hydratedButtons: buttons
-    }
-  }
-}, { quoted: m })
+    // Genera el mensaje completo
+    let msg = generateWAMessageFromContent(m.chat, {
+      templateMessage: {
+        hydratedTemplate: {
+          imageMessage: media.imageMessage,
+          hydratedContentText: menuText,
+          hydratedFooterText: '🔥 By BrayanOFC 🔥',
+          hydratedButtons: buttons
+        }
+      }
+    }, { userJid: m.sender, quoted: m, contextInfo: {
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363394965381607@newsletter',
+          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+          serverMessageId: 100
+        }
+    }})
 
-//await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+    // Envía el mensaje
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
