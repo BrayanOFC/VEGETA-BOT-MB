@@ -77,7 +77,7 @@ handler.before = async function (m, { conn }) {
 };
 
 handler.help = ['math'];
-handler.tags = ['fun'];
+handler.tags = ['game'];
 handler.command = ['math', 'mates', 'matemáticas'];
 export default handler;
 
