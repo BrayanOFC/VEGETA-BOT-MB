@@ -5,7 +5,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let gruposHelp = Object.values(global.plugins)
-      .filter(p => p?.tags?.includes('grupos') && !p.disabled)
+      .filter(p => p?.tags?.includes('grupo') && !p.disabled)
       .map(p => {
         let helpText = Array.isArray(p.help) ? p.help[0] : p.help;
         return `👥 ${_p}${helpText}`;
