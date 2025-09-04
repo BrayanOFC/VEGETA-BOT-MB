@@ -23,14 +23,12 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ ☁️ ${_p}tiktok <link>
 ┃ ☁️ ${_p}instagram <link>
 ┃ ☁️ ${_p}facebook <link>
-┃ ☁️ ${_p}twitter <link>
 ┃ ☁️ ${_p}spotify <link>
 ╰━━━━━━━━━━━━━━━━━━━━━━╯
 
 ╭───〔 PLUS 〕───╮
 ┃ ☁️ ${_p}apk <nombre>
 ┃ ☁️ ${_p}pinterest <búsqueda>
-┃ ☁️ ${_p}imagen <búsqueda>
 ╰━━━━━━━━━━━━━━━━━━━━━━╯
 
 🔥 *By BrayanOFC* 🔥
