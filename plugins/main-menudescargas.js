@@ -1,5 +1,5 @@
 //creado y editado por BrayanOFC
-import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
+/*import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -74,4 +74,4 @@ handler.tags = ['downloader']
 handler.command = ['menudescargas', 'menudz']
 handler.register = true
 
-export default handler
+export default handler*/
