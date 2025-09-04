@@ -55,7 +55,7 @@ conn.reply(m.chat, `*Error:* ${err.message}`, m);
 
 handler.command = ['revsall'];
 handler.help = ['revsall'];
-handler.tags = ['tools'];
+handler.tags = ['owner'];
 handler.owner = true;
 // handler.private = true
 
