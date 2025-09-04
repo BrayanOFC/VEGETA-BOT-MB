@@ -10,7 +10,7 @@ m.reply(`🔮 Usuario eliminado con éxito`)
 }
 
 handler.help = ['kick @user']
-handler.tags = ['group']
+handler.tags = ['grupo']
 handler.command = ['kick', 'expulsar'] 
 handler.admin = true
 handler.group = true
