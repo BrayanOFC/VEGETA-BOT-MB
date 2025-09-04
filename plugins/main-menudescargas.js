@@ -49,3 +49,10 @@ ${descargasHelp}
     }, { userJid: m.sender, quoted: m })
 
     await conn.relayMessage(m.chat, msg.message,
+
+handler.help = ['menudescargas]
+handler.tags = ['main']
+handler.command = ['menudescargas', 'menudz']
+handler.register = true
+
+export default handler
