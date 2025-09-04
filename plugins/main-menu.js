@@ -105,7 +105,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
     ]
 
     await conn.sendMessage(m.chat, {
-      video: { url: 'https://files.catbox.moe/g97gzh.jpg' },
+      imagen: { url: 'https://files.catbox.moe/g97gzh.jpg' },
       caption: menuText,
       gifPlayback: true,
       mimetype: 'imagen/jpg',
