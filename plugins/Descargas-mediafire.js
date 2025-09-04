@@ -85,7 +85,7 @@ handler.limit = false;
 delete userRequests[m.sender];
 }};
 handler.help = ['mediafire', 'mediafiredl'];
-handler.tags = ['downloader'];
+handler.tags = ['descargas'];
 handler.command = /^(mediafire|mediafiredl|dlmediafire)$/i;
 handler.register = true;
 handler.limit = 3;
