@@ -57,7 +57,7 @@ ${descargasHelp}
 }
 
 handler.help = ['menudescargas']
-handler.tags = ['descargas']
+handler.tags = ['main']
 handler.command = ['menudescargas', 'menudz']
 handler.register = true
 
