@@ -1,4 +1,4 @@
-// código creado por BrayanOFC no quitar creditos
+/*// código creado por BrayanOFC no quitar creditos
 let handler = async (m, { conn, args, usedPrefix }) => {
   let chat = global.db.data.chats[m.chat]
 
@@ -20,4 +20,4 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 }
 
 handler.command = /^setprefix$/i   
-export default handler
+export default handler*/
