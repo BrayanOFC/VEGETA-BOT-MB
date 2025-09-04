@@ -99,17 +99,10 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
-    const buttons = [
-        {
-            buttonId: `${usedPrefix}estado`,
-            buttonText: { displayText: "👑 Owner" },
-           type: 1,
-        },
-        {
-            buttonId: `${usedPrefix}ping`,
-            buttonText: { displayText: "🏓 Ping" },
-            type: 1,
-        },
+const buttons = [
+  { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 ping" }, type: 1 },
+  { buttonId: `${_p}estado`, buttonText: { displayText: "👑 estado" }, type: 1 }
+]
 
     await m.react('🐉') 
 
@@ -125,6 +118,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
           imageMessage: {
             ...media.imageMessage,
             caption: menuText,
+            buttons: buttons 
             contextInfo: {
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
