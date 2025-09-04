@@ -48,16 +48,16 @@ ${descargasHelp}
       }
     }, { userJid: m.sender, quoted: m })
 
-    await conn.relayMessage(m.chat, msg.message,
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
   } catch (e) {
-    conn.reply(m.chat, `✖️ Menú de gacha falló.\n\n${e}`, m)
+    conn.reply(m.chat, `✖️ Menú de descargas falló.\n\n${e}`, m)
     console.error(e)
   }
 }
 
-handler.help = ['menudescargas]
-handler.tags = ['main']
+handler.help = ['menudescargas']
+handler.tags = ['descargas']
 handler.command = ['menudescargas', 'menudz']
 handler.register = true
 
