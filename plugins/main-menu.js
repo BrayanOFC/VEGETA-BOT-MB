@@ -112,23 +112,18 @@ let media = await prepareWAMessageMedia(
   { upload: conn.waUploadToServer }
 )
 
-await conn.sendMessage(m.chat, {
-  image: media.imageMessage,
-  caption: menuText,
-  footer: '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ',
-  templateButtons: buttons,
-  contextInfo: {
-    isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363394965381607@newsletter',
-      newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-      serverMessageId: 100
+let msg = generateWAMessageFromContent(m.chat, {
+  templateMessage: {
+    hydratedTemplate: {
+      imageMessage: media.imageMessage,
+      hydratedContentText: menuText,
+      hydratedFooterText: '🔥 By BrayanOFC 🔥',
+      hydratedButtons: buttons
     }
   }
-}, { quoted: m })
+}, { userJid: m.sender, quoted: m })
 
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
-
+await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
     console.error(e)
