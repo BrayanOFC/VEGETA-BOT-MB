@@ -25,7 +25,7 @@ ${gameHelp}
 
     await m.react('🎮')
 
-    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let imgBuffer = await (await fetch('https://files.catbox.moe/7a3f48.jpg')).buffer()
     let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
     let msg = generateWAMessageFromContent(m.chat, {
