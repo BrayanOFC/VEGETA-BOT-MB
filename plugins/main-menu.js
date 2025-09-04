@@ -117,7 +117,7 @@ let msg = generateWAMessageFromContent(m.chat, {
     hydratedTemplate: {
       imageMessage: media.imageMessage,
       hydratedContentText: menuText,
-      hydratedFooterText: '🔥 By BrayanOFC 🔥',
+      hydratedFooterText: '🐉 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 👑',
       hydratedButtons: buttons
     }
   }
