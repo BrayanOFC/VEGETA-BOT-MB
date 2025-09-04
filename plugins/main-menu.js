@@ -108,7 +108,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
       video: { url: 'https://files.catbox.moe/g97gzh.jpg' },
       caption: menuText,
       gifPlayback: true,
-      mimetype: 'image/jpg',
+      mimetype: 'imagen/jpg',
       fileName: 'dragon-menu.jpg',
       buttons,
       viewOnce: true,
