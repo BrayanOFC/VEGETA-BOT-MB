@@ -95,11 +95,6 @@ return section
 🔥 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 🔥
 `.trim()
 
-const buttons = [
-{ buttonId: ${_p}ping, buttonText: { displayText: "🏓 ping" }, type: 1 },
-{ buttonId: ${_p}estado, buttonText: { displayText: "👑 estado" }, type: 1 }
-]
-
 await m.react('🐉')   
 
 let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()  
@@ -114,7 +109,6 @@ let msg = generateWAMessageFromContent(m.chat, {
       imageMessage: {  
         ...media.imageMessage,  
         caption: menuText,  
-        buttons: buttons,  
         contextInfo: {  
           isForwarded: true,  
           forwardedNewsletterMessageInfo: {  
