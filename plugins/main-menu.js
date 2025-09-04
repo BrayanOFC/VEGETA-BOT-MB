@@ -99,6 +99,19 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
+    const buttons = [
+        {
+            buttonId: `${usedPrefix}estado`,
+            buttonText: { displayText: "👑 Owner" },
+            type: 1,
+        },
+        {
+            buttonId: `${usedPrefix}ping`,
+            buttonText: { displayText: "🏓 Ping" },
+            type: 1,
+        },
+        { quoted: m }
+
     await m.react('🐉') 
 
     let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
