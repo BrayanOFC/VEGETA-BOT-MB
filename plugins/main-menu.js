@@ -7,7 +7,7 @@ import fetch from 'node-fetch'
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
   'serbot': 'SUB BOTS',
-  'main': 'ZENO INFO',
+  'main': 'ZENO INFO'
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
