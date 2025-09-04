@@ -1,5 +1,3 @@
-![line](https://img.shields.io/badge/-%20-ff0000?style=for-the-badge)
-
 <h1 align="center">💨 𝑽𝑬𝑮𝑬𝑻𝑨-𝑩𝑶𝑻-𝑴𝑩 💨</h1>
 <p align="center">🐉 ¡El Orgullo Saiyajin convertido en Bot de WhatsApp!</p>
 
