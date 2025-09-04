@@ -51,10 +51,12 @@ export default handler;*/
 
 
 let handler = async (m, { conn, usedPrefix }) => {
-  let groupsCommands = Object.values(global.plugins)
+  // Filtra los plugins que tengan el tag 'owner' y no estén deshabilitados
+  let ownerCommands = Object.values(global.plugins)
     .filter(p => p?.tags?.includes('owner') && !p.disabled)
     .map(p => {
-      let cmd = p.command instanceof RegExp ? p.command.source : Array.isArray(p.command) ? p.command.join(', ') : p.command;
+      // Obtiene solo el primer comando de cada plugin
+      let cmd = Array.isArray(p.command) ? p.command[0] : p.command instanceof RegExp ? p.command.source : p.command;
       return `• ${usedPrefix}${cmd}`;
     })
     .join('\n');
@@ -69,7 +71,7 @@ ${ownerCommands}
 };
 
 handler.help = ['menuowner'];
-handler.tags = ['main'];
+handler.tags = ['owner'];
 handler.command = /^menuowner$/i;
 
 export default handler;
