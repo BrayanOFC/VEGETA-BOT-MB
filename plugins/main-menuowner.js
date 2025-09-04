@@ -1,5 +1,5 @@
 // creado y editado por BrayanOFC 👻
-let handler = async (m, { conn, usedPrefix }) => {
+/*let handler = async (m, { conn, usedPrefix }) => {
 let menu = `
 ╭━━━〔 👑 𝑴𝑬𝑵𝑼 𝑶𝑾𝑵𝑬𝑹 👑 〕━━━╮
 ┃
@@ -47,4 +47,29 @@ handler.help = ['menuowner'];
 handler.tags = ['main'];
 handler.command = /^menuowner$/i;
 handler.rowner = true; 
+export default handler;*/
+
+
+let handler = async (m, { conn, usedPrefix }) => {
+  let groupsCommands = Object.values(global.plugins)
+    .filter(p => p?.tags?.includes('owner') && !p.disabled)
+    .map(p => {
+      let cmd = p.command instanceof RegExp ? p.command.source : Array.isArray(p.command) ? p.command.join(', ') : p.command;
+      return `• ${usedPrefix}${cmd}`;
+    })
+    .join('\n');
+
+  let menu = `
+┏━〔 Menú Owner 〕━
+${ownerCommands}
+┗━━━━━━━━━━━━━
+`;
+
+  m.reply(menu);
+};
+
+handler.help = ['menuowner'];
+handler.tags = ['main'];
+handler.command = /^menuowner$/i;
+
 export default handler;
