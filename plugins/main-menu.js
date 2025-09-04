@@ -75,15 +75,17 @@ ${commandsForTag.map(menu => menu.help.map(help =>
   { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
 ]
 
+// Descarga la imagen y prepara media
 let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
 let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
+// Envía el mensaje con botones y forward al canal
 await conn.sendMessage(m.chat, {
   templateMessage: {
     hydratedTemplate: {
       hydratedContentText: menuText,
-      hydratedFooterText: '🐉 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 👑',
-      imageMessage: media.imageMessage,
+      hydratedFooterText: '🔥 By BrayanOFC 🔥',
+      imageMessage: media.imageMessage, // <- aquí va imageMessage ya preparado
       hydratedButtons: buttons
     }
   },
@@ -92,7 +94,8 @@ await conn.sendMessage(m.chat, {
     forwardedNewsletterMessageInfo: {
       newsletterJid: '120363394965381607@newsletter',
       newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-      serverMessageId: 100    }
+      serverMessageId: 100
+    }
   }
 }, { quoted: m })
 
