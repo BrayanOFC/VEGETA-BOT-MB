@@ -1,14 +1,12 @@
 //creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
-import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
-import fetch from 'node-fetch'
 
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
   'serbot': 'SUB BOTS',
   'main': 'ZENO INFO',
-  /*'owner': 'DIOS CREADOR',
+  'owner': 'DIOS CREADOR',
   'nable': 'MODO SAIYAJIN',
   'cmd': 'ESFERAS',
   'advanced': 'TÉCNICAS',
@@ -37,7 +35,7 @@ let tags = {
   'productivity': 'MAQUINARIA Z',
   'social': 'REDES Z',
   'security': 'BARRERA',
-  'custom': 'AURA PERSONAL'*/
+  'custom': 'AURA PERSONAL'
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -50,18 +48,24 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let totalreg = Object.keys(global.db.data.users).length
     let uptime = clockString(process.uptime() * 1000)
 
+    const users = [...new Set(
+      (global.conns || []).filter(conn =>
+        conn.user && conn.ws?.socket?.readyState !== ws.CLOSED
+      )
+    )]
+
     if (!user) {
       global.db.data.users[userId] = { exp: 0, level: 1 }
       user = global.db.data.users[userId]
     }
 
-    let { level } = user
+    let { exp, level } = user
     let { min, xp, max } = xpRange(level, global.multiplier || 1)
-    let help = Object.values(global.plugins).filter(p => !p.disabled).map(p => ({
-      help: Array.isArray(p.help) ? p.help : (p.help ? [p.help] : []),
-      tags: Array.isArray(p.tags) ? p.tags : (p.tags ? [p.tags] : []),
-      limit: p.limit,
-      premium: p.premium,
+    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => ({
+      help: Array.isArray(plugin.help) ? plugin.help : (plugin.help ? [plugin.help] : []),
+      tags: Array.isArray(plugin.tags) ? plugin.tags : (plugin.tags ? [plugin.tags] : []),
+      limit: plugin.limit,
+      premium: plugin.premium,
     }))
 
     let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
@@ -74,15 +78,33 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ 📊 Registro Z     : ${totalreg}
 ┃ ⏱️ Tiempo Activo  : ${uptime}
 ┃ 🛠️ Comandos Totales: ${totalCommands}
+┃ 🌀 Sub Bots Activos: ${users.length}
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+
+💥 *⚔️ SECCIONES DEL TORNEO DEL PODER ⚔️* 💥
+${Object.keys(tags).map(tag => {
+  const commandsForTag = help.filter(menu => menu.tags.includes(tag))
+  if (commandsForTag.length === 0) return ''
+  let section = `
+╭───〔 ${tags[tag]} ${getRandomEmoji()} 〕───╮
+${commandsForTag.map(menu => menu.help.map(help =>
+  `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
+).join('\n')).join('\n')}
+╰━━━━━━━━━━━━━━━━━━━━╯`
+  return section
+}).filter(text => text !== '').join('\n')}
 
 🔥 *By BrayanOFC* 🔥
 `.trim()
 
-    await m.react('🐉')
+    await m.react('🐉') 
 
-    // 🔥 preparamos la imagen como buffer
-    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    const buttons = [
+      { buttonId: `${_p}owner`, buttonText: { displayText: "👑 Creador" }, type: 1 },
+      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 }
+    ]
+
+       let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
     let media = await prepareWAMessageMedia(
       { image: imgBuffer }, 
       { upload: conn.waUploadToServer }
