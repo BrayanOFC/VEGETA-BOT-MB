@@ -41,7 +41,7 @@ contextInfo: {
 };
 
 handler.help = ['menuowner'];
-handler.tags = ['menu'];
+handler.tags = ['main'];
 handler.command = /^menuowner$/i;
 handler.rowner = true; 
 export default handler;
