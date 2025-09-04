@@ -99,8 +99,6 @@ await conn.sendMessage(m.chat, {
   }
 }, { quoted: m })
 
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
-
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
     console.error(e)
