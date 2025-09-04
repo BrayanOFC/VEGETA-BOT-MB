@@ -34,7 +34,8 @@ const handler = async (m, {conn}) => {
 };
 
 handler.customPrefix = /^-?[0-9]+(\.[0-9]+)?$/;
-handler.command = new RegExp;
+handler.command = ['matematicas']
+handler.tags = ['game']
 export default handler;
 
 function isNumber(x) {
