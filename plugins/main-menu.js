@@ -71,31 +71,30 @@ ${commandsForTag.map(menu => menu.help.map(help =>
     await m.react('🐉')
 
     const buttons = [
-      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
-      { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
-    ]
+  { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
+  { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
+]
 
-    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
-    let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
+let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
-    let msg = generateWAMessageFromContent(m.chat, {
-      templateMessage: {
-        hydratedTemplate: {
-          imageMessage: media.imageMessage,
-          hydratedContentText: menuText,
-          hydratedFooterText: '🔥 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 🔥',
-          hydratedButtons: buttons,
-          contextInfo: {
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-              newsletterJid: '120363394965381607@newsletter',
-              newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-              serverMessageId: 100
-            }
-          }
-        }
-      }
-    }, { userJid: m.sender, quoted: m })
+await conn.sendMessage(m.chat, {
+  templateMessage: {
+    hydratedTemplate: {
+      hydratedContentText: menuText,
+      hydratedFooterText: '🐉 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 👑',
+      imageMessage: media.imageMessage,
+      hydratedButtons: buttons
+    }
+  },
+  contextInfo: {
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '120363394965381607@newsletter',
+      newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+      serverMessageId: 100    }
+  }
+}, { quoted: m })
 
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
