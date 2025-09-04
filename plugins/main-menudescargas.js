@@ -31,7 +31,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ ☁️ ${_p}pinterest <búsqueda>
 ╰━━━━━━━━━━━━━━━━━━━━━━╯
 
-🔥 *By BrayanOFC* 🔥
+🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
     await m.react('📥')
