@@ -96,7 +96,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
   return section
 }).filter(text => text !== '').join('\n')}
 
-🔥 *By BrayanOFC* 🔥
+🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
     await m.react('🐉') 
