@@ -71,7 +71,7 @@ ${ownerCommands}
 };
 
 handler.help = ['menuowner'];
-handler.tags = ['owner'];
+handler.tags = ['main'];
 handler.command = /^menuowner$/i;
 
 export default handler;
