@@ -17,6 +17,10 @@ let menu = `
 ┃ 🔹 ${usedPrefix}saveplugin <código>
 ┃ 🔹 ${usedPrefix}setprefix <nuevo prefijo>
 ┃ 🔹 ${usedPrefix}update
+┃ 🔹 ${usedPrefix}cheat
+┃ 🔹 ${usedPrefix}cleartmp
+┃ 🔹 ${usedPrefix}promotebot
+┃ 🔹 ${usedPrefix}mainbot
 ┃
 ╰━━━━━━━━━━━━━━━━━━━━━━━╯
 `;
