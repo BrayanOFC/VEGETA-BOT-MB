@@ -37,14 +37,13 @@ let handler = async (m, { conn, usedPrefix }) => {
   let blackclover = `
 ╭━━━━◇◇◇━━━━⬣
 ┃ ⚙️  *SISTEMA DE ESTADO*
-┃ 🔰 *BLACK CLOVER BOT* ⚔️
+┃ 🔰 *VEGETA BOT MB* ⚔️
 ╰━━━━◇◇◇━━━━⬣
 
-👑 *Creador:* the-carlos
+👑 *Creador:* BrayanOFC 
 📟 *Prefijo:* [ ${usedPrefix} ]
 📦 *Versión:* ${vs}
 
-📊 *Usuarios registrados:* ${totalreg}
 💬 *Total de chats:* ${totalchats}
 📢 *Grupos:* ${groupsIn.length}
 📩 *Privados:* ${totalchats - groupsIn.length}
