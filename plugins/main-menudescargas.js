@@ -1,9 +1,17 @@
-//creado y editado por BrayanOFC
+// creado y editado por BrayanOFC
 import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
+    let descargasHelp = Object.values(global.plugins)
+      .filter(p => p?.tags?.includes('descargas') && !p.disabled)
+      .map(p => {
+        let helpText = Array.isArray(p.help) ? p.help[0] : p.help;
+        return `☁️ ${_p}${helpText}`;
+      })
+      .join('\n');
+
     let menuText = `
 ╭━━━『📥 DESCARGAS Z』━━━╮
 ┃ 🐉 Aquí tienes los comandos
@@ -11,36 +19,15 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ 🔥 desde diferentes plataformas
 ╰━━━━━━━━━━━━━━━━━━━━━━╯
 
-╭───〔 CAPÍTULOS Y VIDEOS 〕───╮
-┃ ☁️ ${_p}play <canción o video>
-┃ ☁️ ${_p}play2 <video>
-┃ ☁️ ${_p}ytmp3 <link YouTube>
-┃ ☁️ ${_p}ytmp4 <link YouTube>
-╰━━━━━━━━━━━━━━━━━━━━━━╯
+${descargasHelp}
 
-╭───〔 RECURSOS Y ARCHIVOS 〕───╮
-┃ ☁️ ${_p}mediafire <link>
-┃ ☁️ ${_p}tiktok <link>
-┃ ☁️ ${_p}instagram <link>
-┃ ☁️ ${_p}facebook <link>
-┃ ☁️ ${_p}spotify <link>
-╰━━━━━━━━━━━━━━━━━━━━━━╯
-
-╭───〔 PLUS 〕───╮
-┃ ☁️ ${_p}apk <nombre>
-┃ ☁️ ${_p}pinterest <búsqueda>
-╰━━━━━━━━━━━━━━━━━━━━━━╯
-
-🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
+🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐍𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
     await m.react('📥')
 
     let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
-    let media = await prepareWAMessageMedia(
-      { image: imgBuffer }, 
-      { upload: conn.waUploadToServer }
-    )
+    let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
     let msg = generateWAMessageFromContent(m.chat, {
       viewOnceMessage: {
@@ -61,17 +48,4 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       }
     }, { userJid: m.sender, quoted: m })
 
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
-    
-  } catch (e) {
-    conn.reply(m.chat, `✖️ Menú de descargas falló.\n\n${e}`, m)
-    console.error(e)
-  }
-}
-
-handler.help = ['menudescargas']
-handler.tags = ['main']
-handler.command = ['menudescargas', 'menudz']
-handler.register = true
-
-export default handler
+    await conn.relayMessage(m.chat, msg.message,
