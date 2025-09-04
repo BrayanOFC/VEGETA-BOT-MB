@@ -70,7 +70,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 }
 
 handler.help = ['menudescargas']
-handler.tags = ['downloader']
+handler.tags = ['main']
 handler.command = ['menudescargas', 'menudz']
 handler.register = true
 
