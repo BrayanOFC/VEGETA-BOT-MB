@@ -41,7 +41,7 @@ let handler = async (m, _2) => {
 handler.help = ['> ', '=> ']
 handler.tags = ['owner']
 handler.customPrefix = /^=?> /
-handler.command = ['> ', '=> '];
+handler.command = /(?:)/i
 handler.rowner = true
 
 export default handler
