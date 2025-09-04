@@ -1,24 +1,31 @@
+// creado y editado por BrayanOFC
+import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn, usedPrefix }) => {
- 
-  let ownerHelp = Object.values(global.plugins)
-    .filter(p => p?.tags?.includes('owner') && !p.disabled)
-    .map(p => {
-     
-      let helpText = Array.isArray(p.help) ? p.help[0] : p.help;
-      return `• ${helpText}`;
-    })
-    .join('\n');
+let handler = async (m, { conn, usedPrefix: _p }) => {
+  try {
+    let ownerHelp = Object.values(global.plugins)
+      .filter(p => p?.tags?.includes('owner') && !p.disabled)
+      .map(p => {
+        let helpText = Array.isArray(p.help) ? p.help[0] : p.help;
+        return `👑 ${_p}${helpText}`;
+      })
+      .join('\n');
 
-  let menu = `
-┏━〔 Menú Owner 〕━
+    let menuText = `
+╭━━━『👑 OWNER 』━━━╮
+┃ ⚡ Comandos exclusivos del Owner
+┃ 🔥 Usa con cuidado
+╰━━━━━━━━━━━━━━━━━━━━━━╯
+
 ${ownerHelp}
-┗━━━━━━━━━━━━━
-`;
 
-await m.react('👑')
+🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐍𝐎𝐅𝐂ღ* 🔥
+`.trim()
 
-let imgBuffer = await (await fetch('https://files.catbox.moe/ppm9t3.jpg')).buffer()
+    await m.react('👑')
+
+    let imgBuffer = await (await fetch('https://files.catbox.moe/ppm9t3.jpg')).buffer()
     let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
     let msg = generateWAMessageFromContent(m.chat, {
@@ -42,11 +49,15 @@ let imgBuffer = await (await fetch('https://files.catbox.moe/ppm9t3.jpg')).buffe
 
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
-  m.reply(menu);
-};
+  } catch (e) {
+    conn.reply(m.chat, `✖️ Menú Owner falló.\n\n${e}`, m)
+    console.error(e)
+  }
+}
 
-handler.help = ['menuowner'];
-handler.tags = ['main'];
-handler.command = /^menuowner$/i;
+handler.help = ['menuowner']
+handler.tags = ['main']
+handler.command = ['menuowner', 'menuadmin']
+handler.register = true
 
-export default handler;
+export default handler
