@@ -1,6 +1,6 @@
 let handler = async (m, { conn, usedPrefix }) => {
   let groupsCommands = Object.values(global.plugins)
-    .filter(p => p?.tags?.includes('grupos') && !p.disabled)
+    .filter(p => p?.tags?.includes('grupo') && !p.disabled)
     .map(p => {
       let cmd = p.command instanceof RegExp ? p.command.source : Array.isArray(p.command) ? p.command.join(', ') : p.command;
       return `• ${usedPrefix}${cmd}`;
