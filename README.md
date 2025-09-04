@@ -1,7 +1,7 @@
 <h1 align="center">💨 𝑽𝑬𝑮𝑬𝑻𝑨-𝑩𝑶𝑻-𝑴𝑩 💨</h1>
 <p align="center">🐉 ¡El Orgullo Saiyajin convertido en Bot de WhatsApp!</p>
 
-![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-prueba.jpg)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-neon.jpg)
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=0033FF&center=true&vCenter=true&width=600&lines=Bienvenido+Guerrero+Z;VEGETA-BOT-MB+🔥;Creado+desde+0+por+BrayanOFC;El+Orgullo+Saiyajin+en+tu+mano;¡Supera+a+Kakaroto!)](https://git.io/typing-svg)
 
