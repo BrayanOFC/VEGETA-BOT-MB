@@ -8,36 +8,6 @@ const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊�
 let tags = {
   'serbot': 'SUB BOTS',
   'main': 'ZENO INFO',
-  /*'owner': 'DIOS CREADOR',
-  'nable': 'MODO SAIYAJIN',
-  'cmd': 'ESFERAS',
-  'advanced': 'TÉCNICAS',
-  'game': 'COMBATE',
-  'rpg': 'RPG Z',
-  'group': 'UNIVERSO',
-  'downloader': 'CAPSULE CORP',
-  'sticker': 'FUSIONES',
-  'audio': 'GRITOS',
-  'search': 'RADAR',
-  'tools': 'ARTEFACTOS',
-  'fun': 'HUMOR Z',
-  'anime': 'DB-ANIME',
-  'nsfw': 'MAJIN',
-  'premium': 'GOD KI',
-  'weather': 'CLIMA Z',
-  'news': 'NOTICIAS',
-  'finance': 'ZENI',
-  'education': 'MENTE Z',
-  'health': 'SENZU',
-  'entertainment': 'ARENA',
-  'sports': 'TORNEO',
-  'travel': 'KAIKAI',
-  'food': 'RAMEN Z',
-  'shopping': 'TIENDA DE BULMA',
-  'productivity': 'MAQUINARIA Z',
-  'social': 'REDES Z',
-  'security': 'BARRERA',
-  'custom': 'AURA PERSONAL'*/
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -87,43 +57,48 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
-  let section = `
+  return `
 ╭───〔 ${tags[tag]} ${getRandomEmoji()} 〕───╮
 ${commandsForTag.map(menu => menu.help.map(help =>
   `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
 ).join('\n')).join('\n')}
 ╰━━━━━━━━━━━━━━━━━━━━╯`
-  return section
 }).filter(text => text !== '').join('\n')}
 
 🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
 `.trim()
 
-const buttons = [
-  { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
-  { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
-]
+    await m.react('🐉')
 
-await m.react('🐉')
+    const buttons = [
+      { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
+      { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
+    ]
 
-let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
-let media = await prepareWAMessageMedia(
-  { image: imgBuffer }, 
-  { upload: conn.waUploadToServer }
-)
+    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
-let msg = generateWAMessageFromContent(m.chat, {
-  templateMessage: {
-    hydratedTemplate: {
-      imageMessage: media.imageMessage,
-      hydratedContentText: menuText,
-      hydratedFooterText: '🐉 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 👑',
-      hydratedButtons: buttons
-    }
-  }
-}, { userJid: m.sender, quoted: m })
+    let msg = generateWAMessageFromContent(m.chat, {
+      templateMessage: {
+        hydratedTemplate: {
+          imageMessage: media.imageMessage,
+          hydratedContentText: menuText,
+          hydratedFooterText: '🔥 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 🔥',
+          hydratedButtons: buttons,
+          contextInfo: {
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+              newsletterJid: '120363394965381607@newsletter',
+              newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+              serverMessageId: 100
+            }
+          }
+        }
+      }
+    }, { userJid: m.sender, quoted: m })
 
-await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
     console.error(e)
