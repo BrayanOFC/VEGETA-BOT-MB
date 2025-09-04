@@ -1,5 +1,5 @@
 // creado y editado por BrayanOFC 👻
-let handler = async (m, { conn, usedPrefix }) => {
+/*let handler = async (m, { conn, usedPrefix }) => {
 let menu = `
 ╭━━━〔 👑 𝑴𝑬𝑵𝑼 𝑶𝑾𝑵𝑬𝑹 👑 〕━━━╮
 ┃
@@ -44,4 +44,4 @@ handler.help = ['menuowner'];
 handler.tags = ['menu'];
 handler.command = /^menuowner$/i;
 handler.rowner = true; 
-export default handler;
+export default handler;*/
