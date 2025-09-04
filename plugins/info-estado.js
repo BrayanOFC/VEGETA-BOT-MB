@@ -1,75 +1,88 @@
-// créditos github.com/BrayanOFC no quitar creditos
-import { readFile } from 'fs/promises';
-import ws from 'ws';
+import ws from 'ws'
+import { performance } from 'perf_hooks'
 
-const handler = async (m, { conn, usedPrefix }) => {
-  let _muptime;
+let handler = async (m, { conn, usedPrefix }) => {
+  let _muptime = 0
+  let totalreg = Object.keys(global.db.data.users).length
+  let totalchats = Object.keys(global.db.data.chats).length
+  let vs = global.vs || '1.0.0'
+  let pp = "https://files.catbox.moe/8lfoj3.jpg"
 
-  const totalreg = Object.keys(global.db?.data?.users || {}).length;
-
-  let data = {};
-  try {
-    data = JSON.parse(await readFile('./src/database/db.json', 'utf-8'));
-  } catch (e) {
-    console.log('⚠️ No se pudo leer db.json, usando valores por defecto');
-  }
-
-  const imagenes = data.vegeta?.imagenes || [];
-  const pp = imagenes.length
-    ? imagenes[Math.floor(Math.random() * imagenes.length)]
-    : 'https://i.imgur.com/XTzfa1T.jpg';
-
+  // Tiempo de actividad (uptime) del proceso principal
   if (process.send) {
-    process.send('uptime');
+    process.send('uptime')
     _muptime = await new Promise(resolve => {
-      process.once('message', resolve);
-      setTimeout(() => resolve(0), 1000);
-    }) * 1000;
-  } else {
-    _muptime = process.uptime() * 1000;
+      process.once('message', resolve)
+      setTimeout(() => resolve(null), 1000)
+    }) * 1000 || 0
   }
-  const muptime = clockString(_muptime);
 
-  const users = [...new Set([...((global.conns || []).filter((c) =>
-    c.user && c.ws?.socket && c.ws.socket.readyState !== ws.CLOSED
-  ))])];
+  let muptime = clockString(_muptime || 0)
 
-  const chats = Object.entries(conn.chats || {}).filter(([id, data]) => id && data.isChats);
-  const groupsIn = chats.filter(([id]) => id.endsWith('@g.us'));
+  // Filtrar subbots activos (conexiones abiertas)
+  let users = [...new Set(global.conns.filter(connItem => 
+    connItem.user && connItem.ws?.socket?.readyState === ws.OPEN
+  ))]
 
-  const botname = global.botname || "VEGETA-BOT";
-  const vs = global.vs || "1.0.0";
-  const totalUsers = users.length;
-  const speed = process.memoryUsage().heapUsed / 1024 / 1024;
+  // Obtener chats y filtrar grupos
+  const chats = Object.entries(conn.chats || {}).filter(([id, data]) => data?.isChats)
+  const groupsIn = chats.filter(([id]) => id.endsWith('@g.us'))
+  const totalUsers = users.length
 
-  let Vegeta = `𝑰𝑵𝑭𝑶𝑹𝑴𝑨𝑪𝑰𝑶𝑵 - ${botname}\n\n`;
-  Vegeta += `👑 *Creador:* BrayanOFC👑\n`;
-  Vegeta += `🎯 *Prefijo:* [ ${usedPrefix} ]\n`;
-  Vegeta += `🏷 *Versión:* ${vs}\n`;
-  Vegeta += `🔐 *Chats Privados:* ${chats.length - groupsIn.length}\n`;
-  Vegeta += `📌 *Total de Chats:* ${chats.length}\n`;
-  Vegeta += `👥 *Usuarios:* ${totalreg}\n`;
-  Vegeta += `📍 *Grupos:* ${groupsIn.length}\n`;
-  Vegeta += `🧭 *Actividad:* ${muptime}\n`;
-  Vegeta += `🚀 *Velocidad:* ${speed.toFixed(2)} MB\n`;
-  Vegeta += `🌟 *Sub-bots activos:* ${totalUsers || '0'}`;
+  // Medir velocidad (ping simple)
+  let old = performance.now()
+  let neww = performance.now()
+  let speed = neww - old
 
-  await conn.sendMessage(m.chat, {
-    image: { url: pp },
-    caption: Vegeta
-  }, { quoted: m });
-};
+  let blackclover = `
+╭━━━━◇◇◇━━━━⬣
+┃ ⚙️  *SISTEMA DE ESTADO*
+┃ 🔰 *BLACK CLOVER BOT* ⚔️
+╰━━━━◇◇◇━━━━⬣
 
-handler.help = ['estado'];
-handler.tags = ['info'];
-handler.command = /^estado|status|estate|state|stado|stats$/i; // regex
-handler.register = true;
+👑 *Creador:* the-carlos
+📟 *Prefijo:* [ ${usedPrefix} ]
+📦 *Versión:* ${vs}
 
-export default handler;
+📊 *Usuarios registrados:* ${totalreg}
+💬 *Total de chats:* ${totalchats}
+📢 *Grupos:* ${groupsIn.length}
+📩 *Privados:* ${totalchats - groupsIn.length}
+🧪 *SubBots activos:* ${totalUsers || '0'}
+
+🕰️ *Actividad:* ${muptime}
+🚀 *Velocidad:* ${speed.toFixed(3)}s
+`.trim()
+
+  // Contacto para usar como mensaje citado (puedes ajustarlo)
+  const fkontak = {
+    key: {
+      participants: "0@s.whatsapp.net",
+      remoteJid: "status@broadcast",
+      fromMe: false,
+      id: "Halo"
+    },
+    message: {
+      contactMessage: {
+        displayName: "Subbot",
+        vcard: "BEGIN:VCARD\nVERSION:3.0\nN:;Subbot;;;\nFN:Subbot\nEND:VCARD"
+      }
+    }
+  }
+
+  await conn.sendMessage(m.chat, { image: { url: pp }, caption: blackclover }, { quoted: fkontak })
+}
+
+handler.help = ['status']
+handler.tags = ['info']
+handler.command = ['estado', 'status', 'estate', 'state', 'stado', 'stats']
+handler.register = true
+
+export default handler
 
 function clockString(ms) {
-  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':');
+  let h = Math.floor(ms / 3600000)
+  let m = Math.floor(ms / 60000) % 60
+  let s = Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':')
 }
