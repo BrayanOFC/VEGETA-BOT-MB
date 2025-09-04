@@ -40,7 +40,7 @@ let handler = async (m, { conn, args }) => {
 };
 
 handler.help = ['topwaifus [página]'];
-handler.tags = ['anime'];
+handler.tags = ['gacha'];
 handler.command = ['topwaifus', 'waifustop', 'waifusboard'];
 handler.group = true;
 handler.register = true;
