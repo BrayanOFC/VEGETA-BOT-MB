@@ -118,7 +118,7 @@ const buttons = [
           imageMessage: {
             ...media.imageMessage,
             caption: menuText,
-            buttons: buttons 
+            buttons: buttons,
             contextInfo: {
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
