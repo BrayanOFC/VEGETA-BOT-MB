@@ -70,34 +70,34 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 
     await m.react('🐉')
 
-    const buttons = [
+const buttons = [
   { buttonId: `${_p}ping`, buttonText: { displayText: "🏓 Ping" }, type: 1 },
   { buttonId: `${_p}estado`, buttonText: { displayText: "👑 Estado" }, type: 1 }
 ]
 
-// Descarga la imagen y prepara media
 let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+
 let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
-// Envía el mensaje con botones y forward al canal
-await conn.sendMessage(m.chat, {
+let msg = generateWAMessageFromContent(m.chat, {
   templateMessage: {
     hydratedTemplate: {
+      imageMessage: media.imageMessage,
       hydratedContentText: menuText,
       hydratedFooterText: '🔥 By BrayanOFC 🔥',
-      imageMessage: media.imageMessage, // <- aquí va imageMessage ya preparado
       hydratedButtons: buttons
     }
-  },
-  contextInfo: {
+  }
+}, { userJid: m.sender, quoted: m, contextInfo: {
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
       newsletterJid: '120363394965381607@newsletter',
       newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
       serverMessageId: 100
     }
-  }
-}, { quoted: m })
+} })
+
+await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
