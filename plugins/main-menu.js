@@ -105,18 +105,18 @@ ${commandsForTag.map(menu => menu.help.map(help =>
     ]
 
     await conn.sendMessage(m.chat, {
-      video: { url: 'https://files.catbox.moe/lzs4dl.mp4' },
+      video: { url: 'https://files.catbox.moe/g97gzh.jpg' },
       caption: menuText,
       gifPlayback: true,
-      mimetype: 'video/mp4',
-      fileName: 'dragon-menu.mp4',
+      mimetype: 'image/jpg',
+      fileName: 'dragon-menu.jpg',
       buttons,
       viewOnce: true,
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363394965381607@newsletter',
-          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱*:·',
+          newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
           serverMessageId: 100
         }
       }
