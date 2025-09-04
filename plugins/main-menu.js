@@ -103,14 +103,13 @@ ${commandsForTag.map(menu => menu.help.map(help =>
         {
             buttonId: `${usedPrefix}estado`,
             buttonText: { displayText: "👑 Owner" },
-            type: 1,
+           type: 1,
         },
         {
             buttonId: `${usedPrefix}ping`,
             buttonText: { displayText: "🏓 Ping" },
             type: 1,
         },
-        { quoted: m }
 
     await m.react('🐉') 
 
