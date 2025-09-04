@@ -10,7 +10,7 @@
 > ⚡ Versión: **2.13.2**  
 > 👑 Creador: **BrayanOFC – El Príncipe Saiyajin**
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-arcoiris.jpg)
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 </div>
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-azul.jpg)
 
 ### ❕️ **Información Saiyajin**
 
@@ -35,7 +35,7 @@
 
 </details>
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-neon.jpg)
 
 ### 🔮 **Contacto con el Reino Saiyajin**
 
@@ -50,12 +50,12 @@
 
 </details>
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
 
 ### 🐉 **Descarga el Templo Saiyajin (Termux)** ☁️
 <a href="https://www.mediafire.com/file/llugt4zgj7g3n3u/com.termux_1020.apk/file"><img src="https://qu.ax/finc.jpg" height="125px"></a> 
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-verde.jpg)
 </details>
 
 [![Termux](https://img.shields.io/badge/Instalacion-En%20Termux-000000?style=for-the-badge&logo=android&logoColor=white)](https://f-droid.org/es/packages/com.termux/)
@@ -84,7 +84,7 @@ yarn install
 npm install
 ```
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-arcoiris.jpg)
 
 ✨️ Revivir el Ki de Vegeta si se detiene
 
@@ -101,8 +101,7 @@ cd VEGETA-BOT-MB && nano config.js
 
 > 🗣️ Vegeta: "No cualquiera puede portar este poder… pero si logras configurarlo, serás un verdadero Saiyajin."
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
-
+https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg
 🎆 Modo Saiyajin 24/7 en Termux
 
 ```bash
@@ -123,7 +122,7 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 © Powered By Team BrayanOFC ⚡︎ – Orgullo Saiyajin
 
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
 
 </details>
 
