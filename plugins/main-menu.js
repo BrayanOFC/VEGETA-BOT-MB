@@ -76,10 +76,9 @@ const buttons = [
 ]
 
 let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
-
 let media = await prepareWAMessageMedia({ image: imgBuffer }, { upload: conn.waUploadToServer })
 
-let msg = generateWAMessageFromContent(m.chat, {
+await conn.sendMessage(m.chat, {
   templateMessage: {
     hydratedTemplate: {
       imageMessage: media.imageMessage,
@@ -88,16 +87,9 @@ let msg = generateWAMessageFromContent(m.chat, {
       hydratedButtons: buttons
     }
   }
-}, { userJid: m.sender, quoted: m, contextInfo: {
-    isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363394965381607@newsletter',
-      newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-      serverMessageId: 100
-    }
-} })
+}, { quoted: m })
 
-await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+//await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
