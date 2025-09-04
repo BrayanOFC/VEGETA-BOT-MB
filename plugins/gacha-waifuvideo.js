@@ -61,7 +61,7 @@ let handler = async (m, { conn, command, args }) => {
 }
 
 handler.help = ['wvideo <nombre del personaje>']
-handler.tags = ['anime']
+handler.tags = ['gacha]
 handler.command = ['charvideo', 'wvideo', 'waifuvideo']
 handler.group = true
 
