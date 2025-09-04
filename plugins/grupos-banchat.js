@@ -6,7 +6,7 @@ conn.reply(m.chat, `👑 *ᴇsᴛᴇ ᴄʜᴀᴛ ғᴜᴇ ʙᴀɴᴇᴀᴅᴏ �
 }
 handler.help = ['banchat']
 handler.tags = ['grupo']
-handler.command = ['banchat','offbot']
+handler.command = ['banchat']
 
 handler.botuser = true
 handler.admin = true 
