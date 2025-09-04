@@ -6,7 +6,7 @@ const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊�
 let tags = {
   'serbot': 'SUB BOTS',
   'main': 'ZENO INFO',
-  'owner': 'DIOS CREADOR',
+  /*'owner': 'DIOS CREADOR',
   'nable': 'MODO SAIYAJIN',
   'cmd': 'ESFERAS',
   'advanced': 'TÉCNICAS',
@@ -35,7 +35,7 @@ let tags = {
   'productivity': 'MAQUINARIA Z',
   'social': 'REDES Z',
   'security': 'BARRERA',
-  'custom': 'AURA PERSONAL'
+  'custom': 'AURA PERSONAL'*/
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
