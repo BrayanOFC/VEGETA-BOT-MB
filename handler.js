@@ -372,7 +372,7 @@ continue
 /*if (plugin.register == true && _user.registered == false) { 
 fail('unreg', m, this)
 continue
-}*/
+}*
 m.isCommand = true
 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 10
 m.exp += xp
