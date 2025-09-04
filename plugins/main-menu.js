@@ -1,7 +1,8 @@
 //creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
+import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
+import fetch from 'node-fetch'
 
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 let tags = {
@@ -49,24 +50,18 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let totalreg = Object.keys(global.db.data.users).length
     let uptime = clockString(process.uptime() * 1000)
 
-    const users = [...new Set(
-      (global.conns || []).filter(conn =>
-        conn.user && conn.ws?.socket?.readyState !== ws.CLOSED
-      )
-    )]
-
     if (!user) {
       global.db.data.users[userId] = { exp: 0, level: 1 }
       user = global.db.data.users[userId]
     }
 
-    let { exp, level } = user
+    let { level } = user
     let { min, xp, max } = xpRange(level, global.multiplier || 1)
-    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => ({
-      help: Array.isArray(plugin.help) ? plugin.help : (plugin.help ? [plugin.help] : []),
-      tags: Array.isArray(plugin.tags) ? plugin.tags : (plugin.tags ? [plugin.tags] : []),
-      limit: plugin.limit,
-      premium: plugin.premium,
+    let help = Object.values(global.plugins).filter(p => !p.disabled).map(p => ({
+      help: Array.isArray(p.help) ? p.help : (p.help ? [p.help] : []),
+      tags: Array.isArray(p.tags) ? p.tags : (p.tags ? [p.tags] : []),
+      limit: p.limit,
+      premium: p.premium,
     }))
 
     let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
@@ -79,35 +74,26 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ┃ 📊 Registro Z     : ${totalreg}
 ┃ ⏱️ Tiempo Activo  : ${uptime}
 ┃ 🛠️ Comandos Totales: ${totalCommands}
-┃ 🌀 Sub Bots Activos: ${users.length}
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
-
-💥 *⚔️ SECCIONES DEL TORNEO DEL PODER ⚔️* 💥
-${Object.keys(tags).map(tag => {
-  const commandsForTag = help.filter(menu => menu.tags.includes(tag))
-  if (commandsForTag.length === 0) return ''
-  let section = `
-╭───〔 ${tags[tag]} ${getRandomEmoji()} 〕───╮
-${commandsForTag.map(menu => menu.help.map(help =>
-  `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
-).join('\n')).join('\n')}
-╰━━━━━━━━━━━━━━━━━━━━╯`
-  return section
-}).filter(text => text !== '').join('\n')}
 
 🔥 *By BrayanOFC* 🔥
 `.trim()
 
     await m.react('🐉')
 
+    // 🔥 preparamos la imagen como buffer
+    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let media = await prepareWAMessageMedia(
+      { image: imgBuffer }, 
+      { upload: conn.waUploadToServer }
+    )
+
     let msg = generateWAMessageFromContent(m.chat, {
       viewOnceMessage: {
         message: {
           imageMessage: {
-            url: 'https://files.catbox.moe/g97gzh.jpg',
+            ...media.imageMessage,
             caption: menuText,
-            mimetype: 'image/jpeg',
-            fileName: 'dragon-menu.jpg',
             contextInfo: {
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
@@ -125,7 +111,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
-    throw e
+    console.error(e)
   }
 }
 
@@ -141,9 +127,4 @@ function clockString(ms) {
   let m = Math.floor(ms / 60000) % 60
   let s = Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-}
-
-function getRandomEmoji() {
-  const emojis = ['🐉', '🎆']
-  return emojis[Math.floor(Math.random() * emojis.length)]
 }
