@@ -1,3 +1,5 @@
+<hr style="height:4px; border:none; background:#00cc66;" />
+
 <h1 align="center">💨 𝑽𝑬𝑮𝑬𝑻𝑨-𝑩𝑶𝑻-𝑴𝑩 💨</h1>
 <p align="center">🐉 ¡El Orgullo Saiyajin convertido en Bot de WhatsApp!</p>
 
