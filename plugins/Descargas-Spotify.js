@@ -83,7 +83,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 };
 
 handler.help = ['spotify'];
-handler.tags = ['downloader'];
+handler.tags = ['descargas'];
 handler.command = /^(spotify|music)$/i;
 handler.register = true;
 handler.limit = 1;
