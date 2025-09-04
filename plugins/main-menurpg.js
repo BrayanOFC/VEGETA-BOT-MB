@@ -56,7 +56,7 @@ ${rpgHelp}
 }
 
 handler.help = ['menurpg']
-handler.tags = ['rpg']
+handler.tags = ['main']
 handler.command = ['menurpg', 'menurpgs']
 handler.register = true
 
