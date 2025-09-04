@@ -9,8 +9,8 @@ let menu = `
 ┃ 🔹 ${usedPrefix}banuser <@user>
 ┃ 🔹 ${usedPrefix}unbanuser <@user>
 ┃ 🔹 ${usedPrefix}dsowner
-┃ 🔹 ${usedPrefix}
-┃ 🔹 ${usedPrefix}$ <código>
+┃ 🔹 ${usedPrefix}=>
+┃ 🔹 ${usedPrefix}$ 
 ┃ 🔹 ${usedPrefix}join <link de grupo>
 ┃ 🔹 ${usedPrefix}resetprefix
 ┃ 🔹 ${usedPrefix}restart
@@ -28,7 +28,7 @@ contextInfo: {
   externalAdReply: {
     title: '👑 Menú Owner',
     body: 'Comandos solo para el creador',
-    thumbnailUrl: 'https://i.ibb.co/mcXrs8T/owner.jpg', // cámbiala por tu logo/foto
+    thumbnailUrl: 'https://i.ibb.co/mcXrs8T/owner.jpg',
     sourceUrl: 'https://github.com/BrayanOFC',
     mediaType: 1,
     renderLargerThumbnail: true
@@ -39,6 +39,5 @@ contextInfo: {
 handler.help = ['menuowner'];
 handler.tags = ['menu'];
 handler.command = /^menuowner$/i;
-handler.rowner = true; // 🔒 Solo owner
-
+handler.rowner = true; 
 export default handler;
