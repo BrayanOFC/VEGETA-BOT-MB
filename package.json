@@ -1,35 +1,35 @@
 {
-  "name": "VEGETA-BOT-MB",
-  "version": "2.13.2",
-  "description": "WhatsApp Bot Multi Device",
-  "main": "index.js",
-  "type": "module",
-  "directories": {
-    "lib": "lib",
-    "src": "src",
-    "plugins": "plugins"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "qr": "node index.js qr",
-    "code": "node index.js code",
-    "test": "node test.js",
-    "dev": "nodemon index.js",
-    "eslint": "eslint .",
-    "eslintfix": "eslint --fix ."
-  },
-  "homepage": "https://github.com/BrayanOFC/VEGETA-BOT-MB",
-  "author": "BrayanOFC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BrayanOFC/VEGETA-BOT-MB.git"
-  },
-  "bugs": {
-    "url": "https://github.com/BrayanOFC/VEGETA-BOT-MB/issues"
-  },
-  "license": "GPL-3.0-or-later",
+"name": "Black-clover-MD",
+"version": "7.7.7",
+"description": "El Mejor bot de WhatsApp",
+"main": "index.js",
+"type": "module",
+"directories": {
+"lib": "lib",
+"src": "src",
+"plugins": "plugins"
+},
+"scripts": {
+"start": "node index.js",
+"qr": "node index.js qr",
+"code": "node index.js code",
+"eslint": "eslint .",
+"eslintfix": "eslint --fix ."
+},
+"homepage": "https://github.com/BrayanOFC/VEGETA-BOT-MB",
+"author": {
+"name": "BrayanOFC"
+},
+"repository": {
+"type": "git",
+"url": "git+https://github.com/BrayanOFC/VEGETA-BOT-MB.git"
+},
+"bugs": {
+"url": "https://github.com/BrayanOFC/VEGETA-BOT-MB/issues"
+},
+"license": "GPL-3.0-or-later",
 "dependencies": {
-"@whiskeysockets/baileys": "github:nstar-y/bail",
+"@whiskeysockets/baileys": "github:EdderBot02/bail",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@bochilteam/scraper-sosmed": "^1.0.5",
