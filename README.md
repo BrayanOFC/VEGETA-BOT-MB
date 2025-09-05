@@ -112,7 +112,7 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 <details>
 
 
-
+</details>
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
 
 #### ☁️ Instalar desde Cloud Shell
