@@ -26,7 +26,7 @@ var handler = async (m, { conn }) => {
     ];
     let trabajo = trabajos[Math.floor(Math.random() * trabajos.length)];
 
-    conn.reply(m.chat, `👷 ¡Has trabajado como *${trabajo}*!\n💸 Ganaste: *${monedas}* monedas\n> ✐ Ahora tienes: *${user.coin}* monedas.`, m);
+    conn.reply(m.chat, `👷 ¡Has trabajado como *${trabajo}*!\n💸 Ganaste: *${moneda}* monedas\n> ✐ Ahora tienes: *${user.coin}* monedas.`, m);
 }
 
 handler.help = ['trabajar'];
