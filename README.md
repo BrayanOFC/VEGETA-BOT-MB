@@ -101,7 +101,7 @@ cd VEGETA-BOT-MB && nano config.js
 
 > 🗣️ Vegeta: "No cualquiera puede portar este poder… pero si logras configurarlo, serás un verdadero Saiyajin."
 
-https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg)
 🎆 Modo Saiyajin 24/7 en Termux
 
 ```bash
