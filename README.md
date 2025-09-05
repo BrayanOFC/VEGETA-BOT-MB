@@ -116,7 +116,7 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 
 #### ☁️ Instalar desde Cloud Shell
 
-</details>
+<details>
  <summary><b> ⚡️ Ver comandos para Cloud Shell 🐉</b></summary>
 
 ```bash
