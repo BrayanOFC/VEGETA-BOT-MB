@@ -39,7 +39,6 @@ var handler = async (m, { conn, isPrems }) => {
 handler.help = ['daily', 'claim']
 handler.tags = ['rpg']
 handler.command = ['daily', 'claim']
-handler.register = true
 
 export default handler
 
