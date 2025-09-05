@@ -3,7 +3,7 @@
 
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-neon.jpg)
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=0033FF&center=true&vCenter=true&width=600&lines=Bienvenido+Usuario;BLACK-CLOVER-MD+💥;Creado+por+The+Carlos👑;El+Poder+Black+Clover+en+tus+manos;¡Black+Clover+El+Mejor+Bot!)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=0033FF&center=true&vCenter=true&width=600&lines=Bienvenido+Guerrero+Z;VEGETA-BOT-MB+🔥;Creado+desde+0+por+BrayanOFC;El+Orgullo+Saiyajin+en+tu+mano;¡Supera+a+Kakaroto!)](https://git.io/typing-svg)
 
 ![VEGETA](https://qu.ax/ijJBG.png)
 
