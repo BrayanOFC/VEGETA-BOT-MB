@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# Código creado por @gata_dios - Modificado por BrayanOFC
+# Código creado por gata Dios -Modificado por BrayanOFC
 
 # Comandos sugeridos en caso de fallo
 COMANDOS="pkg install git -y\npkg install nodejs -y\npkg install ffmpeg -y\npkg install imagemagick -y\npkg install -y yarn\ngit clone https://github.com/BrayanOFC/VEGETA-BOT-MB\ncd VEGETA-BOT-MB\nyarn install\nnpm install\nnpm start"
