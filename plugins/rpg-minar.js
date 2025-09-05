@@ -63,7 +63,6 @@ ${mensajeExtra}
 handler.help = ['minar']
 handler.tags = ['rpg']
 handler.command = ['minar']
-handler.register = true
 export default handler
 
 function pickRandom(list) {
