@@ -1,8 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# Código creado por @gata_dios - Modificado por the Carlos 
+# Código creado por @gata_dios - Modificado por BrayanOFC
 
 # Comandos sugeridos en caso de fallo
-COMANDOS="pkg install git -y\npkg install nodejs -y\npkg install ffmpeg -y\npkg install imagemagick -y\npkg install -y yarn\ngit clone https://github.com/thecarlos19/black-clover-MD\ncd black-clover-MD\nyarn install\nnpm install\nnpm start"
+COMANDOS="pkg install git -y\npkg install nodejs -y\npkg install ffmpeg -y\npkg install imagemagick -y\npkg install -y yarn\ngit clone https://github.com/BrayanOFC/VEGETA-BOT-MB\ncd VEGETA-BOT-MB\nyarn install\nnpm install\nnpm start"
 
 # Verifica conexión a internet
 ping -c 1 google.com &>/dev/null
@@ -11,24 +11,19 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Arte inicial
 echo -e "\e[35m
-_░▒███████
-░██▓▒░░▒▓██
-██▓▒░__░▒▓██___██████
-██▓▒░____░▓███▓__░▒▓██
-██▓▒░___░▓██▓_____░▒▓██
-██▓▒░_______________░▒▓██
-_██▓▒░______________░▒▓██
-__██▓▒░____________░▒▓██
-___██▓▒░__________░▒▓██
-____██▓▒░________░▒▓██
-_____██▓▒░_____░▒▓██
-______██▓▒░__░▒▓██
-_______█▓▒░░▒▓██
-_________░▒▓██
-_______░▒▓██
-_____░▒▓██\n\e[0m"
+⠀⠀⠀⠀⠀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣴⣿⣿⣿⣿⣷⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣼⣿⣿⠟⠋⠉⠙⠻⣿⣧⠀⠀⠀⢀⣤⡄⠀⠀⠀⠀
+⠀⢸⣿⣿⡏⠀⣤⣤⣤⣄⠘⣿⣿⠀⢰⣿⣿⡇⠀⠀⠀⠀
+⠀⣿⣿⣿⡇⠀⣿⣿⣿⣿⠀⢸⣿⠀⢸⣿⣿⡇⠀⠀⠀⠀
+⠀⠹⣿⣿⡇⠀⠈⠉⠉⠁⠀⢸⣿⠀⢸⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠙⢿⣿⣄⠀⠀⠀⠀⣠⣿⠇⠀⢸⣿⣿⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⡿⠋⠀⠀⠘⠿⠿⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    𝑽𝑬𝑮𝑬𝑻𝑨 𝑩𝑶𝑻 𝑴𝑩 ⚡
+   «¡VERGA DE BRAYANOFC!» 😂
+\e[0m"
 
 echo -e "\033[01;93mPreparando instalación...\nPreparing installation...\033[0m"
 echo -e "\033[01;32mInstalando dependencias...\033[0m"
@@ -73,11 +68,11 @@ else
 fi
 
 # Clonar repositorio
-echo -e "\033[1;35mClonando el repositorio de Black Clover-MD...\033[0m"
-git clone https://github.com/thecarlos19/black-clover-MD.git
+echo -e "\033[1;35mClonando el repositorio de VEGETA-BOT-MB...\033[0m"
+git clone https://github.com/BrayanOFC/VEGETA-BOT-MB.git
 echo -e "\033[01;32mClonación completada correctamente.\033[0m"
 
-cd black-clover-MD || { echo "No se pudo entrar al directorio black-clover-MD"; exit 1; }
+cd VEGETA-BOT-MB || { echo "No se pudo entrar al directorio VEGETA-BOT-MB"; exit 1; }
 
 # Instalar dependencias del proyecto
 echo -e "\033[0;34mInstalando dependencias del proyecto con yarn...\033[0m"
@@ -99,25 +94,26 @@ else
   echo -e "\033[01;32mDependencias de npm instaladas correctamente.\033[0m"
 fi
 
-# Mensaje final
+# Mensaje final estilo Vegeta
 clear
 echo -e "\e[36m
 ┏━━━━━━━━━⪩
-┃˚₊ · ͟͟͞͞➳❥ 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐂𝐈𝐎́𝐍
-┃⏤͟͟͞͞ Black Clover - MD
+┃  🔥  𝐈𝐍𝐅𝐎 𝐃𝐄 𝐈𝐍𝐒𝐓𝐀𝐋𝐀𝐂𝐈𝐎́𝐍
+┃⏤͟͟͞͞ 𝑽𝑬𝑮𝑬𝑻𝑨 - 𝑩𝑶𝑻 - 𝑴𝑩
 ┗━━━━━━━━━⪩
 
-✰ Mode by:
-» the Carlos 
+✰ Creado por:
+» BrayanOFC  
 ✰ Créditos:
-» devdiego 
+» Comunidad Open Source  
 ✰ GitHub:
-» https://github.com/Dev-Diego
-✰ Número del creador del bot:
-» +52 5544876071
+» https://github.com/BrayanOFC
+✰ Inspirado en:
+» Vegeta - Dragon Ball Z ⚡
 
-𝐆 𝐑 𝐀 𝐂 𝐈 𝐀 𝐒, 𝐏 𝐎 𝐑, 𝐏 𝐑 𝐄 𝐅 𝐄 𝐑 𝐈 𝐑 𝐍 𝐎 𝐒\n\e[0m"
+「 ¡El orgullo Saiyajin en tu terminal! 」
+\e[0m"
 
 # Inicio
-echo -e "\033[01;32mIniciando Black Clover Bot...\033[0m"
+echo -e "\033[01;32mIniciando VEGETA-BOT-MB...\033[0m"
 npm start
