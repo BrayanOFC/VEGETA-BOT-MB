@@ -101,7 +101,7 @@ cd VEGETA-BOT-MB && nano config.js
 
 > 🗣️ Vegeta: "No cualquiera puede portar este poder… pero si logras configurarlo, serás un verdadero Saiyajin."
 
-https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg)
 🎆 Modo Saiyajin 24/7 en Termux
 
 ```bash
@@ -112,7 +112,7 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 
 
 
-/*![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
+![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
 
 #### ☁️ Instalar desde Cloud Shell
 
@@ -136,7 +136,7 @@ npm start
 ```
 
 ✅ ¡Bot listo para usarse! El mejor bot de WhatsApp 🐉
-</details>*/
+
 
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/logo-neon.gif)
 
