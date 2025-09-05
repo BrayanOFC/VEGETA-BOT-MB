@@ -565,9 +565,6 @@ if (opts['autoread']) await this.readMessages([m.key])
 
 global.dfail = (type, m, usedPrefix, command, conn) => {
 
-/*let edadaleatoria = ['10', '28', '20', '40', '18', '21', '15', '11', '9', '17', '25'].getRandom()
-let user2 = m.pushName || 'Anónimo'
-let verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register'].getRandom()*/
 
 const msg = {
 rowner: '🐉El comando *${comando}* solo puede ser usado por los creadores del bot SAIYAJIN☁️.',
