@@ -46,9 +46,9 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 }
 
-handler.help = ['sixnine/69 @tag'];
+handler.help = ['PeneBrayanOFC/35 @tag'];
 handler.tags = ['nsfw'];
-handler.command = ['sixnine','69'];
+handler.command = ['peneBrayanOFC','35'];
 handler.group = true;
 
 export default handler;
