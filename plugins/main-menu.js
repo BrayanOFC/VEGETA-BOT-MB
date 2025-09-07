@@ -168,6 +168,14 @@ let handler = async (m, { conn, usedPrefix }) => {
     let users = Object.keys(conn.chats)
     let energia = Math.floor(Math.random() * 20000) + 1000
 
+    // Definimos las categorías de comandos
+    let tags = {
+      'serbot': 'SUB BOTS',
+      'main': 'MENU BrayanOFC',
+      'Info': 'ZENO INFO'
+    }
+
+    // MENÚ EN TEXTO PLANO
     let texto = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
@@ -181,7 +189,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
 
-📌 *MENÚ PRINCIPAL*
+📌 *MENÚ PRINCIPAL* (${tags.main})
 
 - 📥 Descargas: Música, videos, tiktoks y más → ${usedPrefix}menudescargas
 - 🎮 Juegos: Minijuegos y entretenimiento → ${usedPrefix}menugame
@@ -190,7 +198,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 - 🔞 NSFW: Contenido +18 → ${usedPrefix}menunsfw
 - 🗡️ RPG: Sistema de aventura y gacha → ${usedPrefix}menurpg
 
-📝 *Otros comandos:*
+📝 *Otros comandos* (${tags.Info}):
 - ${usedPrefix}ping - Verifica que el bot está activo
 - ${usedPrefix}estado - Estado del bot
 - ${usedPrefix}sc - Créditos del bot
