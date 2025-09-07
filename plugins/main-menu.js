@@ -73,17 +73,19 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
 
     let menuText = `
-╭━━━『🐉 ${botname.toUpperCase()} | DRAGON MENU』━━━╮
-┃ ⚡ Usuario Saiyajin: ${name}
-┃ 👑 Rango          : ${rango}
-┃ 🌌 Universo       : ${mode}
-┃ 📊 Registro Z     : ${totalreg}
-┃ ⏱️ Tiempo Activo  : ${uptime}
-┃ 🛠️ Comandos Totales: ${totalCommands}
-┃ 🌀 Sub Bots Activos: ${users.length}
-╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
+║ 🐉 Unidad: ${botname.toUpperCase()}
+║ 👤 Operativo: ${name}
+║ 🏅 Clase de Guerrero: ${rango}
+║ 🌌 Sector Galáctico: ${mode}
+║ 🔥 Nivel de Energía: ${energia}
+║ 📂 Registros en Archivo: ${totalreg}
+║ ⏱️ Tiempo de Operación: ${uptime}
+║ 🛠️ Protocolos Disponibles: ${totalCommands}
+║ 🛰️ Drones Activos: ${users.length}
+╚════════════════════════════════════╝
 
-💥 *⚔️ SECCIONES DE MENUS⚔️* 💥
+💥 *╔═⚔️ SECCIONES DE MENUS⚔️* 💥
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
