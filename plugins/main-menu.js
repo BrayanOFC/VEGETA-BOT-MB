@@ -156,8 +156,6 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
-import fetch from 'node-fetch'
-
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let name = conn.getName(m.sender)
@@ -170,7 +168,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let users = Object.keys(conn.chats)
     let energia = Math.floor(Math.random() * 20000) + 1000
 
-    let info = `
+    let header = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
 ║ 👤 Operativo: ${name}
@@ -182,39 +180,35 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 🛠️ Protocolos Disponibles: ${totalCommands}
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
+`.trim()
 
-📌 *MENÚ PRINCIPAL*
-Estos son los accesos a las categorías:
-
-📥 *Descargas* → música, videos, tiktoks, etc.  
-🎮 *Juegos* → minijuegos y entretenimiento.  
-👥 *Grupos* → herramientas de administración.  
-👑 *Owner* → comandos exclusivos del creador.  
-🔞 *NSFW* → contenido +18.  
-🗡️ *RPG* → sistema de aventura y gacha.  
-🎭 *Otros* → comandos generales y utilidades.
-`
-
-    let templateButtons = [
-      { index: 1, quickReplyButton: { displayText: "📥 Descargas", id: `${_p}menudescargas` } },
-      { index: 2, quickReplyButton: { displayText: "🎮 Juegos", id: `${_p}menugame` } },
-      { index: 3, quickReplyButton: { displayText: "👥 Grupos", id: `${_p}menugrupos` } },
-      { index: 4, quickReplyButton: { displayText: "👑 Owner", id: `${_p}menuowner` } },
-      { index: 5, quickReplyButton: { displayText: "🔞 NSFW", id: `${_p}menunsfw` } },
-      { index: 6, quickReplyButton: { displayText: "🗡️ RPG", id: `${_p}menurpg` } },
-      { index: 7, quickReplyButton: { displayText: "🎭 Otros", id: `${_p}menuotros` } }
+    const sections = [
+      {
+        title: "📌 MENÚ PRINCIPAL",
+        rows: [
+          { title: "📥 Descargas", description: "Música, videos, tiktoks y más", rowId: `${_p}menudescargas` },
+          { title: "🎮 Juegos", description: "Minijuegos y entretenimiento", rowId: `${_p}menugame` },
+          { title: "👥 Grupos", description: "Herramientas de administración", rowId: `${_p}menugrupos` },
+          { title: "👑 Owner", description: "Comandos exclusivos del creador", rowId: `${_p}menuowner` },
+          { title: "🔞 NSFW", description: "Contenido +18", rowId: `${_p}menunsfw` },
+          { title: "🗡️ RPG", description: "Sistema de aventura y gacha", rowId: `${_p}menurpg` },
+          { title: "🎭 Otros", description: "Comandos generales y utilidades", rowId: `${_p}menuotros` }
+        ]
+      }
     ]
 
-    let buttonMessage = {
-      text: info,
-      footer: "✨ BrayanOFC 👻",
-      templateButtons: templateButtons
+    const listMessage = {
+      text: header,
+      footer: "✨ BrayanOFC - Bot 👻",
+      title: "🌌 Selecciona una categoría:",
+      buttonText: "📂 Abrir Menú",
+      sections
     }
 
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
+    await conn.sendMessage(m.chat, listMessage, { quoted: m })
   } catch (e) {
     console.error(e)
-    await m.reply("❌ Error al mostrar el menú principal (revísalo en consola)")
+    await m.reply("❌ Error al mostrar el menú principal (ver consola)")
   }
 }
 
