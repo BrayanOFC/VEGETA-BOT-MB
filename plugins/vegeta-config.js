@@ -270,6 +270,6 @@ ${usedPrefix + command} antiprivado`;
 
 handler.help = ['enable', 'disable'].map(cmd => `${cmd} <opción>`);
 handler.tags = ['info'];
-handler.command = ['enable', 'disable', 'on', 'off'];
+handler.command = ['config','enable', 'disable', 'on', 'off'];
 
 export default handler;
