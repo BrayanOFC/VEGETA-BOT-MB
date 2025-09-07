@@ -155,7 +155,7 @@ function getRandomEmoji() {
 }*/
 
 
-// creado y editado por BrayanOFC 👑
+ // creado y editado por BrayanOFC 👑
 let handler = async (m, { conn, usedPrefix }) => {
   try {
     let name = conn.getName(m.sender)
@@ -168,14 +168,36 @@ let handler = async (m, { conn, usedPrefix }) => {
     let users = Object.keys(conn.chats)
     let energia = Math.floor(Math.random() * 20000) + 1000
 
-    // Definimos las categorías de comandos
+    // Definimos tags
     let tags = {
       'serbot': 'SUB BOTS',
       'main': 'MENU BrayanOFC',
       'Info': 'ZENO INFO'
     }
 
-    // MENÚ EN TEXTO PLANO
+    // Comandos por categoría
+    let comandos = {
+      main: [
+        { nombre: 'menudescargas', desc: 'Música, videos, tiktoks y más' },
+        { nombre: 'menugame', desc: 'Minijuegos y entretenimiento' },
+        { nombre: 'menugrupos', desc: 'Herramientas de administración' },
+        { nombre: 'menuowner', desc: 'Comandos exclusivos del creador' },
+        { nombre: 'menunsfw', desc: 'Contenido +18' },
+        { nombre: 'menurpg', desc: 'Sistema de aventura y gacha' }
+      ],
+      Info: [
+        { nombre: 'ping', desc: 'Verifica que el bot está activo' },
+        { nombre: 'estado', desc: 'Estado del bot' },
+        { nombre: 'lid', desc: 'Créditos del bot' },
+        { nombre: 'info', desc: 'Información general' }
+      ],
+      serbot: [
+        { nombre: 'serbot', desc: 'hacerte subbot por codigo de 8 dígitos' },
+        { nombre: 'qr', desc: 'hacerte subbot por codigo QR' },
+      ]
+    }
+
+    // Generamos el texto del menú
     let texto = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
@@ -188,22 +210,20 @@ let handler = async (m, { conn, usedPrefix }) => {
 ║ 🛠️ Protocolos Disponibles: ${totalCommands}
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
-
-📌 *MENÚ PRINCIPAL* (${tags.main})
-
-- 📥 Descargas: Música, videos, tiktoks y más → ${usedPrefix}menudescargas
-- 🎮 Juegos: Minijuegos y entretenimiento → ${usedPrefix}menugame
-- 👥 Grupos: Herramientas de administración → ${usedPrefix}menugrupos
-- 👑 Owner: Comandos exclusivos del creador → ${usedPrefix}menuowner
-- 🔞 NSFW: Contenido +18 → ${usedPrefix}menunsfw
-- 🗡️ RPG: Sistema de aventura y gacha → ${usedPrefix}menurpg
-
-📝 *Otros comandos* (${tags.Info}):
-- ${usedPrefix}ping - Verifica que el bot está activo
-- ${usedPrefix}estado - Estado del bot
-- ${usedPrefix}sc - Créditos del bot
-- ${usedPrefix}info - Información general
 `
+
+    // Agregamos cada categoría al texto
+    for (let tag in tags) {
+      let nombreTag = tags[tag]
+      texto += `\n📌 *${nombreTag}*\n`
+      if (comandos[tag] && comandos[tag].length) {
+        comandos[tag].forEach(cmd => {
+          texto += `- ${usedPrefix}${cmd.nombre} → ${cmd.desc}\n`
+        })
+      } else {
+        texto += '- No hay comandos disponibles\n'
+      }
+    }
 
     // Enviamos la imagen con el texto
     let img = { url: 'https://files.catbox.moe/o0eko2.jpg' }
