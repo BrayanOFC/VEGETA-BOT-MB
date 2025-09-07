@@ -49,7 +49,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 👤 Operativo: ${name}
 ║ 🏅 Clase de Guerrero: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
-║ 🔥 Nivel de Energía: ${nivel}
 ║ 📂 Registros en Archivo: ${totalreg}
 ║ ⏱️ Tiempo de Operación: ${uptime}
 ║ 🛠️ Protocolos Disponibles: ${totalCommands}
