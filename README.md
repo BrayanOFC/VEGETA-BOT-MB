@@ -58,7 +58,7 @@
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-verde.jpg)
 </details>
 
-### 💻 Instalar por Termux
+### 👑 Instalacion para Termux
 
 <details>
  <summary><b> 🪄 Click aca Saiyajin🐉</b></summary>
