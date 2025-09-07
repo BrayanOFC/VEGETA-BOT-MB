@@ -155,40 +155,42 @@ function getRandomEmoji() {
 }*/
 
 
-// creado y editado por BrayanOFC 👑
-let handler = async (m, { conn, usedPrefix: _p }) => {
+// // creado y editado por BrayanOFC 👑
+let handler = async (m, { conn }) => {
   try {
     let name = conn.getName(m.sender)
+    let botname = "VEGETA-BOT-MB"
+
+    // Comandos principales y sus descripciones
+    let menusPrincipales = `
+📂 *Categorías principales:*
+- 📥 Descargas: Música, videos, tiktoks y más
+- 🎮 Juegos: Minijuegos y entretenimiento
+- 👥 Grupos: Herramientas de administración
+- 👑 Owner: Comandos exclusivos del creador
+- 🔞 NSFW: Contenido +18
+- 🗡️ RPG: Sistema de aventura y gacha
+`
+
+    // Comandos menos usados
+    let otrosComandos = `
+📝 *Otros comandos:*
+- /ping - Verifica que el bot está activo
+- /estado - Estado del bot
+- /sc - Créditos del bot
+- /info - Información general
+`
 
     let texto = `
 👋 Hola ${name}
+Bienvenido al *menú principal* de ${botname}.
 
-📌 *MENÚ PRINCIPAL*
-Elige una categoría para ver los comandos disponibles:
+${menusPrincipales}
+
+${otrosComandos}
 `
 
-        const botonns = [
-      {
-          { title: "📥 Descargas", description: "Música, videos, tiktoks y más", rowId: `${_p}menudescargas` },
-          { title: "🎮 Juegos", description: "Minijuegos y entretenimiento", rowId: `${_p}menugame` },
-          { title: "👥 Grupos", description: "Herramientas de administración", rowId: `${_p}menugrupos` },
-          { title: "👑 Owner", description: "Comandos exclusivos del creador", rowId: `${_p}menuowner` },
-          { title: "🔞 NSFW", description: "Contenido +18", rowId: `${_p}menunsfw` },
-          { title: "🗡️ RPG", description: "Sistema de aventura y gacha", rowId: `${_p}menurpg` },
-         
-        ]
-      }
-    ]
-
-    const listMessage = {
-      text: header,
-      footer: "✨ BrayanOFC 👻",
-      title: "🌌 Selecciona una categoría:",
-      buttonText: "📂 Abrir Menú",
-      sections
-    }
-
-    await conn.sendMessage(m.chat, listMessage, { quoted: m })
+    await m.reply(texto)
 
   } catch (e) {
     console.error(e)
@@ -200,4 +202,4 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'inicio']
 
-export default handler
+module.exports = handler
