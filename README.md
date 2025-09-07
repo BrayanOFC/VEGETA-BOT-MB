@@ -16,7 +16,7 @@
 
 [![Dueño](https://img.shields.io/badge/Príncipe-0033FF?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/526641784469)
 [![Soporte](https://img.shields.io/badge/Escuadrón_Z-0033FF?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/526641784469)
-[![YouTube](https://img.shields.io/badge/canal YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@BrayanOFC01)
+[![YouTube](https://img.shields.io/badge/canal-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@BrayanOFC01)
 
 </div>
 
