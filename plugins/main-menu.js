@@ -156,32 +156,15 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
-let handler = async (m, { conn, usedPrefix: _p }) => {
-  try {
-    let name = conn.getName(m.sender)
-    let botname = "DragonBot"
-    let rango = "Guerrero Z"
-    let mode = "Universo 7"
-    let totalreg = 128 // ejemplo
-    let uptime = "3h 22m" // ejemplo
-    let totalCommands = 100
-    let users = Object.keys(conn.chats)
-    let energia = Math.floor(Math.random() * 20000) + 1000
+let handler = async (m, { conn }) => {
+  let name = conn.getName(m.sender)
+  let botname = "VEGETA-BOT-MB"
 
-    let header = `
-╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
-║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Operativo: ${name}
-║ 🏅 Clase de Guerrero: ${rango}
-║ 🌌 Sector Galáctico: ${mode}
-║ 🔥 Nivel de Energía: ${energia}
-║ 📂 Registros en Archivo: ${totalreg}
-║ ⏱️ Tiempo de Operación: ${uptime}
-║ 🛠️ Protocolos Disponibles: ${totalCommands}
-║ 🛰️ Drones Activos: ${users.length}
-╚════════════════════════════════════╝
-`.trim()
-
+  let text = `
+🐉 Hola ${name}
+Este es el *menú principal* de ${botname}.
+Si ves este mensaje, el comando funciona ✅
+`
     const sections = [
       {
         title: "📌 MENÚ PRINCIPAL",
