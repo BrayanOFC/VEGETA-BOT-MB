@@ -155,7 +155,7 @@ function getRandomEmoji() {
 }*/
 
 
-// // creado y editado por BrayanOFC 👑
+// creado y editado por BrayanOFC 👑
 let handler = async (m, { conn }) => {
   try {
     let name = conn.getName(m.sender)
