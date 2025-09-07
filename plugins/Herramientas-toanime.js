@@ -153,6 +153,6 @@ let handler = async (m, { conn, command }) => {
 
 handler.help = ['toanime', 'toghibli']
 handler.command = ['toanime', 'toghibli']
-handler.tags = ['ai']
+handler.tags = ['gacha']
 
 export default handler
