@@ -24,7 +24,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     } else if (m.quoted) {
         str = `\`${name2}\` *hizo un 35 con* \`${name || who}\`.`; 
     } else {
-        str = `\`${name2}\` *está haciendo un 69! >.<.*`.trim();
+        str = `\`${name2}\` *está haciendo un 35! >.<.*`.trim();
     }
 
     if (m.isGroup) {
