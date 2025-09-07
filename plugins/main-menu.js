@@ -164,8 +164,8 @@ import { xpRange } from '../lib/levelling.js'
 const botname = global.botname || '❍⏤͟͟͞͞𝙑𝙀𝙂𝙀𝙏𝘼-𝙊𝙁𝘾࿐'
 
 let tags = {
-  'serbot': 'SUB BOTS',
   'main': 'MENU PRINCIPAL',
+  'serbot': 'SUB BOTS',
   'Info': 'ZENO INFO'
 }
 
@@ -194,6 +194,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
     let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO'
 
+    // ------------------- BLOQUE DE INFO REAL -------------------
     let menuText = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
@@ -211,17 +212,17 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ${Object.keys(tags).map(tag => {
       const commandsForTag = help.filter(menu => menu.tags.includes(tag))
       if (!commandsForTag.length) return ''
-      let section = `
+      return `
 ┌───〔 ${tags[tag]} ${getRandomEmoji()} 〕───┐
 ${commandsForTag.map(menu => menu.help.map(help =>
         `│ ☁️ ${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
       ).join('\n')).join('\n')}
 └─────────────────────┘`
-      return section
     }).filter(Boolean).join('\n')}
 
 🔥 *© BrayanOFC* 🔥
 `.trim()
+    // ---------------------------------------------------------
 
     await m.react('🐉')
 
@@ -272,4 +273,4 @@ function clockString(ms) {
 function getRandomEmoji() {
   const emojis = ['🐉', '🎆', '⚡', '🔥', '🌌', '💥']
   return emojis[Math.floor(Math.random() * emojis.length)]
-} 
+}
