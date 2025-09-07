@@ -160,11 +160,30 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let name = conn.getName(m.sender)
     let botname = "VEGETA-BOT-MB"
+    let rango = "Guerrero Z"
+    let mode = "Universo 7"
+    let totalreg = 128
+    let uptime = "3h 22m"
+    let totalCommands = 100
+    let users = Object.keys(conn.chats)
+    let energia = Math.floor(Math.random() * 20000) + 1000
+
+    // Encabezado estilo GALACTIC MISSION REPORT
     let header = `
-🐉 Hola ${name}
-Bienvenido al *menú principal* de ${botname}.
+╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
+║ 🐉 Unidad: ${botname.toUpperCase()}
+║ 👤 Operativo: ${name}
+║ 🏅 Clase de Guerrero: ${rango}
+║ 🌌 Sector Galáctico: ${mode}
+║ 🔥 Nivel de Energía: ${energia}
+║ 📂 Registros en Archivo: ${totalreg}
+║ ⏱️ Tiempo de Operación: ${uptime}
+║ 🛠️ Protocolos Disponibles: ${totalCommands}
+║ 🛰️ Drones Activos: ${users.length}
+╚════════════════════════════════════╝
 `
 
+    // List message con todos los menús
     const sections = [
       {
         title: "📌 MENÚ PRINCIPAL",
@@ -182,7 +201,7 @@ Bienvenido al *menú principal* de ${botname}.
 
     const listMessage = {
       text: header,
-      footer: "✨ BrayanOFC - 👻",
+      footer: "✨ BrayanOFC - Bot 👻",
       title: "🌌 Selecciona una categoría:",
       buttonText: "📂 Abrir Menú",
       sections
@@ -200,4 +219,4 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'inicio']
 
-export default handler
+module.exports = handler
