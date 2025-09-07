@@ -190,10 +190,10 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       footer: "✨ BrayanOFC - Bot 👻",
       title: "📌 MENÚ PRINCIPAL",
       buttonText: "📂 Seleccionar",
-      sections: sections
+      sections
     }
 
-    await conn.sendMessage(m.chat, listMessage, { quoted: m })
+    await conn.sendMessage(m.chat, { listMessage }, { quoted: m })
   } catch (e) {
     console.error(e)
     await m.reply("❌ Error al mostrar el menú")
