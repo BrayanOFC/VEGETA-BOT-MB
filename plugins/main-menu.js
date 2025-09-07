@@ -156,44 +156,33 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
-import fetch from 'node-fetch'
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys'
-
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let name = conn.getName(m.sender)
 
-    const sections = [
-      {
-        title: "📂 MENÚS PRINCIPALES",
-        rows: [
-          { title: "📥 Menú Descargas", rowId: `${_p}menudescargas` },
-          { title: "🎮 Menú Juegos", rowId: `${_p}menugame` },
-          { title: "👥 Menú Grupos", rowId: `${_p}menugrupos` },
-          { title: "🔞 Menú NSFW", rowId: `${_p}menunsfw` },
-          { title: "👑 Menú Owner", rowId: `${_p}menuowner` }
-        ]
-      },
-      {
-        title: "⚡ OTROS COMANDOS",
-        rows: [
-          { title: "🏓 Ping", rowId: `${_p}ping` },
-          { title: "📊 Estado", rowId: `${_p}estado` },
-          { title: "💻 GitHub", rowId: `${_p}sc` },
-          { title: "🎨 Logo", rowId: `${_p}logo` }
-        ]
-      }
+    let texto = `
+👋 Hola ${name}
+
+📌 *MENÚ PRINCIPAL*
+Elige una categoría para ver los comandos disponibles:
+`
+
+    const buttons = [
+      { buttonId: `${_p}menudescargas`, buttonText: { displayText: "📥 Descargas" }, type: 1 },
+      { buttonId: `${_p}menugame`, buttonText: { displayText: "🎮 Juegos" }, type: 1 },
+      { buttonId: `${_p}menugrupos`, buttonText: { displayText: "👥 Grupos" }, type: 1 },
+      { buttonId: `${_p}menunsfw`, buttonText: { displayText: "🔞 NSFW" }, type: 1 },
+      { buttonId: `${_p}menuowner`, buttonText: { displayText: "👑 Owner" }, type: 1 }
     ]
 
-    const listMessage = {
-      text: `👋 Hola ${name}\n\nElige una categoría para ver los comandos disponibles.`,
+    const buttonMessage = {
+      text: texto,
       footer: "✨ BrayanOFC - Bot 👻",
-      title: "📌 MENÚ PRINCIPAL",
-      buttonText: "📂 Seleccionar",
-      sections
+      buttons: buttons,
+      headerType: 2
     }
 
-    await conn.sendMessage(m.chat, { listMessage }, { quoted: m })
+    await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
   } catch (e) {
     console.error(e)
     await m.reply("❌ Error al mostrar el menú")
