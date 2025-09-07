@@ -58,7 +58,7 @@
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-verde.jpg)
 </details>
 
-[![Termux](https://img.shields.io/badge/Instalacion-En%20Termux-000000?style=for-the-badge&logo=android&logoColor=white)](https://f-droid.org/es/packages/com.termux/)
+### 💻 Instalar por Termux
 
 <details>
  <summary><b> 🪄 Click aca Saiyajin🐉</b></summary>
