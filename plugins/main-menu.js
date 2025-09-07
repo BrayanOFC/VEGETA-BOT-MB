@@ -156,27 +156,57 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
+import fetch from 'node-fetch'
+
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let name = conn.getName(m.sender)
+    let botname = "DragonBot"
+    let rango = "Guerrero Z"
+    let mode = "Universo 7"
+    let totalreg = 128 // ejemplo
+    let uptime = "3h 22m" // ejemplo
+    let totalCommands = 100
+    let users = conn.chats.all()
+    let energia = Math.floor(Math.random() * 20000) + 1000
 
-    let texto = `
-👋 Hola ${name}
+    let info = `
+╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
+║ 🐉 Unidad: ${botname.toUpperCase()}
+║ 👤 Operativo: ${name}
+║ 🏅 Clase de Guerrero: ${rango}
+║ 🌌 Sector Galáctico: ${mode}
+║ 🔥 Nivel de Energía: ${energia}
+║ 📂 Registros en Archivo: ${totalreg}
+║ ⏱️ Tiempo de Operación: ${uptime}
+║ 🛠️ Protocolos Disponibles: ${totalCommands}
+║ 🛰️ Drones Activos: ${users.length}
+╚════════════════════════════════════╝
 
 📌 *MENÚ PRINCIPAL*
-Elige una categoría para ver los comandos disponibles:
+Estos son los accesos a las categorías:
+
+📥 *Descargas* → música, videos, tiktoks, etc.  
+🎮 *Juegos* → minijuegos y entretenimiento.  
+👥 *Grupos* → herramientas de administración.  
+👑 *Owner* → comandos exclusivos del creador.  
+🔞 *NSFW* → contenido +18.  
+🗡️ *RPG* → sistema de aventura y gacha.  
+🎭 *Otros* → comandos generales y utilidades.
 `
 
     const buttons = [
       { buttonId: `${_p}menudescargas`, buttonText: { displayText: "📥 Descargas" }, type: 1 },
       { buttonId: `${_p}menugame`, buttonText: { displayText: "🎮 Juegos" }, type: 1 },
       { buttonId: `${_p}menugrupos`, buttonText: { displayText: "👥 Grupos" }, type: 1 },
+      { buttonId: `${_p}menuowner`, buttonText: { displayText: "👑 Owner" }, type: 1 },
       { buttonId: `${_p}menunsfw`, buttonText: { displayText: "🔞 NSFW" }, type: 1 },
-      { buttonId: `${_p}menuowner`, buttonText: { displayText: "👑 Owner" }, type: 1 }
+      { buttonId: `${_p}menurpg`, buttonText: { displayText: "🗡️ RPG" }, type: 1 },
+      { buttonId: `${_p}menuotros`, buttonText: { displayText: "🎭 Otros" }, type: 1 }
     ]
 
     const buttonMessage = {
-      text: texto,
+      text: info,
       footer: "✨ BrayanOFC - Bot 👻",
       buttons: buttons,
       headerType: 2
@@ -185,7 +215,7 @@ Elige una categoría para ver los comandos disponibles:
     await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
   } catch (e) {
     console.error(e)
-    await m.reply("❌ Error al mostrar el menú")
+    await m.reply("❌ Error al mostrar el menú principal")
   }
 }
 
