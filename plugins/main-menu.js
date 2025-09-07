@@ -156,7 +156,7 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
-let handler = async (m, { conn }) => {
+let handler = async (m, { conn, usedPrefix }) => {
   try {
     let name = conn.getName(m.sender)
     let botname = "VEGETA-BOT-MB"
@@ -168,7 +168,6 @@ let handler = async (m, { conn }) => {
     let users = Object.keys(conn.chats)
     let energia = Math.floor(Math.random() * 20000) + 1000
 
-    // MENÚ EN TEXTO PLANO
     let texto = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
@@ -184,21 +183,23 @@ let handler = async (m, { conn }) => {
 
 📌 *MENÚ PRINCIPAL*
 
-- 📥 Descargas: Música, videos, tiktoks y más
-- 🎮 Juegos: Minijuegos y entretenimiento
-- 👥 Grupos: Herramientas de administración
-- 👑 Owner: Comandos exclusivos del creador
-- 🔞 NSFW: Contenido +18
-- 🗡️ RPG: Sistema de aventura y gacha
+- 📥 Descargas: Música, videos, tiktoks y más → ${usedPrefix}menudescargas
+- 🎮 Juegos: Minijuegos y entretenimiento → ${usedPrefix}menugame
+- 👥 Grupos: Herramientas de administración → ${usedPrefix}menugrupos
+- 👑 Owner: Comandos exclusivos del creador → ${usedPrefix}menuowner
+- 🔞 NSFW: Contenido +18 → ${usedPrefix}menunsfw
+- 🗡️ RPG: Sistema de aventura y gacha → ${usedPrefix}menurpg
 
 📝 *Otros comandos:*
-- /ping - Verifica que el bot está activo
-- /estado - Estado del bot
-- /sc - Créditos del bot
-- /info - Información general
+- ${usedPrefix}ping - Verifica que el bot está activo
+- ${usedPrefix}estado - Estado del bot
+- ${usedPrefix}sc - Créditos del bot
+- ${usedPrefix}info - Información general
 `
 
-    await m.reply(texto)
+    // Enviamos la imagen con el texto
+    let img = { url: 'https://files.catbox.moe/o0eko2.jpg' }
+    await conn.sendMessage(m.chat, { image: img, caption: texto }, { quoted: m })
 
   } catch (e) {
     console.error(e)
@@ -210,4 +211,4 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'inicio']
 
-export default handler;
+module.exports = handler
