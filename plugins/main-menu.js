@@ -188,7 +188,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       Info: [
         { nombre: 'ping', desc: 'Verifica que el bot está activo' },
         { nombre: 'estado', desc: 'Estado del bot' },
-        { nombre: 'lid', desc: 'Créditos del bot' },
+        { nombre: 'lid', desc: 'lid de las personas del grupo' },
         { nombre: 'info', desc: 'Información general' }
       ],
       serbot: [
