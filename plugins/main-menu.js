@@ -210,4 +210,4 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'inicio']
 
-module.exports = handler
+export default handler;
