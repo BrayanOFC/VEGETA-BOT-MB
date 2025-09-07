@@ -169,8 +169,6 @@ Elige una categoría para ver los comandos disponibles:
 
         const botonns = [
       {
-        title: "📌 MENÚ PRINCIPAL",
-        rows: [
           { title: "📥 Descargas", description: "Música, videos, tiktoks y más", rowId: `${_p}menudescargas` },
           { title: "🎮 Juegos", description: "Minijuegos y entretenimiento", rowId: `${_p}menugame` },
           { title: "👥 Grupos", description: "Herramientas de administración", rowId: `${_p}menugrupos` },
