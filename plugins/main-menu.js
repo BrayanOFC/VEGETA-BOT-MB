@@ -1,4 +1,4 @@
-//creado y editado por BrayanOFC
+/*creado y editado por BrayanOFC
 import { xpRange } from '../lib/levelling.js'
 import ws from 'ws'
 import { generateWAMessageFromContent, prepareWAMessageMedia } from '@whiskeysockets/baileys'
@@ -152,4 +152,56 @@ function clockString(ms) {
 function getRandomEmoji() {
   const emojis = ['🐉', '🎆', '⚡', '🔥', '🌌', '💥']
   return emojis[Math.floor(Math.random() * emojis.length)]
+}*/
+
+
+// creado y editado por BrayanOFC 👑
+import fetch from 'node-fetch'
+import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys'
+
+let handler = async (m, { conn, usedPrefix: _p }) => {
+  try {
+    let name = conn.getName(m.sender)
+
+    const sections = [
+      {
+        title: "📂 MENÚS PRINCIPALES",
+        rows: [
+          { title: "📥 Menú Descargas", rowId: `${_p}menudescargas` },
+          { title: "🎮 Menú Juegos", rowId: `${_p}menugame` },
+          { title: "👥 Menú Grupos", rowId: `${_p}menugrupos` },
+          { title: "🔞 Menú NSFW", rowId: `${_p}menunsfw` },
+          { title: "👑 Menú Owner", rowId: `${_p}menuowner` }
+        ]
+      },
+      {
+        title: "⚡ OTROS COMANDOS",
+        rows: [
+          { title: "🏓 Ping", rowId: `${_p}ping` },
+          { title: "📊 Estado", rowId: `${_p}estado` },
+          { title: "💻 GitHub", rowId: `${_p}sc` },
+          { title: "🎨 Logo", rowId: `${_p}logo` }
+        ]
+      }
+    ]
+
+    const listMessage = {
+      text: `👋 Hola ${name}\n\nElige una categoría para ver los comandos disponibles.`,
+      footer: "✨ BrayanOFC - Bot 👻",
+      title: "📌 MENÚ PRINCIPAL",
+      buttonText: "📂 Seleccionar",
+      sections
+    }
+
+    await conn.sendMessage(m.chat, listMessage, { quoted: m })
+  } catch (e) {
+    console.error(e)
+    await m.reply("❌ Error al mostrar el menú")
+  }
 }
+
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = ['menu', 'help', 'inicio']
+
+export default handler
