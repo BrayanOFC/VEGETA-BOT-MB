@@ -160,34 +160,42 @@ let handler = async (m, { conn }) => {
   try {
     let name = conn.getName(m.sender)
     let botname = "VEGETA-BOT-MB"
+    let rango = "Guerrero Z"
+    let mode = "Universo 7"
+    let totalreg = 128
+    let uptime = "3h 22m"
+    let totalCommands = 100
+    let users = Object.keys(conn.chats)
+    let energia = Math.floor(Math.random() * 20000) + 1000
 
-    // Comandos principales y sus descripciones
-    let menusPrincipales = `
-📂 *Categorías principales:*
+    // MENÚ EN TEXTO PLANO
+    let texto = `
+╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
+║ 🐉 Unidad: ${botname.toUpperCase()}
+║ 👤 Operativo: ${name}
+║ 🏅 Clase de Guerrero: ${rango}
+║ 🌌 Sector Galáctico: ${mode}
+║ 🔥 Nivel de Energía: ${energia}
+║ 📂 Registros en Archivo: ${totalreg}
+║ ⏱️ Tiempo de Operación: ${uptime}
+║ 🛠️ Protocolos Disponibles: ${totalCommands}
+║ 🛰️ Drones Activos: ${users.length}
+╚════════════════════════════════════╝
+
+📌 *MENÚ PRINCIPAL*
+
 - 📥 Descargas: Música, videos, tiktoks y más
 - 🎮 Juegos: Minijuegos y entretenimiento
 - 👥 Grupos: Herramientas de administración
 - 👑 Owner: Comandos exclusivos del creador
 - 🔞 NSFW: Contenido +18
 - 🗡️ RPG: Sistema de aventura y gacha
-`
 
-    // Comandos menos usados
-    let otrosComandos = `
 📝 *Otros comandos:*
 - /ping - Verifica que el bot está activo
 - /estado - Estado del bot
 - /sc - Créditos del bot
 - /info - Información general
-`
-
-    let texto = `
-👋 Hola ${name}
-Bienvenido al *menú principal* de ${botname}.
-
-${menusPrincipales}
-
-${otrosComandos}
 `
 
     await m.reply(texto)
