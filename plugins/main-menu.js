@@ -156,15 +156,15 @@ function getRandomEmoji() {
 
 
 // creado y editado por BrayanOFC 👑
-let handler = async (m, { conn }) => {
-  let name = conn.getName(m.sender)
-  let botname = "VEGETA-BOT-MB"
-
-  let text = `
+let handler = async (m, { conn, usedPrefix: _p }) => {
+  try {
+    let name = conn.getName(m.sender)
+    let botname = "VEGETA-BOT-MB"
+    let header = `
 🐉 Hola ${name}
-Este es el *menú principal* de ${botname}.
-Si ves este mensaje, el comando funciona ✅
+Bienvenido al *menú principal* de ${botname}.
 `
+
     const sections = [
       {
         title: "📌 MENÚ PRINCIPAL",
@@ -182,13 +182,14 @@ Si ves este mensaje, el comando funciona ✅
 
     const listMessage = {
       text: header,
-      footer: "✨ BrayanOFC - Bot 👻",
+      footer: "✨ BrayanOFC - 👻",
       title: "🌌 Selecciona una categoría:",
       buttonText: "📂 Abrir Menú",
       sections
     }
 
     await conn.sendMessage(m.chat, listMessage, { quoted: m })
+
   } catch (e) {
     console.error(e)
     await m.reply("❌ Error al mostrar el menú principal (ver consola)")
