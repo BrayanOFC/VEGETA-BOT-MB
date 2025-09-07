@@ -73,15 +73,20 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/BrayanOFC/VEGETA-BOT-MB && cd VEGETA-BOT-MB 
+git clone https://github.com/BrayanOFC/VEGETA-BOT-MB
 ```
 
 ```bash
-yarn install
+cd VEGETA-BOT-MB
 ```
+
 
 ```bash
 npm install
+```
+
+```bash
+npm start
 ```
 
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-arcoiris.jpg)
