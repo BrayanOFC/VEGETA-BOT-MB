@@ -31,7 +31,7 @@
 * WhatsApp es marca registrada de `WhatsApp LLC`.  
 * **VEGETA-BOT-MB** fue forjado desde 0 como un arma de los Saiyajin para dominar WhatsApp ⚡  
 
-> 🗣️ Vegeta: *"¡Este bot no necesita a Kakaroto para ser el mejor!"*  
+> 🗣️ BrayanOFC: *"¡Este bot no necesita a Kakaroto para ser el mejor!"*  
 
 </details>
 
@@ -46,7 +46,7 @@
 
 * WhatsApp: https://wa.me/526641784469  
 
-> 🗣️ Vegeta: *"Si buscas poder… habla directamente con el príncipe de los Saiyajin."*  
+> 🗣️ BrayanOFC: *"Si buscas poder… habla directamente con el príncipe de los Saiyajin."*  
 
 </details>
 
@@ -104,7 +104,7 @@ npm start
 cd VEGETA-BOT-MB && nano config.js
 ```
 
-> 🗣️ Vegeta: "No cualquiera puede portar este poder… pero si logras configurarlo, serás un verdadero Saiyajin."
+> 🗣️ BrayanOFC: "No cualquiera puede portar este poder… pero si logras configurarlo, serás un verdadero Saiyajin."
 
 ![line](https://github.com/BrayanOFC/Lines-Neon-MB/raw/main/assets/Logo-rojo.jpg)
 🎆 Modo Saiyajin 24/7 en Termux
@@ -113,7 +113,7 @@ cd VEGETA-BOT-MB && nano config.js
 npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 ```
 
-> 🗣️ Vegeta: "Un Saiyajin nunca descansa, y tu bot tampoco debería hacerlo."
+> 🗣️ BrayanOFC: "Un Saiyajin nunca descansa, y tu bot tampoco debería hacerlo."
 </details>
 
 
@@ -157,4 +157,4 @@ npm start
 </details>
 
 > 🐉 “El poder de un Saiyajin no tiene límites… y VEGETA-BOT-MB fue creado desde 0 para demostrarlo.”
-🗣️ Vegeta: "¡Este bot superará a Kakaroto, lo juro por el orgullo Saiyajin!"
+🗣️ BrayanOFC: "¡Este bot superará a Kakaroto, lo juro por el orgullo Saiyajin!"
