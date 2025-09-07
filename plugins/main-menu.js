@@ -167,7 +167,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let totalreg = 128 // ejemplo
     let uptime = "3h 22m" // ejemplo
     let totalCommands = 100
-    let users = conn.chats.all()
+    let users = Object.keys(conn.chats)
     let energia = Math.floor(Math.random() * 20000) + 1000
 
     let info = `
@@ -195,27 +195,26 @@ Estos son los accesos a las categorías:
 🎭 *Otros* → comandos generales y utilidades.
 `
 
-    const buttons = [
-      { buttonId: `${_p}menudescargas`, buttonText: { displayText: "📥 Descargas" }, type: 1 },
-      { buttonId: `${_p}menugame`, buttonText: { displayText: "🎮 Juegos" }, type: 1 },
-      { buttonId: `${_p}menugrupos`, buttonText: { displayText: "👥 Grupos" }, type: 1 },
-      { buttonId: `${_p}menuowner`, buttonText: { displayText: "👑 Owner" }, type: 1 },
-      { buttonId: `${_p}menunsfw`, buttonText: { displayText: "🔞 NSFW" }, type: 1 },
-      { buttonId: `${_p}menurpg`, buttonText: { displayText: "🗡️ RPG" }, type: 1 },
-      { buttonId: `${_p}menuotros`, buttonText: { displayText: "🎭 Otros" }, type: 1 }
+    let templateButtons = [
+      { index: 1, quickReplyButton: { displayText: "📥 Descargas", id: `${_p}menudescargas` } },
+      { index: 2, quickReplyButton: { displayText: "🎮 Juegos", id: `${_p}menugame` } },
+      { index: 3, quickReplyButton: { displayText: "👥 Grupos", id: `${_p}menugrupos` } },
+      { index: 4, quickReplyButton: { displayText: "👑 Owner", id: `${_p}menuowner` } },
+      { index: 5, quickReplyButton: { displayText: "🔞 NSFW", id: `${_p}menunsfw` } },
+      { index: 6, quickReplyButton: { displayText: "🗡️ RPG", id: `${_p}menurpg` } },
+      { index: 7, quickReplyButton: { displayText: "🎭 Otros", id: `${_p}menuotros` } }
     ]
 
-    const buttonMessage = {
+    let buttonMessage = {
       text: info,
-      footer: "✨ BrayanOFC - Bot 👻",
-      buttons: buttons,
-      headerType: 2
+      footer: "✨ BrayanOFC 👻",
+      templateButtons: templateButtons
     }
 
     await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
   } catch (e) {
     console.error(e)
-    await m.reply("❌ Error al mostrar el menú principal")
+    await m.reply("❌ Error al mostrar el menú principal (revísalo en consola)")
   }
 }
 
