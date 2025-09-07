@@ -37,7 +37,7 @@ let tags = {
   'productivity': 'MAQUINARIA Z',
   'social': 'REDES Z',
   'security': 'BARRERA',
-  'custom': 'AURA PERSONAL'*/
+  'custom': 'AURA PERSONAL'
 }
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
