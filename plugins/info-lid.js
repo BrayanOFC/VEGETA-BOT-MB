@@ -37,6 +37,6 @@ let handler = async function (m, { conn, groupMetadata }) {
 
 handler.command = ['lid']
 handler.help = ['lid']
-handler.tags = ['group']
+handler.tags = ['info']
 
 export default handler
