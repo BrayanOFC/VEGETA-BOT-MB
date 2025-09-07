@@ -175,7 +175,7 @@ Elige una categoría para ver los comandos disponibles:
           { title: "👑 Owner", description: "Comandos exclusivos del creador", rowId: `${_p}menuowner` },
           { title: "🔞 NSFW", description: "Contenido +18", rowId: `${_p}menunsfw` },
           { title: "🗡️ RPG", description: "Sistema de aventura y gacha", rowId: `${_p}menurpg` },
-          { title: "🎭 Otros", description: "Comandos generales y utilidades", rowId: `${_p}menuotros` }
+         
         ]
       }
     ]
