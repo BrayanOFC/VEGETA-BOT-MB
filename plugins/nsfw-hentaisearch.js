@@ -2,7 +2,7 @@ import cheerio from 'cheerio';
 import axios from 'axios';
 const handler = async (m, {conn, text, __dirname, usedPrefix, command}) => {
 if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply(`🐉 El contenido *NSFW* está desactivado en este grupo.\n> Un administrador puede activarlo con el comando » *#nsfw on*`);
+    return m.reply(`🐉 El contenido *NSFW* está desactivado en este grupo.\n> Un administrador puede activarlo con el comando » *.on nsfw*`);
     }
   if (!text) throw `☁️ Por favo, ingresa el nombre de algun hentai para buscar.`;
   const searchResults = await searchHentai(text);
