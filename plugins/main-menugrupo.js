@@ -20,7 +20,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
 ${gruposHelp}
 
-🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐍𝐎𝐅𝐂ღ* 🔥
+👑 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 
 `.trim()
 
     await m.react('👥')
