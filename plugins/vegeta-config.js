@@ -10,21 +10,32 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
   };
 
   const miniopcion = `🐉 *𝑂𝑃𝐶𝐼𝑂𝑁𝐸𝑆 𝑃𝐴𝑅𝐴 𝐺𝑅𝑈𝑃𝑂𝑆*
-
 ${usedPrefix + command} welcome
+${usedPrefix + command} autoresponder
+${usedPrefix + command} autoaceptar
+${usedPrefix + command} autorechazar
+${usedPrefix + command} detect
 ${usedPrefix + command} antidelete
 ${usedPrefix + command} antilink
 ${usedPrefix + command} antilink2
 ${usedPrefix + command} nsfw
+${usedPrefix + command} autolevelup
+${usedPrefix + command} autosticker
 ${usedPrefix + command} reaction
 ${usedPrefix + command} antitoxic
+${usedPrefix + command} audios
 ${usedPrefix + command} modoadmin
+${usedPrefix + command} antifake
 ${usedPrefix + command} antibot
 
 🚀 *𝑂𝑃𝐶𝐼𝑂𝑁𝐸𝑆 𝑃𝐴𝑅𝐴 𝑀𝐼 𝐶𝑅𝐸𝐴𝐷𝑂𝑅*
 
-${usedPrefix + command} antisubbots
+${usedPrefix + command} antisubots
+${usedPrefix + command} public
+${usedPrefix + command} status
 ${usedPrefix + command} serbot
+${usedPrefix + command} restrict
+${usedPrefix + command} autoread
 ${usedPrefix + command} antispam
 ${usedPrefix + command} antiprivado`;
 
@@ -67,6 +78,21 @@ ${usedPrefix + command} antiprivado`;
       chat.welcome = isEnable;
       break;
 
+    case 'autoaceptar': case 'aceptarnuevos':
+      validateGroupAdmin();
+      chat.autoAceptar = isEnable;
+      break;
+
+    case 'autorechazar': case 'rechazarnuevos':
+      validateGroupAdmin();
+      chat.autoRechazar = isEnable;
+      break;
+
+    case 'detect': case 'avisos':
+      validateGroupAdmin();
+      chat.detect = isEnable;
+      break;
+
     case 'antibot':
       validateGroupAdmin();
       chat.antiBot = isEnable;
@@ -102,6 +128,17 @@ ${usedPrefix + command} antiprivado`;
       isAll = true;
       validateROwner();
       bot.autobio = isEnable;
+      break;
+
+    case 'frases': case 'autofrases':
+      isAll = true;
+      validateROwner();
+      bot.frases = isEnable;
+      break;
+
+    case 'autoresponder': case 'autorespond':
+      validateGroupAdmin();
+      chat.autoresponder = isEnable;
       break;
 
     case 'nsfw': case 'nsfwhot': case 'nsfwhorny':
@@ -224,14 +261,14 @@ ${usedPrefix + command} antiprivado`;
 
   return conn.reply(
     m.chat,
-    `🛩️ *La función "${type}" ha sido ${isEnable ? 'activada' : 'desactivada'} ${isAll ? 'en todo el bot' : 'en este chat'}.*`,
+    `🛩 *La función "${type}" ha sido ${isEnable ? 'activada' : 'desactivada'} ${isAll ? 'en todo el bot' : 'en este chat'}.*`,
     m,
     fkontak
   );
 };
 
 handler.help = ['enable', 'disable'].map(cmd => `${cmd} <opción>`);
-handler.tags = ['info'];
+handler.tags = ['owner', 'group'];
 handler.command = ['enable', 'disable', 'on', 'off'];
 
 export default handler;
