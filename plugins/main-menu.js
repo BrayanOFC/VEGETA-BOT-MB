@@ -68,7 +68,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
   return section
 }).filter(text => text !== '').join('\n')}
 
- 👑*© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 
+ 👑 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 
 `.trim()
 
     await m.react('🐉') 
