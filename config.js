@@ -85,7 +85,6 @@ global.multiplier = 60
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.cheerio = cheerio
 global.fs = fs
 global.fetch = fetch
 global.axios = axios
