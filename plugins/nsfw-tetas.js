@@ -7,7 +7,7 @@ let text = '*🫨 TETAS*';
 conn.sendMessage(m.chat, { image: { url: img }, caption: text }, { quoted: m });
 m.react('✅');
 }
-
+handler.help = ['tetas']
 handler.command = ['tetas'];
 handler.tags = ['nsfw']
 handler.group;
