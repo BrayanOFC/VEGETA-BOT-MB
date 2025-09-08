@@ -61,8 +61,8 @@ ${Object.keys(tags).map(tag => {
   if (commandsForTag.length === 0) return ''
   let section = `
 ╔═══〔${tags[tag]} ${getRandomEmoji()}〕═══╗
-║${commandsForTag.map(menu => menu.help.map(help =>
-  `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
+${commandsForTag.map(menu => menu.help.map(help =>
+  `║ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
 ).join('\n')).join('\n')}
 ╚═════════════════════╝`
   return section
