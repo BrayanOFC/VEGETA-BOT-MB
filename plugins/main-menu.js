@@ -55,16 +55,16 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
 
-💥 *╔═⚔️ SECCIONES DE MENUS⚔️* 💥
+💥 *╔═⚔️ SECCION DE MENUS⚔️═╗* 💥
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
   let section = `
-╭───〔 ${tags[tag]} ${getRandomEmoji()} 〕───╮
-${commandsForTag.map(menu => menu.help.map(help =>
+╔═══〔${tags[tag]} ${getRandomEmoji()}〕═══╗
+║${commandsForTag.map(menu => menu.help.map(help =>
   `┃ ☁️${_p}${help}${menu.limit ? ' 🟡' : ''}${menu.premium ? ' 🔒' : ''}`
 ).join('\n')).join('\n')}
-╰━━━━━━━━━━━━━━━━━━━━╯`
+╚═════════════════════╝`
   return section
 }).filter(text => text !== '').join('\n')}
 
