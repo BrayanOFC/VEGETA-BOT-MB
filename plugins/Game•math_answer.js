@@ -34,8 +34,9 @@ const handler = async (m, {conn}) => {
 };
 
 handler.customPrefix = /^-?[0-9]+(\.[0-9]+)?$/;
+
 handler.help ['prueba']
-handler.command = ['pruena']
+handler.command = ['prueba']
 handler.tags = ['game']
 export default handler;
 
