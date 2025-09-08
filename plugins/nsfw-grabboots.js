@@ -51,7 +51,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 }
 
 handler.help = ['grabboobs/agarrartetas @tag'];
-handler.tags = ['emox'];
+handler.tags = ['nsfw'];
 handler.command = ['grabboobs','agarrartetas'];
 handler.group = true;
 
