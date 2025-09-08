@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let menuText = `
 ✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Operativo: ${name}
+║ 👤 Creador: ${creador}
 ║ 🏅 Clase de Guerrero: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
 ║ 📂 Registros en Archivo: ${totalreg}
@@ -55,7 +55,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
 
-🛩*╔═ SECCION DE MENUS ═╗*🛩
+🚀*╔═ SECCION DE MENUS ═╗*🚀
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
@@ -68,7 +68,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
   return section
 }).filter(text => text !== '').join('\n')}
 
-🔥 *© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 🔥
+ 👑*© ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ* 
 `.trim()
 
     await m.react('🐉') 
