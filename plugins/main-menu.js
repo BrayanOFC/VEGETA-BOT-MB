@@ -10,7 +10,7 @@ let tags = {
   'info': 'ZENO INFO',
   'main': 'MENUS INFO'
 }
-
+let creador
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let userId = m.mentionedJid?.[0] || m.sender
