@@ -10,7 +10,7 @@ const handler = async (m, {conn}) => {
   if (m.quoted.id == global.math[id][0].id) {
     const math = global.math[id][1];
     const user = global.db.data.users[m.sender] || {};
-    
+
     // Inicializa monedas si no existe
     if (!isNumber(user.monedas)) user.monedas = 0;
 
@@ -34,10 +34,7 @@ const handler = async (m, {conn}) => {
 };
 
 handler.customPrefix = /^-?[0-9]+(\.[0-9]+)?$/;
-
-handler.help ['respuesta']
-handler.command = ['respuesta']
-handler.tags = ['game']
+handler.command = new RegExp;
 export default handler;
 
 function isNumber(x) {
