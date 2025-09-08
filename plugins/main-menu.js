@@ -52,7 +52,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 📂 Registros en Archivo: ${totalreg}
 ║ ⏱️ Tiempo de Operación: ${uptime}
 ║ 🛠️ Protocolos Disponibles: ${totalCommands}
-║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
 
 🚀*╔═ SECCION DE MENUS ═╗*🚀
