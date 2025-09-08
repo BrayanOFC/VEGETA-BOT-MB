@@ -1,18 +1,16 @@
 // creado y editado por BrayanOFC
 let handler = async (m, { conn }) => {}
 
-handler.before = async function (m, { conn }) {
-   if (!m.messageStubType) return !1
-   let who = m.messageStubParameters[0]
-   let name = await conn.getName(who)
-
-   // ─── BIENVENIDA ───
-   if (m.messageStubType == 27) {
-      try {
-         let groupMetadata = await conn.groupMetadata(m.chat)
+handler.participantsUpdate = async function ({ id, participants, action }) {
+   try {
+      for (let user of participants) {
+         let name = await this.getName(user)
+         let groupMetadata = await this.groupMetadata(id)
          let desc = groupMetadata.desc || "⚠️ Este grupo no tiene reglas en la descripción."
-         
-         let text = `👊🏻🔥 ¡Escucha insecto @${who.split('@')[0]}!
+
+         // ─── BIENVENIDA ───
+         if (action == 'add') {
+            let text = `👊🏻🔥 ¡Escucha insecto @${user.split('@')[0]}!
 
 Has entrado al campo de batalla del grupo. Aquí no hay lugar para los débiles.  
 
@@ -20,19 +18,19 @@ Has entrado al campo de batalla del grupo. Aquí no hay lugar para los débiles.
 ${desc}
 
 ⚠️ El que rompa las reglas… conocerá mi furia Saiyajin. ⚠️`
+            await this.sendMessage(id, { text, mentions: [user] })
+         }
 
-         conn.sendMessage(m.chat, { text, mentions: [who] }, { quoted: m })
-      } catch (e) {
-         console.log(e)
-      }
-   }
-
-   // ─── DESPEDIDA ───
-   if (m.messageStubType == 28) {
-      let text = `💨 El guerrero @${who.split('@')[0]} ha abandonado el campo de batalla.  
+         // ─── DESPEDIDA ───
+         if (action == 'remove') {
+            let text = `💨 El guerrero @${user.split('@')[0]} ha abandonado el campo de batalla.  
 
 No todos soportan el poder de este grupo… ¡patético! 👊🏻🔥`
-      conn.sendMessage(m.chat, { text, mentions: [who] }, { quoted: m })
+            await this.sendMessage(id, { text, mentions: [user] })
+         }
+      }
+   } catch (e) {
+      console.error(e)
    }
 }
 
