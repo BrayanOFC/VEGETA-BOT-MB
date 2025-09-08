@@ -12,7 +12,7 @@ handler.before = async function (m, { conn }) {
          let groupMetadata = await conn.groupMetadata(m.chat)
          let desc = groupMetadata.desc || "🚀 Este grupo no tiene reglas Se Feliz Saiyajin👾."
          
-         let text = `👊🏻🔥 ¡Escucha insecto/a @${who.split('@')[0]}!
+         let text = `👊🏻🔥 ¡Escucha insect@ @${who.split('@')[0]}!
 
 Has entrado al campo de batalla del grupo. Aquí no hay lugar para los débiles.  
 
