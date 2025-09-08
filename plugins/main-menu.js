@@ -55,7 +55,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 ║ 🛰️ Drones Activos: ${users.length}
 ╚════════════════════════════════════╝
 
-💥 *╔═⚔️ SECCION DE MENUS⚔️═╗* 💥
+🛩*╔═ SECCION DE MENUS ═╗*🛩
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
