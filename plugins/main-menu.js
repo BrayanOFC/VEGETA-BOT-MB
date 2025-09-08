@@ -10,7 +10,7 @@ let tags = {
   'info': 'ZENO INFO',
   'main': 'MENUS INFO'
 }
-let creador
+const name = 'BrayanOFC 👻';
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let userId = m.mentionedJid?.[0] || m.sender
@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let menuText = `
 ✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Creador: ${creador}
+║ 👤 Creador: ${name}
 ║ 🏅 Clase de Guerrero: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
 ║ 📂 Registros en Archivo: ${totalreg}
