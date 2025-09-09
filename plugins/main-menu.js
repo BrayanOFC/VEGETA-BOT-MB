@@ -41,13 +41,13 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       premium: plugin.premium,
     }))
 
-    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO '
+    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥'
 
     let menuText = `
 ✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Creador: ${name}
-║ 🏅 Clase de Guerrero: ${rango}
+║ 👤 Clase de Guerrero: ${name}
+║ 🏅 creador: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
 ║ 📂 Registros en Archivo: ${totalreg}
 ║ ⏱️ Tiempo de Operación: ${uptime}
