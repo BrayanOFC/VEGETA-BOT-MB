@@ -22,7 +22,7 @@ let handler = async (m, { conn }) => {
     fs.unlinkSync(out)
   })
 }
-handler.help = ['jpg','jpg']
+handler.help = ['img','jpg']
 handler.tags = ['grupo']
 handler.command = ['jpg','img']
 export default handler
