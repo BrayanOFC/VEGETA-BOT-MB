@@ -1,7 +1,7 @@
 const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix }) => {
     if (usedPrefix.toLowerCase() === 'a') return;
 
-    const customEmoji = global.db?.data?.chats?.[m.chat]?.customEmoji || '⚡';
+    const customEmoji = global.db?.data?.chats?.[m.chat]?.customEmoji || '⚡️';
     m.react(customEmoji);
 
     if (!(isAdmin || isOwner)) {
@@ -45,18 +45,18 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
   "970": "🇵🇸", "971": "🇦🇪", "972": "🇮🇱", "973": "🇧🇭", "974": "🇶🇦", "975": "🇧🇹",
   "976": "🇲🇳", "977": "🇳🇵", "992": "🇹🇯", "993": "🇹🇲", "994": "🇦🇿", "995": "🇬🇪",
   "996": "🇰🇬", "998": "🇺🇿"
-    };
+};
 
     function getPrefix(number) {
         for (let i = 4; i >= 1; i--) {
             const sub = number.slice(0, i);
             if (countryFlags[sub]) return sub;
         }
-        return null;
+        return "⚡️";
     }
 
     const mensaje = args.join` `;
-    const info = mensaje ? `✉️ *Mensaje:* ${mensaje}` : "🚨 *Invocación masiva de Vegeta*";
+    const info = mensaje ? `╰➤ ✉️ *Mensaje:* ${mensaje}` : "╰➤ 🚨 *Invocación masiva de Vegeta";
 
     let texto = `
 🌌═══ *GALACTIC SUMMON* ═══🌌
@@ -83,7 +83,7 @@ ${info}
 
 handler.help = ['todos *<mensaje>*'];
 handler.tags = ['grupo'];
-handler.command = ['todos', 'tagall'];
+handler.command = ['tagall', 'todos'];
 handler.group = true;
 
 export default handler;
