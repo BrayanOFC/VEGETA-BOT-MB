@@ -109,7 +109,7 @@ let opcion
 if (methodCodeQR) {
 opcion = '1'
 }
-if (!methodCodeQR && !methodCode && !fs.existsSync(`./${sessions}/creds.json`)) {
+if (!methodCodeQR && !methodCode && !fs.existsSync(`./${vegetasessions}/creds.json`)) {
 do {
 opcion = await question(colors("Seleccione una opción:\n") + qrOption("1. 👑Con código QR🐉\n") + textOption("2. ☁️Con código de texto de 8 dígitos🐉\n--> "))
 if (!/^[1-2]$/.test(opcion)) {
