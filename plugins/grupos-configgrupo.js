@@ -19,7 +19,7 @@ m.reply(`👑 *Ya pueden escribir en este grupo.*`)
 if (isClose === 'announcement'){
 m.reply(`⚡️ *Solos los admins pueden escribir en este grupo.*`)
 }}
-handler.help = ['grupo open / close', 'grupo on / off']
+handler.help = ['grupo on / off', 'grupo open / close']
 handler.tags = ['grupo']
 handler.command = ['group', 'grupo']
 handler.admin = true
