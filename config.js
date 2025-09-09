@@ -44,7 +44,7 @@ global.vs = '2.13.2'
 global.vsJB = '5.0'
 global.nameqr = '𝚅𝙴𝙶𝙴𝚃𝙰 - 𝙱𝙾𝚃 - 𝙼𝙱'
 global.namebot = '✿◟𝚅𝚎𝚐𝚎𝚝𝚊-𝙱𝚘𝚝-𝙼𝙱◞✿'
-global.sessions = 'Sessions'
+global.vegetasessions = 'vegetaSessions'
 global.jadi = 'JadiBots' 
 global.vegetaJadibts = true
 
