@@ -1,3 +1,4 @@
+//codigo creado por BrayanOFC 
 import { exec } from 'child_process'
 import { tmpdir } from 'os'
 import path from 'path'
