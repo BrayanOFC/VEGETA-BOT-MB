@@ -56,7 +56,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
     }
 
     const mensaje = args.join` `;
-    const info = mensaje ? `╰➤ ✉️ *Mensaje:* ${mensaje}` : "╰➤ 🚨 *Invocación masiva de Vegeta";
+    const info = mensaje ? `╰➤ ✉️ *Mensaje:* ${mensaje}` : "╰➤ 🚨 *Invocación masiva de Vegeta*";
 
     let texto = `
 🌌═══ *GALACTIC SUMMON* ═══🌌
