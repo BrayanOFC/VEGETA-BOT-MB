@@ -50,5 +50,5 @@ let handler = async (m, { conn }) => {
 }
 handler.help = ['img','mp4']
 handler.tags = ['grupo']
-handler.command = ['jpg','img']
+handler.command = ['mp4','img']
 export default handler
