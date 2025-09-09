@@ -16,7 +16,7 @@ handler.before = async function (m, { conn }) {
 
 Has entrado al campo de batalla del grupo. Aquí no hay lugar para los débiles.  
 
-📜 **Reglas del Grupo**:
+📜 *Reglas del Grupo*:
 ${desc}
 
 🚀 El que rompa las reglas… conocerá mi furia Saiyajin. 🚀`
