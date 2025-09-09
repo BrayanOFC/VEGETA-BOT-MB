@@ -529,7 +529,7 @@ console.log(chalk.bold.cyanBright(`\n⌦ ☁️Archivos de la carpeta TMP no nec
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeSession()
-console.log(chalk.bold.cyanBright(`\n⌦ Archivos de la carpeta ${global.sessions} no necesario han sido eliminados del servidor.`))}, 1000 * 60 * 10)
+console.log(chalk.bold.cyanBright(`\n⌦ Archivos de la carpeta ${global.vegetasessions} no necesario han sido eliminados del servidor.`))}, 1000 * 60 * 10)
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
 await purgeSessionSB()}, 1000 * 60 * 10) 
