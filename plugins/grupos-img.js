@@ -23,6 +23,6 @@ let handler = async (m, { conn }) => {
   })
 }
 handler.help = ['jpg','jpg']
-handler.tags = ['jpg','img']
+handler.tags = ['grupo']
 handler.command = ['jpg','img']
 export default handler
