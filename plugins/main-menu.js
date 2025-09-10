@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 let menuText = `
 ╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname}
-║ 👤 Operativo: ${creador}
+║ 👤 Creador: ${creador}
 ║ 🏅 Clase de Guerrero: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
 ║ 🔥 Nivel de Energía: ${exp}
