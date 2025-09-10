@@ -93,8 +93,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
       }
     }, { userJid: m.sender, quoted: m })
 
-    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
-
+    await conn.relayMessage(m.chat, msg.message, {})
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
     console.error(e)
