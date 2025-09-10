@@ -41,20 +41,21 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       premium: plugin.premium,
     }))
 
-    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥'
+    let rango = conn?.user?.jid === userId ? 'DIOS BrayanOFC 🅥' : 'SUB-BOT KAIO'
 
-    let menuText = `
-✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
-║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Clase de Guerrero: ${level}
-║ 🏅 creador: ${creador}
+let menuText = `
+╔═✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
+║ 🐉 Unidad: ${botname}
+║ 👤 Operativo: ${creador}
+║ 🏅 Clase de Guerrero: ${rango}
 ║ 🌌 Sector Galáctico: ${mode}
+║ 🔥 Nivel de Energía: ${exp}
 ║ 📂 Registros en Archivo: ${totalreg}
 ║ ⏱️ Tiempo de Operación: ${uptime}
 ║ 🛠️ Protocolos Disponibles: ${totalCommands}
 ╚════════════════════════════════════╝
 
-🚀╔═ *SECCION DE MENUS* ═╗🚀
+🚀╔═ *SECCIÓN DE MENÚS* ═╗🚀
 ${Object.keys(tags).map(tag => {
   const commandsForTag = help.filter(menu => menu.tags.includes(tag))
   if (commandsForTag.length === 0) return ''
@@ -67,24 +68,38 @@ ${commandsForTag.map(menu => menu.help.map(help =>
   return section
 }).filter(text => text !== '').join('\n')}
 
- 👑 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ  ➳𝐁𝐫𝐚𝐲𝐚𝐧𝐎𝐅𝐂ღ 
+ 👑 © ⍴᥆ᥕᥱrᥱძ ᑲᥡ ➳${creador}
 `.trim()
 
     await m.react('🐉') 
 
-    await conn.sendMessage(m.chat, {
-  image: { url: 'https://files.catbox.moe/3peljt.jpg' },
-  caption: menuText,
-  contextInfo: {
-    isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363394965381607@newsletter',
-      newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-      serverMessageId: 100
-    }
-  }
-}, { quoted: m })
-    await conn.relayMessage(m.chat, msg.message, {})
+    let imgBuffer = await (await fetch('https://files.catbox.moe/3peljt.jpg')).buffer()
+    let media = await prepareWAMessageMedia(
+      { image: imgBuffer }, 
+      { upload: conn.waUploadToServer }
+    )
+
+    let msg = generateWAMessageFromContent(m.chat, {
+      viewOnceMessage: {
+        message: {
+          imageMessage: {
+            ...media.imageMessage,
+            caption: menuText,
+            contextInfo: {
+              isForwarded: true,
+              forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363394965381607@newsletter',
+                newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+                serverMessageId: 100
+              }
+            }
+          }
+        }
+      }
+    }, { userJid: m.sender, quoted: m })
+
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
     console.error(e)
