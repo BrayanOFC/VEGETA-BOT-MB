@@ -72,27 +72,18 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 
     await m.react('🐉') 
 
-    let imgBuffer = await (await fetch('https://files.catbox.moe/3peljt.jpg')).buffer()
-    let media = await prepareWAMessageMedia(
-      { image: imgBuffer }, 
-      { upload: conn.waUploadToServer }
-    )
-
-    let msg = generateWAMessageFromContent(m.chat, {
-      imageMessage: {
-        ...media.imageMessage,
-        caption: menuText,
-        contextInfo: {
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363394965381607@newsletter',
-            newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
-            serverMessageId: 100
-          }
-        }
-      }
-    }, { userJid: m.sender, quoted: m })
-
+    await conn.sendMessage(m.chat, {
+  image: { url: 'https://files.catbox.moe/3peljt.jpg' },
+  caption: menuText,
+  contextInfo: {
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '120363394965381607@newsletter',
+      newsletterName: '𝚅𝙴𝙶𝙴𝚃𝙰-𝙱𝙾𝚃-𝙼𝙱 • Update',
+      serverMessageId: 100
+    }
+  }
+}, { quoted: m })
     await conn.relayMessage(m.chat, msg.message, {})
   } catch (e) {
     conn.reply(m.chat, `✖️ Menú en modo Dragon Ball falló.\n\n${e}`, m)
