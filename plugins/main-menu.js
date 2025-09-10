@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let menuText = `
 ✪〘 🚀 GALACTIC MISSION REPORT 🚀 〙✪═╗
 ║ 🐉 Unidad: ${botname.toUpperCase()}
-║ 👤 Clase de Guerrero: ${userId}
+║ 👤 Clase de Guerrero: ${taguser}
 ║ 🏅 creador: ${creador}
 ║ 🌌 Sector Galáctico: ${mode}
 ║ 📂 Registros en Archivo: ${totalreg}
@@ -72,7 +72,7 @@ ${commandsForTag.map(menu => menu.help.map(help =>
 
     await m.react('🐉') 
 
-    let imgBuffer = await (await fetch('https://files.catbox.moe/g97gzh.jpg')).buffer()
+    let imgBuffer = await (await fetch('https://files.catbox.moe/3peljt.jpg')).buffer()
     let media = await prepareWAMessageMedia(
       { image: imgBuffer }, 
       { upload: conn.waUploadToServer }
