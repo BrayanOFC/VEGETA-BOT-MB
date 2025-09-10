@@ -47,7 +47,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 💬 *Total de chats:* ${totalchats}
 📢 *Grupos:* ${groupsIn.length}
 📩 *Privados:* ${totalchats - groupsIn.length}
-🧪 *SubBots activos:* ${totalUsers || '0'}
 
 🕰️ *Actividad:* ${muptime}
 🚀 *Velocidad:* ${speed.toFixed(3)}s
