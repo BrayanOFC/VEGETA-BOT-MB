@@ -2,25 +2,26 @@ let rentas = global.rentas || (global.rentas = {})
 
 const handler = async (m, { conn, args, isOwner }) => {
   if (!isOwner) return
-  if (!m.isGroup) return m.reply('❌ Usa este comando solo en grupos.')
+  if (m.isGroup) return m.reply('❌ Usa este comando en mi privado.')
 
-  if (!args[0]) return m.reply(`Ejemplo:\n.rentarbot 30`)
+  if (!args[0] || !args[1]) return m.reply(`Ejemplo:\n.rentarbot <id-grupo> <días>\n\nEjemplo:\n.rentarbot 123456789-123456@g.us 30`)
 
-  let dias = parseInt(args[0])
+  let idGrupo = args[0]
+  let dias = parseInt(args[1])
   if (isNaN(dias)) return m.reply('❌ Ingresa un número válido de días.')
 
   let ahora = Date.now()
   let expira = ahora + (dias * 24 * 60 * 60 * 1000)
-  rentas[m.chat] = { expira, dias }
+  rentas[idGrupo] = { expira, dias }
 
-  m.reply(`✅ Renta activada en este grupo por ${dias} día(s).\n📅 Salida: ${new Date(expira).toLocaleString()}`)
+  m.reply(`✅ Renta activada para el grupo:\n${idGrupo}\n⏳ Tiempo: ${dias} día(s)\n📅 Salida: ${new Date(expira).toLocaleString()}`)
 }
 
 handler.help = ['rentarbot']
 handler.tags = ['owner']
 handler.command = /^rentarbot$/i
 handler.rowner = true
-handler.private = true
+
 export default handler
 
 setInterval(async () => {
