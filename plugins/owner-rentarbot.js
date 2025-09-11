@@ -16,17 +16,23 @@ const handler = async (m, { conn, args, isOwner }) => {
   let code = match[1]
 
   try {
-    let res = await conn.groupAcceptInvite(code) // el bot entra al grupo
-    let idGrupo = res.gid
+    // Unirse al grupo
+    await conn.groupAcceptInvite(code)
+
+    // Obtener info del grupo
+    let metadata = await conn.groupMetadataFromInvite(code)
+    let idGrupo = metadata.id
 
     let ahora = Date.now()
     let expira = ahora + (dias * 24 * 60 * 60 * 1000)
     rentas[idGrupo] = { expira, dias }
 
-    m.reply(`✅ El bot entró al grupo:\n${idGrupo}\n⏳ Tiempo: ${dias} día(s)\n📅 Salida: ${new Date(expira).toLocaleString()}`)
-    await conn.sendMessage(idGrupo, { text: `🐉 El bot ha sido rentado por ${dias} día(s).` })
+    m.reply(`✅ El bot entró al grupo:\n${metadata.subject}\n⏳ Tiempo: ${dias} día(s)\n📅 Salida: ${new Date(expira).toLocaleString()}`)
+    
+    await conn.sendMessage(idGrupo, { text: `🐉 ¡Hola! He sido rentado por ${dias} día(s).` })
   } catch (e) {
-    m.reply('❌ No pude unirme al grupo. Verifica que el link sea válido o que no esté lleno.')
+    console.log(e)
+    m.reply('❌ No pude unirme al grupo o no encontré la información del grupo.')
   }
 }
 
@@ -37,6 +43,7 @@ handler.rowner = true
 
 export default handler
 
+// Auto-salida cuando expire
 setInterval(async () => {
   let ahora = Date.now()
   for (let id in rentas) {
@@ -48,7 +55,7 @@ setInterval(async () => {
         await conn.groupLeave(id)
         delete rentas[id]
       } catch (e) {
-        console.log(e)
+        console.log('Error al salir del grupo:', e)
       }
     }
   }
