@@ -20,7 +20,7 @@ handler.help = ['rentarbot']
 handler.tags = ['owner']
 handler.command = /^rentarbot$/i
 handler.rowner = true
-
+handler.private = true
 export default handler
 
 setInterval(async () => {
