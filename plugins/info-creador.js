@@ -15,7 +15,7 @@ async function handler(m, { conn }) {
     const name2 = '👑 The-Carlos';
     const empresa2 = '⚡ Servicios Tecnológicos ⚡';
     const numero2 = '+52 55 4487 6071';
-    const github2 = 'https://github.com/Thecarlos19;
+    const github2 = 'https://github.com/Thecarlos19';
 
     const caption = `
 ┏━━━━━━━━━━━━━━━━━━━┓
