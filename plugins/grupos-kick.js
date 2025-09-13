@@ -8,10 +8,9 @@ let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 if (conn.user.jid.includes(user)) 
     return m.reply(`☁️ No puedo hacer un auto kick`)
 
-/*let ownerJids = global.owner.map(([id]) => id + '@s.whatsapp.net')
+let ownerJids = global.owner.map(([id]) => id + '@s.whatsapp.net')
 if (ownerJids.includes(user)) 
-    return m.reply(`⚡ No puedes expulsar al creador del bot`)*/
-
+    return m.reply(`⚡ No puedes expulsar al creador del bot`)
 await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
 m.reply(`🔮 Usuario eliminado con éxito`) 
 
