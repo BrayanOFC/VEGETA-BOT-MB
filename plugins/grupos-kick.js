@@ -5,7 +5,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
   let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 
-  if (conn.user.jid.includes(user)) 
+  if (user === conn.user.jid) 
     return m.reply(`☁️ No puedo hacer un auto kick`)
 
   let creadorJids = global.creador.map(([id]) => id + '@s.whatsapp.net')
